@@ -51,10 +51,15 @@ Before publishing a new tag:
 5. Verify multi-GPU uses one user connection and disjoint search domains.
 6. Exercise disconnect, authentication failure, job pause, stale response,
    CUDA error and service restart recovery.
-7. Record exact binary/archive SHA-256, driver, CUDA flavor, GPU, command,
+7. Verify the status panel, loopback `/stats` and `/metrics`, per-device A/S/R,
+   continuous temperature sampling and affected-device-only thermal recovery.
+8. Verify the developer-fee schedule survives a process restart from a bounded,
+   integrity-checked persistent state file. Exact fee-window start/end events
+   and payout identities must be absent from public logs and assets.
+9. Record exact binary/archive SHA-256, driver, CUDA flavor, GPU, command,
    hashrate unit, power limit and measured average/peak power.
-8. Run both repository and archive verification scripts locally.
-9. Upload assets manually and confirm `releases/latest/download/...` resolves to
+10. Run both repository and archive verification scripts locally.
+11. Upload assets manually and confirm `releases/latest/download/...` resolves to
    the exact new files.
 
 No historical rate or power result may be represented as an exact measurement
@@ -64,3 +69,9 @@ when the embedded module is byte-identical and SHA-locked, the release profile
 is unchanged, and the GPU/driver/power conditions are recorded. Such a result
 must be labeled as reused frozen-lane evidence rather than a new host-binary
 measurement.
+
+Managed deployments must retain the miner state directory across process and
+container restarts. The release archive verifier must reject the exact
+`DEV_FEE_WINDOW_START`, `DEV_FEE_WINDOW_END` and `DEV_FEE_PREPARE_START` event
+templates even when no payout address is present; aggregate policy and health
+status remain allowed.

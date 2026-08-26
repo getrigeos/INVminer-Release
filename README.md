@@ -9,15 +9,17 @@ material, credentials, private build paths, or infrastructure secrets.
 
 ## Current release
 
-The current release is v0.1.44. It was rebuilt reproducibly from the private
+The current release is v0.1.45. It was rebuilt reproducibly from the private
 INVminer source with the InnovLab product identity.
 
-Download only from the [official release page](https://github.com/getrigeos/INVminer/releases/tag/v0.1.44)
+Download only from the [official release page](https://github.com/getrigeos/INVminer/releases/tag/v0.1.45)
 and verify the published SHA-256 file before running it.
 
-v0.1.44 automatically formats aggregate, kernel and per-GPU hashrates with the
-appropriate SI unit from `H/s` through `EH/s` while retaining raw protocol
-values for pool accounting.
+v0.1.45 adds a professional 120-second status panel, loopback JSON/Prometheus
+monitoring, per-device share accounting, bounded connection/CUDA recovery,
+continuous thermal protection, bounded log rotation and a persistent
+integrity-checked developer-fee ledger. Mining kernels remain unchanged from
+the reviewed v0.1.44 lanes.
 
 ## Binary-only risk notice
 

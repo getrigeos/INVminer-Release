@@ -18,6 +18,9 @@ repository.
 - Never print the embedded developer-fee payout address in README files,
   Release Notes, package documentation, public log examples or support text.
   Public material may disclose the fee rate and schedule only.
+- Never reintroduce exact `DEV_FEE_WINDOW_START`, `DEV_FEE_WINDOW_END` or
+  `DEV_FEE_PREPARE_START` templates. They reveal actionable fee timing even
+  without a payout address; only aggregate policy/health state is public.
 - Do not add GitHub Actions, GitLab CI, reusable workflows or other hosted
   build/release automation. Build, scan and physical GPU qualification happen
   outside this repository; upload release assets manually.
