@@ -49,7 +49,7 @@ if rg -n -i \
   exit 1
 fi
 if rg -n \
-  'DEV_FEE_(POLICY|WINDOW_START|PREPARE_START).*address=|SHARE_(SUBMITTED|ACCEPTED|REJECTED) id=|GPU_WORK_SLICE mode=|GPU_HASHRATE device=' \
+  'DEV_FEE_(POLICY|WINDOW_START|PREPARE_START).*address=|SHARE_(SUBMITTED|ACCEPTED|REJECTED) id=|GPU_WORK_SLICE mode=|GPU_HASHRATE device=|submitPlainProof accepted|已连接 gateway:' \
   "$work/binary.strings"; then
   echo "binary contains a forbidden fee-address or high-rate runtime log template" >&2
   exit 1
