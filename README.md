@@ -9,11 +9,10 @@ material, credentials, private build paths, or infrastructure secrets.
 
 ## Current release
 
-The first INVminer-branded candidate is v0.1.42. It was rebuilt from the private
-INVminer source with the InnovLab product identity and is not a renamed binary
-from an earlier product.
+The current release is v0.1.43. It was rebuilt reproducibly from the private
+INVminer source with the InnovLab product identity.
 
-Download only from the [official release page](https://github.com/getrigeos/INVminer/releases/tag/v0.1.42)
+Download only from the [official release page](https://github.com/getrigeos/INVminer/releases/tag/v0.1.43)
 and verify the published SHA-256 file before running it.
 
 ## Binary-only risk notice
