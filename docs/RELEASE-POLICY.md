@@ -57,5 +57,10 @@ Before publishing a new tag:
 9. Upload assets manually and confirm `releases/latest/download/...` resolves to
    the exact new files.
 
-No historical rate or power result may be represented as a measurement of a
-new INVminer binary until that exact candidate is physically run.
+No historical rate or power result may be represented as an exact measurement
+of a new INVminer host binary until that exact candidate is physically run. An
+operator may explicitly authorize reuse of physical device-lane evidence only
+when the embedded module is byte-identical and SHA-locked, the release profile
+is unchanged, and the GPU/driver/power conditions are recorded. Such a result
+must be labeled as reused frozen-lane evidence rather than a new host-binary
+measurement.
