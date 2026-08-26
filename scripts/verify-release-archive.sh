@@ -6,7 +6,7 @@ archive=${1:-}
   echo "usage: $0 <invminer-noid-vX.Y.Z-linux-x86_64-cudaXX.tar.gz>" >&2
   exit 2
 }
-for command in file rg strings tar; do
+for command in file python3 rg strings tar; do
   command -v "$command" >/dev/null || {
     echo "missing verification command: $command" >&2
     exit 1
@@ -18,12 +18,21 @@ trap 'rm -rf "$work"' EXIT
 members="$work/members"
 extract="$work/extract"
 mkdir "$extract"
-tar -tzf "$archive" >"$members"
+python3 - "$archive" >"$members" <<'PY'
+import sys
+import tarfile
+
+with tarfile.open(sys.argv[1], "r:gz") as archive:
+    for member in archive.getmembers():
+        print(member.name)
+PY
 while IFS= read -r member; do
   case "$member" in
     /*|*../*) echo "unsafe archive member: $member" >&2; exit 1 ;;
   esac
 done <"$members"
+printf 'README.txt\ninvminer-noid\n' >"$work/expected-members"
+diff -u "$work/expected-members" "$members"
 tar -xzf "$archive" -C "$extract"
 
 find "$extract" -type f -print | sed "s|^$extract/||" | sort >"$work/files"

@@ -30,3 +30,14 @@ bash scripts/verify-release-archive.sh dist/<archive>.tar.gz
 ```
 
 Only the second command requires a prepared release archive.
+
+On macOS, create archives with both copyfile metadata and xattrs disabled:
+
+```bash
+COPYFILE_DISABLE=1 tar --no-xattrs -C dist/stage -czf dist/package.tar.gz \
+  README.txt invminer-noid
+```
+
+Do not omit either control. The verifier reads the raw tar member table through
+Python and must see exactly `README.txt` and `invminer-noid`; this catches hidden
+AppleDouble `._*` members that BSD tar may suppress while listing or extracting.

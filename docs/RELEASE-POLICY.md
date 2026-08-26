@@ -43,7 +43,11 @@ Before publishing a new tag:
 2. Verify the embedded product identity and InnovLab endpoint before CUDA starts.
 3. Run CPU/GPU gold-vector self-tests on each claimed native architecture.
 4. Obtain accepted shares with zero or very low resolved rejection rate through
-   the production InnovLab TLS endpoint.
+   the production InnovLab TLS endpoint. If that endpoint is unavailable for a
+   confirmed pool-infrastructure reason, an explicitly authorized,
+   WebPKI-verified `release-gate-compat` path may be used, provided its actual
+   hostname is absent from public files and logs and the Release Notes disclose
+   which gate was used.
 5. Verify multi-GPU uses one user connection and disjoint search domains.
 6. Exercise disconnect, authentication failure, job pause, stale response,
    CUDA error and service restart recovery.
