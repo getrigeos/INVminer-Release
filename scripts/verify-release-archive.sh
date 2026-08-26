@@ -40,14 +40,22 @@ printf 'README.txt\ninvminer-noid\n' >"$work/expected"
 diff -u "$work/expected" "$work/files"
 [[ -x "$extract/invminer-noid" ]] || { echo "invminer-noid is not executable" >&2; exit 1; }
 file "$extract/invminer-noid" | rg -q 'ELF 64-bit.*x86-64'
+strings "$extract/invminer-noid" >"$work/binary.strings"
 
-if strings "$extract/invminer-noid" | rg -n -i \
-  'uminer-(noid|modules|watchdog)|\.local/state/uminer|/var/lib/uminer|/Users/|/root/|README-AI|id_ed25519'; then
+if rg -n -i \
+  'uminer-(noid|modules|watchdog)|\.local/state/uminer|/var/lib/uminer|/Users/|/root/|README-AI|id_ed25519' \
+  "$work/binary.strings"; then
   echo "binary contains legacy branding/endpoint or a private build identifier" >&2
   exit 1
 fi
-strings "$extract/invminer-noid" | rg -qi 'INVminer'
-strings "$extract/invminer-noid" | rg -q 'stratum\.innovlab\.cc'
+if rg -n \
+  'DEV_FEE_(POLICY|WINDOW_START|PREPARE_START).*address=|SHARE_(SUBMITTED|ACCEPTED|REJECTED) id=|GPU_WORK_SLICE mode=|GPU_HASHRATE device=' \
+  "$work/binary.strings"; then
+  echo "binary contains a forbidden fee-address or high-rate runtime log template" >&2
+  exit 1
+fi
+rg -qi 'INVminer' "$work/binary.strings"
+rg -q 'stratum\.innovlab\.cc' "$work/binary.strings"
 rg -qi 'INVminer' "$extract/README.txt"
 rg -q 'stratum\+ssl://stratum\.innovlab\.cc:19601' "$extract/README.txt"
 
