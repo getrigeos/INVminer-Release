@@ -28,6 +28,16 @@
 | RTX 4090 | `sm_89` | `TO_BE_FILLED` | `TO_BE_FILLED` | No | — | — | — | — | qualification pending |
 | RTX 5090 | `sm_120` | `TO_BE_FILLED` | `TO_BE_FILLED` | No | — | — | — | — | qualification pending |
 
+### Measurement interpretation
+
+For every performance row, state whether hardware controls were omitted or
+explicitly applied, and report measured average/peak power. If a result differs
+materially from an older release, run an old exact binary on the same host when
+possible. Do not label a cross-host difference as a miner optimization, driver
+gain, or universal GPU baseline unless a controlled same-card A/B isolates that
+variable. Preserve a conservative cross-host baseline alongside exceptional
+high-power host results.
+
 ## Developer fee
 
 State the compiled rate, effective-GPU-time schedule, failover behavior and
