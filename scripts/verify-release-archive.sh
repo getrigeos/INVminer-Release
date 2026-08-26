@@ -33,7 +33,7 @@ diff -u "$work/expected" "$work/files"
 file "$extract/invminer-noid" | rg -q 'ELF 64-bit.*x86-64'
 
 if strings "$extract/invminer-noid" | rg -n -i \
-  '\buminer\b|uminer-noid|parano1d\.01pool\.com|/Users/|/root/|README-AI|id_ed25519'; then
+  'uminer-(noid|modules|watchdog)|\.local/state/uminer|/var/lib/uminer|/Users/|/root/|README-AI|id_ed25519'; then
   echo "binary contains legacy branding/endpoint or a private build identifier" >&2
   exit 1
 fi

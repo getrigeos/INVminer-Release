@@ -7,17 +7,14 @@ binary packages. It does **not** contain the proprietary Rust/CUDA mining
 source, vendored proof-system source, hardware-control implementation, wallet
 material, credentials, private build paths, or infrastructure secrets.
 
-## Current release status
+## Current release
 
-The INVminer-branded binary has not been published yet. Do not download an
-older miner package and merely rename its executable: a valid INVminer release
-must be rebuilt with the INVminer product identity, InnovLab endpoint policy,
-user agent, developer-fee commitment domain and package metadata, then pass the
-exact-binary pool/GPU gates.
+The first INVminer-branded candidate is v0.1.42. It was rebuilt from the private
+INVminer source with the InnovLab product identity and is not a renamed binary
+from an earlier product.
 
-When available, releases will be published only at:
-
-<https://github.com/getrigeos/INVminer/releases>
+Download only from the [official release page](https://github.com/getrigeos/INVminer/releases/tag/v0.1.42)
+and verify the published SHA-256 file before running it.
 
 ## Required connection
 
