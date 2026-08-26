@@ -16,6 +16,14 @@ from an earlier product.
 Download only from the [official release page](https://github.com/getrigeos/INVminer/releases/tag/v0.1.42)
 and verify the published SHA-256 file before running it.
 
+## Binary-only risk notice
+
+This repository provides closed-source binaries only. A package may be
+incompatible with a particular GPU, driver, OS or pool state and may stop
+working after external protocol changes. Because source is not provided, users
+cannot independently rebuild, audit or patch the miner and must decide whether
+to trust the published binary and checksums.
+
 ## Required connection
 
 The production command shape is:

@@ -20,7 +20,7 @@ done < <(git ls-files)
 
 if git ls-files -z -- README.md README-AI.md docs release-notes \
   | xargs -0 rg -n -i \
-    '\buminer\b|/Users/|/root/|id_ed25519|BEGIN (OPENSSH|RSA|EC|PRIVATE) KEY'; then
+    '\buminer\b|\bo[0-9a-z]{50,}\b|/Users/|/root/|id_ed25519|BEGIN (OPENSSH|RSA|EC|PRIVATE) KEY'; then
   echo "public repository contains legacy branding/endpoint or a private marker" >&2
   bad=1
 fi

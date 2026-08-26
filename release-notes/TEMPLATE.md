@@ -1,5 +1,9 @@
 # INVminer NOID GPU Miner vX.Y.Z
 
+> **Binary-only risk:** this release may not work with every GPU, driver, OS or
+> pool state. Source is not provided, so users cannot independently rebuild,
+> audit or patch it and must decide whether to trust the binary and checksums.
+
 ## Release assets
 
 | Asset | Host/driver purpose | Embedded lanes | Archive SHA-256 | Binary SHA-256 |
@@ -26,10 +30,10 @@
 
 ## Developer fee
 
-State the compiled rate, effective-GPU-time schedule, fixed address, failover
-behavior and exact pool-side accounting evidence for this candidate. Do not use
-raw share-count ratios when the user and fee sessions may have different
-variable difficulties.
+State the compiled rate, effective-GPU-time schedule, failover behavior and
+exact pool-side accounting evidence for this candidate. Never print the fixed
+payout address in public material. Do not use raw share-count ratios when the
+user and fee sessions may have different variable difficulties.
 
 ## Reliability evidence
 
