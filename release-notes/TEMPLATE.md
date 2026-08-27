@@ -12,7 +12,7 @@
 
 | Asset | Host/driver purpose | Embedded lanes | Archive SHA-256 | Binary SHA-256 |
 |---|---|---|---|---|
-| `invminer-noid-vX.Y.Z-linux-x86_64-cuda12.tar.gz` | Driver 535-era/broad compatibility | `sm_86`, `sm_89`, `sm_120` | `TO_BE_FILLED` | `TO_BE_FILLED` |
+| `invminer-noid-vX.Y.Z-linux-x86_64-cuda12.tar.gz` | Driver 535-era/broad compatibility | `sm_75`, `sm_86`, `sm_89`, `sm_120`, tower fallback | `TO_BE_FILLED` | `TO_BE_FILLED` |
 | `invminer-noid-vX.Y.Z-linux-x86_64-cuda13.tar.gz` | Driver API 13.0 / driver 580+ | `sm_86`, `sm_89`, `sm_120` | `TO_BE_FILLED` | `TO_BE_FILLED` |
 
 ## Required command

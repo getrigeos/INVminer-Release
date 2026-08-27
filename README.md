@@ -7,14 +7,18 @@ binary packages. It does **not** contain the proprietary Rust/CUDA mining
 source, vendored proof-system source, hardware-control implementation, wallet
 material, credentials, private build paths, or infrastructure secrets.
 
-## Public release status
+## Current release
 
-No public binary release is currently offered. All previous GitHub Releases and
-their downloadable assets were withdrawn on 2026-08-27. Existing Git tags are
-historical markers only and are not binary download commitments.
+The current binary release is
+[v0.1.49](https://github.com/getrigeos/INVminer/releases/tag/v0.1.49). Download
+only from that page and verify `SHA256SUMS.txt` before running it.
+
+All older GitHub Releases and their downloadable assets were withdrawn on
+2026-08-27. Existing older Git tags are historical markers only and are not
+binary download commitments.
 
 That withdrawal was a one-time historical cleanup, not a standing ban on future
-releases and not a policy to withdraw new releases after publication. Future
+releases and not a policy to withdraw new releases after publication. New
 versions may be published after the normal release gates and remain available
 unless a version-specific security, integrity or correctness issue requires an
 explicit withdrawal.

@@ -73,3 +73,22 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
   a version-specific security leak, corrupt asset, correctness failure or an
   explicit operator decision; record that reason rather than treating withdrawal
   as an automatic post-release step.
+
+## v0.1.49 release handoff
+
+- Private release source is fixed to the reviewed INVminer source commit
+  `ca32b71fcfd52d8be86f046d3c9a5e68590ca660`; never copy that repository here.
+- CUDA 12 archive/binary SHA-256:
+  `396cbb71d549223bc1bfb262e6ef123cf9790a6e573ed3cfa85d14b5d88e09c0` /
+  `f8879705b56e2253b24a425d678d69ee09fe394d0e911d7c0aa40bd56fb761ae`.
+- CUDA 13 archive/binary SHA-256:
+  `8730ce10198caab23773edc945f22a93563e15ebca3ec6d79d6d3fe06ff19cd2` /
+  `f3592e02ede85a16e00548fcfdc502b848cbe6bb4847c20f55268f71c3b6f8fd`.
+- Both exact binaries were physically gated on one RTX 4070 with Linux driver
+  580.178.04, default 200 W board cap and no clock arguments. Do not convert the
+  private engineering benchmark into a public performance claim.
+- The canonical InnovLab endpoint was unavailable from the gate host. The
+  already-authorized WebPKI compatibility gate was used and remained redacted;
+  Release Notes disclose the substitution without naming its endpoint.
+- Each archive contains exactly `README.txt` and `invminer-noid`. Neither package
+  creates or enables persistence.
