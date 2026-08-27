@@ -27,8 +27,9 @@ repository.
 - Do not rename a pre-INVminer binary or archive. The binary itself must report
   INVminer identity, contain the InnovLab endpoint policy and contain no legacy
   product/endpoint strings.
-- All public GitHub Releases were withdrawn on 2026-08-27. Do not recreate one
-  without explicit operator authorization. Git tags remain historical only.
+- The GitHub Releases that existed on 2026-08-27 were removed as a one-time
+  historical cleanup. This is not a standing ban: future versions may follow
+  the normal release workflow and are not automatically withdrawn afterward.
 - Future public pages, notes and package READMEs must not state hashrate,
   throughput benchmarks or comparative performance figures. Those records are
   private engineering evidence only.
@@ -57,12 +58,18 @@ Do not omit either control. The verifier reads the raw tar member table through
 Python and must see exactly `README.txt` and `invminer-noid`; this catches hidden
 AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
 
-## Withdrawn release boundary
+## Release lifecycle and public performance boundary
 
-- The Releases API must remain empty unless the operator explicitly authorizes
-  a new binary distribution.
+- The Releases API is empty immediately after the historical cleanup, but it is
+  expected to contain future normally approved releases. Do not encode “API must
+  remain empty” as a repository gate.
 - Historical release-note files were removed from the current branch. Git
   history and tags remain sufficient for private recovery correlation.
 - A future release may state tested GPU/driver compatibility, commands, package
   hashes, accepted/rejected recovery evidence and known limitations. It must not
-  publish performance rates or comparisons.
+  publish hashrate, throughput, optimization percentages, estimated earnings or
+  performance comparisons.
+- A newly published release remains available by default. Withdraw it only for
+  a version-specific security leak, corrupt asset, correctness failure or an
+  explicit operator decision; record that reason rather than treating withdrawal
+  as an automatic post-release step.

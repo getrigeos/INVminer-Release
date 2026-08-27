@@ -13,9 +13,15 @@ No public binary release is currently offered. All previous GitHub Releases and
 their downloadable assets were withdrawn on 2026-08-27. Existing Git tags are
 historical markers only and are not binary download commitments.
 
-Future public releases, if any, will document compatibility, integrity and
-reliability but will not publish hashrate, throughput or comparative performance
-figures.
+That withdrawal was a one-time historical cleanup, not a standing ban on future
+releases and not a policy to withdraw new releases after publication. Future
+versions may be published after the normal release gates and remain available
+unless a version-specific security, integrity or correctness issue requires an
+explicit withdrawal.
+
+All future public releases will document compatibility, integrity and
+reliability but will not publish hashrate, throughput, optimization percentages,
+estimated earnings or comparative performance figures.
 
 ## Binary-only risk notice
 
@@ -74,8 +80,8 @@ per-user location automatically. Managed services may set
 
 ## CUDA and GPU packages
 
-If public distribution resumes, INVminer uses two Linux x86_64 packages selected
-by host-driver compatibility rather than GPU model. Each package is one
+Future INVminer releases use two Linux x86_64 packages selected by host-driver
+compatibility rather than GPU model. Each package is one
 multi-architecture binary, not a separate build per card.
 
 | Package | Host boundary | Embedded GPU families | Qualification evidence |

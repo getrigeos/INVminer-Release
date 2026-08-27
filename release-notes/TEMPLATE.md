@@ -3,6 +3,10 @@
 > **Binary-only risk:** this release may not work with every GPU, driver, OS or
 > pool state. Source is not provided, so users cannot independently rebuild,
 > audit or patch it and must decide whether to trust the binary and checksums.
+>
+> A normally published release remains available by default. Withdrawal is only
+> for a recorded version-specific security, integrity or correctness reason, or
+> an explicit operator decision; it is not an automatic post-release step.
 
 ## Release assets
 
@@ -35,9 +39,10 @@ action; installing or extracting the archive must leave the miner stopped.
 ### Public performance boundary
 
 Do not publish hashrate, throughput, optimization percentages, estimated
-earnings or performance comparisons. Keep numerical benchmarks in the private
-engineering repository. Public notes may state only compatibility, pass/fail
-correctness, recovery evidence and known boundaries.
+earnings or performance comparisons with another miner or an earlier INVminer
+version. Keep numerical benchmarks in the private engineering repository.
+Public notes may state only compatibility, pass/fail correctness, recovery
+evidence and known boundaries.
 
 ## Developer fee
 

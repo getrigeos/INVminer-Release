@@ -37,5 +37,12 @@ if (( ${#public_files[@]} > 0 )) && rg -n -i \
   bad=1
 fi
 
+if (( ${#public_files[@]} > 0 )) && rg -n -i \
+  '([0-9]+([.][0-9]+)?[[:space:]]*%[[:space:]]*(faster|slower|gain|gains|improvement|higher|lower))|((faster|slower|gain|gains|improvement|higher|lower)[^[:cntrl:]]{0,40}[0-9]+([.][0-9]+)?[[:space:]]*%)|[0-9]+([.][0-9]+)?[[:space:]]*(samples|solutions|candidates|targets?)/s' \
+  "${public_files[@]}"; then
+  echo "public release material contains a prohibited numerical performance claim" >&2
+  bad=1
+fi
+
 (( bad == 0 )) || exit 1
 echo "INVminer public release boundary: OK"

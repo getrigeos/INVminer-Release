@@ -1,5 +1,20 @@
 # INVminer release policy
 
+## Release lifecycle
+
+The deletion of GitHub Releases that existed on 2026-08-27 was a one-time
+historical cleanup. It is not a permanent publishing ban and does not require a
+new release to be removed after publication. Future versions may be published
+through the normal gates below and remain available by default. Withdrawal is a
+version-specific response to a security leak, corrupt asset, consensus or
+correctness failure, or an explicit operator decision; its reason must be
+recorded.
+
+The standing public restriction is performance disclosure: no public Release,
+repository README, package README, announcement, table or image may contain
+numerical hashrate, throughput, optimization percentages, estimated earnings or
+performance comparisons. Private qualification evidence remains mandatory.
+
 ## Private build baseline
 
 The initial migration baseline is private miner tag `v0.1.41`, commit
@@ -71,8 +86,9 @@ Before publishing a new tag:
 
 Public documentation must not contain numerical mining-rate benchmarks,
 estimated earnings, optimization percentages or comparisons with another
-miner. Private qualification must still detect regressions before distribution,
-but only pass/fail compatibility and reliability outcomes cross this boundary.
+miner or an earlier INVminer version. Private qualification must still detect
+regressions before distribution, but only pass/fail compatibility and
+reliability outcomes cross this boundary.
 
 Managed deployments must retain the miner state directory across process and
 container restarts. The release archive verifier must reject the exact
