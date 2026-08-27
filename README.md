@@ -9,17 +9,18 @@ material, credentials, private build paths, or infrastructure secrets.
 
 ## Current release
 
-The current release is v0.1.45. It was rebuilt reproducibly from the private
+The current release is v0.1.47. It was rebuilt reproducibly from the private
 INVminer source with the InnovLab product identity.
 
-Download only from the [official release page](https://github.com/getrigeos/INVminer/releases/tag/v0.1.45)
+Download only from the [official release page](https://github.com/getrigeos/INVminer/releases/tag/v0.1.47)
 and verify the published SHA-256 file before running it.
 
-v0.1.45 adds a professional 120-second status panel, loopback JSON/Prometheus
-monitoring, per-device share accounting, bounded connection/CUDA recovery,
-continuous thermal protection, bounded log rotation and a persistent
-integrity-checked developer-fee ledger. Mining kernels remain unchanged from
-the reviewed v0.1.44 lanes.
+v0.1.47 adds an explicit CPU-only NOID mode with runtime-selected AVX-512 or
+AVX2 packed execution. Normal GPU mode remains CUDA-only and never creates a
+CPU nonce-search pool. It also retains the status, monitoring, recovery,
+thermal protection and persistent developer-fee controls introduced in
+v0.1.45. See the release page for exact GPU/CPU measurements and the current
+pool-gate limitation.
 
 ## Binary-only risk notice
 
@@ -48,21 +49,36 @@ Single GPU:
   --device 0
 ```
 
+CPU-only mode:
+
+```bash
+./invminer-noid \
+  --cpu-only \
+  --pool stratum+ssl://stratum.innovlab.cc:19601 \
+  --worker YOUR_NOID_ADDRESS.RIG_NAME
+```
+
 All visible GPUs must share one user-pool connection and receive disjoint
 search ranges. Users do not supply mining geometry: physically qualified GPUs
 select reviewed defaults, while other supported models use a bounded first-run
 auto-tune and save the result under the miner state directory.
 
+Do not provide CPU threads, CPU batch size or ISA flags. CPU-only mode selects
+the best supported backend and all logical CPUs visible to the process. The
+normal commands intentionally omit `--state-dir`; INVminer chooses a persistent
+per-user location automatically. Managed services may set
+`INVMINER_STATE_DIR`, and an explicit absolute `--state-dir` is optional.
+
 ## CUDA and GPU packages
 
-INVminer will publish two Linux x86_64 packages, selected by host-driver
+INVminer publishes two Linux x86_64 packages, selected by host-driver
 compatibility rather than GPU model. Each package is one multi-architecture
 binary, not a separate build per card.
 
-| Package | Host boundary | Embedded GPU families | Physical qualification required before first release |
+| Package | Host boundary | Embedded GPU families | Qualification evidence |
 |---|---|---|---|
-| CUDA 12 | Driver 535-era and broad compatibility hosts | RTX 30 (`sm_86`), RTX 40 (`sm_89`), RTX 50 (`sm_120`) | RTX 3080, RTX 4070 SUPER, RTX 4090, RTX 5090 as applicable |
-| CUDA 13 | Driver API 13.0 / Linux driver 580 or newer | RTX 30 (`sm_86`), RTX 40 (`sm_89`), RTX 50 (`sm_120`) | RTX 4090 and RTX 5090; older-family module-load gates where available |
+| CUDA 12 | Driver 535-era and broad compatibility hosts | RTX 30 (`sm_86`), RTX 40 (`sm_89`), RTX 50 (`sm_120`), plus tower fallback | RTX 3080, RTX 4070 SUPER and RTX 4090 physically tested; RTX 5090 module evidence requires a new driver |
+| CUDA 13 | Driver API 13.0 / Linux driver 580 or newer | RTX 30 (`sm_86`), RTX 40 (`sm_89`), RTX 50 (`sm_120`) | RTX 4090 and RTX 5090 physically tested; older-family module-load gates where available |
 
 Architecture support is not a performance claim for every model. Each release
 page must distinguish tested cards from architecture-compatible but untested

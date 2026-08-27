@@ -47,3 +47,24 @@ COPYFILE_DISABLE=1 tar --no-xattrs -C dist/stage -czf dist/package.tar.gz \
 Do not omit either control. The verifier reads the raw tar member table through
 Python and must see exactly `README.txt` and `invminer-noid`; this catches hidden
 AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
+
+## v0.1.47 release handoff
+
+- Public assets remain binary-only: one CUDA 12 and one CUDA 13 Linux x86_64
+  archive, each containing exactly `README.txt` and `invminer-noid`.
+- CUDA 12 archive/binary SHA-256:
+  `3f51fd80752ddb0c0c5b247ac24adfaaddb62013f590582d393e57f0142841d5` /
+  `54ca35679246abf69a3d84830664c0493d98260bf2019debf63949e7dd064874`.
+- CUDA 13 archive/binary SHA-256:
+  `4bd43266bf2b0e6fe63929c0d214ae523ea640842d5b724141fea43857c647eb` /
+  `0e9b84d68be2d074f71f22e48028724bec58cdfa2fe92550b39a215c8eb89cc4`.
+- Normal GPU and CPU-only commands omit `--state-dir`; automatic persistent
+  state is the default. `INVMINER_STATE_DIR` and an explicit absolute override
+  remain service/operator options.
+- Exact v0.1.47 RTX 4090 default-clock measurements and exact CPU-only AVX-512 /
+  AVX2 measurements are in `release-notes/v0.1.47.md`. RTX 3080, RTX 4070 SUPER
+  and RTX 5090 rows are explicitly labeled historical physical lane evidence.
+- The final candidate connected through the authorized redacted WebPKI gate and
+  recovered in-process after a forced socket close. The pool supplied no job in
+  that window, so the notes explicitly report that no exact v0.1.47 accepted
+  sample was obtained; never relabel an older accepted count as this candidate.
