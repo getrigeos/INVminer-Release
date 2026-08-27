@@ -19,6 +19,10 @@
   --worker YOUR_NOID_ADDRESS.RIG_NAME
 ```
 
+The binary does not install or enable any boot service or scheduled startup.
+Document any optional process-manager template as a separate explicit operator
+action; installing or extracting the archive must leave the miner stopped.
+
 ## GPU compatibility qualification
 
 | GPU | SM | Package | Driver | Physically tested | Complete command | Functional result |

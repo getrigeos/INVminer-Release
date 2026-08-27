@@ -25,6 +25,14 @@ working after external protocol changes. Because source is not provided, users
 cannot independently rebuild, audit or patch the miner and must decide whether
 to trust the published binary and checksums.
 
+## Process and boot behavior
+
+The executable runs only when the operator explicitly launches it. It does not
+install or enable a systemd service, cron job, launchd job, Windows service,
+Scheduled Task, Startup-folder item, registry Run key or Docker restart policy.
+Optional service/container templates require a separate administrator action;
+installing files alone must leave INVminer stopped and disabled at boot.
+
 ## Required connection
 
 The production command shape is:

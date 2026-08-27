@@ -35,6 +35,12 @@ The following are prohibited in Git and release assets:
 - internal hostnames, IP addresses, home directories or builder paths;
 - hosted-CI workflow files.
 
+The executable must not create persistence. It may run only as the process an
+operator explicitly starts. A public archive must not install or enable
+systemd/launchd/Windows services, cron jobs, Scheduled Tasks, login/startup
+items, registry Run keys or Docker restart policies. Optional templates may be
+documented only as separate opt-in administrator actions.
+
 ## Candidate gates
 
 Before publishing a new tag:

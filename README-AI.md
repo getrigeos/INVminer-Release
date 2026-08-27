@@ -32,6 +32,10 @@ repository.
 - Future public pages, notes and package READMEs must not state hashrate,
   throughput benchmarks or comparative performance figures. Those records are
   private engineering evidence only.
+- Public assets must state that the executable never installs or enables an OS
+  service, scheduled task, login/startup item, cron job or container restart
+  policy. Any persistence template is opt-in and requires a separate explicit
+  administrator action.
 
 Before every commit or release:
 
