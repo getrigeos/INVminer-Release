@@ -68,6 +68,10 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
   `1.476 MH/s`, CMP 50HX `2.436 MH/s`, and RTX 2080 Ti `3.107 MH/s` fresh /
   `3.169 MH/s` cache-hit. All selected `384/2` at default clocks. CUDA 13 does
   not contain a default production `sm_75` lane.
+- CMP 40HX and CMP 50HX also passed an exact-artifact live recovery gate. After
+  forcibly closing each miner's only TLS socket, both stayed in-process,
+  reconnected once, returned ONLINE and continued accepting shares. Final
+  `/stats` A/S/R counters were `4/0/0` and `9/0/0`, respectively.
 - The exact final CUDA 13 candidate connected through the authorized redacted
   WebPKI gate and finished with 99 accepted, 2 stale and 0 rejected shares.
   After the only socket was forcibly closed, reconnects increased to one, the
