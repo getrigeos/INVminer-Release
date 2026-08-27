@@ -5,8 +5,9 @@ repository.
 
 ## Hard boundaries
 
-- Product branding is `INVminer`; the Linux NOID executable is
-  `invminer-noid`.
+- Product branding is `INVminer`; the only public executable is `invminer`.
+  Coins are selected explicitly as `invminer --coin <coin>`; per-coin
+  executables are forbidden.
 - The public release repository is `getrigeos/INVminer`.
 - The canonical pool endpoint is
   `stratum+ssl://stratum.innovlab.cc:19601`.
@@ -51,11 +52,11 @@ On macOS, create archives with both copyfile metadata and xattrs disabled:
 
 ```bash
 COPYFILE_DISABLE=1 tar --no-xattrs -C dist/stage -czf dist/package.tar.gz \
-  README.txt invminer-noid
+  README.txt invminer
 ```
 
 Do not omit either control. The verifier reads the raw tar member table through
-Python and must see exactly `README.txt` and `invminer-noid`; this catches hidden
+Python and must see exactly `README.txt` and `invminer`; this catches hidden
 AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
 
 ## Release lifecycle and public performance boundary
@@ -74,21 +75,28 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
   explicit operator decision; record that reason rather than treating withdrawal
   as an automatic post-release step.
 
-## v0.1.49 release handoff
+## v0.1.50 release handoff
 
 - Private release source is fixed to the reviewed INVminer source commit
-  `ca32b71fcfd52d8be86f046d3c9a5e68590ca660`; never copy that repository here.
-- CUDA 12 archive/binary SHA-256:
-  `396cbb71d549223bc1bfb262e6ef123cf9790a6e573ed3cfa85d14b5d88e09c0` /
-  `f8879705b56e2253b24a425d678d69ee09fe394d0e911d7c0aa40bd56fb761ae`.
-- CUDA 13 archive/binary SHA-256:
-  `8730ce10198caab23773edc945f22a93563e15ebca3ec6d79d6d3fe06ff19cd2` /
-  `f3592e02ede85a16e00548fcfdc502b848cbe6bb4847c20f55268f71c3b6f8fd`.
-- Both exact binaries were physically gated on one RTX 4070 with Linux driver
-  580.178.04, default 200 W board cap and no clock arguments. Do not convert the
+  `490476c5a6200395fe8a4ed81af3b8eca0c86f2b`; never copy that repository here.
+- CUDA 12/13 are two host-compatibility flavors of the same multi-coin
+  `invminer` program. They must not be renamed or split by coin or GPU model.
+- Ordinary archive SHA-256 values are
+  `c0b1367d2f8efd63aa8e72c80fc38924fbccefb04ad910c62f5eabb5c8065f39`
+  (CUDA 12) and
+  `c0af6addf7d1fa2dd8199208f6cbb653a20e2ef25f767d1c5e9069ac22b5d209`
+  (CUDA 13). HiveOS archive SHA-256 values are
+  `5209bb4153b41ac314c3592179ffbeb755e3f557c5ac0f4a5dcf31fa594552aa`
+  and `fc484b5ee9a5262e2f006819c7c19acf55f4e8988c0605c88b1c4efc656313fb`.
+- CUDA 12/13 binary SHA-256 values are
+  `ce87b75081758cbf0fe18350b4acc732ff366952237e58462639721902a36784`
+  and `8421d5fadf141cab981129afe7964739f7f296b0c27fb885113f639177f610ef`.
+- Both exact candidates were physically gated on one RTX 4070 with Linux driver
+  580.178.04, default board controls and no clock arguments. Do not convert the
   private engineering benchmark into a public performance claim.
 - The canonical InnovLab endpoint was unavailable from the gate host. The
   already-authorized WebPKI compatibility gate was used and remained redacted;
   Release Notes disclose the substitution without naming its endpoint.
-- Each archive contains exactly `README.txt` and `invminer-noid`. Neither package
-  creates or enables persistence.
+- Ordinary archives contain exactly `README.txt` and `invminer`. HiveOS archives
+  use the fixed `invminer/` directory contract. Neither package creates or
+  enables persistence.

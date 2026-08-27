@@ -3,7 +3,7 @@ set -euo pipefail
 
 archive=${1:-}
 [[ -f "$archive" ]] || {
-  echo "usage: $0 <invminer-noid-vX.Y.Z-linux-x86_64-cudaXX.tar.gz>" >&2
+  echo "usage: $0 <invminer-vX.Y.Z[-hiveos]-linux-x86_64-cudaXX.tar.gz>" >&2
   exit 2
 }
 for command in file python3 rg strings tar; do
@@ -30,22 +30,43 @@ while IFS= read -r member; do
   case "$member" in
     /*|*../*) echo "unsafe archive member: $member" >&2; exit 1 ;;
   esac
+  case "$member" in
+    *.rs|*.cu|*.cuh|*/Cargo.toml|*/Cargo.lock|Cargo.toml|Cargo.lock)
+      echo "source material is forbidden in release archive: $member" >&2
+      exit 1
+      ;;
+  esac
 done <"$members"
-printf 'README.txt\ninvminer-noid\n' >"$work/expected-members"
-diff -u "$work/expected-members" "$members"
-tar -xzf "$archive" -C "$extract"
 
-find "$extract" -type f -print | sed "s|^$extract/||" | sort >"$work/files"
-printf 'README.txt\ninvminer-noid\n' >"$work/expected"
-diff -u "$work/expected" "$work/files"
-[[ -x "$extract/invminer-noid" ]] || { echo "invminer-noid is not executable" >&2; exit 1; }
-file "$extract/invminer-noid" | rg -q 'ELF 64-bit.*x86-64'
-strings "$extract/invminer-noid" >"$work/binary.strings"
+if [[ ${archive##*/} == *-hiveos-* ]]; then
+  printf '%s\n' \
+    invminer \
+    invminer/h-config.sh \
+    invminer/h-manifest.conf \
+    invminer/h-readme.md \
+    invminer/h-run.sh \
+    invminer/h-stats.sh \
+    invminer/invminer >"$work/expected-members"
+  binary=invminer/invminer
+  readme=invminer/h-readme.md
+else
+  printf '%s\n' README.txt invminer >"$work/expected-members"
+  binary=invminer
+  readme=README.txt
+fi
+sort -u "$members" >"$work/members.sorted"
+sort -u "$work/expected-members" >"$work/expected.sorted"
+diff -u "$work/expected.sorted" "$work/members.sorted"
+
+tar -xzf "$archive" -C "$extract"
+[[ -x "$extract/$binary" ]] || { echo "invminer is not executable" >&2; exit 1; }
+file "$extract/$binary" | rg -q 'ELF 64-bit.*x86-64'
+strings "$extract/$binary" >"$work/binary.strings"
 
 if rg -n -i \
-  'uminer-(noid|modules|watchdog)|\.local/state/uminer|/var/lib/uminer|/Users/|/root/|README-AI|id_ed25519' \
-  "$work/binary.strings"; then
-  echo "binary contains legacy branding/endpoint or a private build identifier" >&2
+  '/Users/|/root/|README-AI|id_ed25519|BEGIN (OPENSSH|RSA|EC|PRIVATE) KEY|01pool' \
+  "$work/binary.strings" "$extract/$readme"; then
+  echo "archive contains a private build marker, endpoint, or credential" >&2
   exit 1
 fi
 if rg -n \
@@ -55,8 +76,13 @@ if rg -n \
   exit 1
 fi
 rg -qi 'INVminer' "$work/binary.strings"
+rg -q -- '--coin' "$work/binary.strings"
 rg -q 'stratum\.innovlab\.cc' "$work/binary.strings"
-rg -qi 'INVminer' "$extract/README.txt"
-rg -q 'stratum\+ssl://stratum\.innovlab\.cc:19601' "$extract/README.txt"
+rg -qi 'INVminer' "$extract/$readme"
+
+if rg -n -i 'invminer-noid|noid-miner' "$members" "$extract/$readme"; then
+  echo "archive contains a forbidden per-coin executable name" >&2
+  exit 1
+fi
 
 echo "INVminer release archive: OK"

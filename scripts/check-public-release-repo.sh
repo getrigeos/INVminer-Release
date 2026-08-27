@@ -24,7 +24,7 @@ while IFS= read -r -d '' path; do
 done < <(git ls-files -z -- README.md README-AI.md docs release-notes)
 
 if (( ${#public_files[@]} > 0 )) && rg -n -i \
-  '\buminer\b|\bo[0-9a-z]{50,}\b|/Users/|/root/|id_ed25519|BEGIN (OPENSSH|RSA|EC|PRIVATE) KEY' \
+  '\buminer\b|invminer-noid|noid-miner|\bo[0-9a-z]{50,}\b|/Users/|/root/|id_ed25519|BEGIN (OPENSSH|RSA|EC|PRIVATE) KEY' \
   "${public_files[@]}"; then
   echo "public repository contains legacy branding/endpoint or a private marker" >&2
   bad=1

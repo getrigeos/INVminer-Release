@@ -36,11 +36,15 @@ release-visible and protocol-bound values change:
 ## Public payload boundary
 
 Git commits may contain documentation and verifier scripts only. Large binary
-archives belong to GitHub Releases, not Git history. A release archive may
-contain only:
+archives belong to GitHub Releases, not Git history. A normal Linux release
+archive may contain only:
 
-1. stripped executable `invminer-noid`;
+1. stripped executable `invminer`;
 2. public operator documentation `README.txt`.
+
+A HiveOS archive contains only the `invminer/` directory, the same executable,
+and the approved `h-manifest.conf`, `h-config.sh`, `h-run.sh`, `h-stats.sh`, and
+`h-readme.md` adapters. It must not contain source or a per-coin executable.
 
 The following are prohibited in Git and release assets:
 
