@@ -27,6 +27,11 @@ repository.
 - Do not rename a pre-INVminer binary or archive. The binary itself must report
   INVminer identity, contain the InnovLab endpoint policy and contain no legacy
   product/endpoint strings.
+- All public GitHub Releases were withdrawn on 2026-08-27. Do not recreate one
+  without explicit operator authorization. Git tags remain historical only.
+- Future public pages, notes and package READMEs must not state hashrate,
+  throughput benchmarks or comparative performance figures. Those records are
+  private engineering evidence only.
 
 Before every commit or release:
 
@@ -48,28 +53,12 @@ Do not omit either control. The verifier reads the raw tar member table through
 Python and must see exactly `README.txt` and `invminer-noid`; this catches hidden
 AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
 
-## v0.1.48 release handoff
+## Withdrawn release boundary
 
-- Public assets remain binary-only: one CUDA 12 and one CUDA 13 Linux x86_64
-  archive, each containing exactly `README.txt` and `invminer-noid`.
-- CUDA 12 archive/binary SHA-256:
-  `82c9bc1802dcf7d9c1d00dfaf1d0a1d316fca27334135c92dd7dda4b3dd59fff` /
-  `a40e3ea26b3daefb8183b2c82a11ab6c84f904081ff2898b9ed833bd75f20ac0`.
-- CUDA 13 archive/binary SHA-256:
-  `4647465383b96191304943ac8e20d1c83719949995748d5941efacff1971bc81` /
-  `75c5781b1956205e1aa8c009f6343475341d164e7ad752de3f6a2987f76decd1`.
-- Normal GPU and CPU-only commands omit `--state-dir`; automatic persistent
-  state is the default. `INVMINER_STATE_DIR` and an explicit absolute override
-  remain service/operator options.
-- CUDA 12 adds the reviewed shared-GF8 SM75 lane. Matched stock-clock A/B gains
-  are 20.9% on CMP 40HX, 19.6% on CMP 50HX and 18.3% on RTX 2080 Ti. Integrated
-  rates are `1.776`, `2.911`, and `3.722/3.697 MH/s`; the exact final Focal
-  CUDA 12 executable reran at `2.914 MH/s` on CMP 50HX. All select `384/2`
-  automatically. CUDA 13 has no production SM75 lane.
-- The exact final CUDA 12 executable survived a forced socket loss on CMP 50HX
-  through the authorized redacted compatibility gate: accepted advanced from
-  one to three in the same PID after one reconnect, with zero stale and zero
-  rejected. Never publish the endpoint or test identity.
-- RTX 4090, CPU-only, RTX 3080, RTX 4070 SUPER and RTX 5090 rows are explicitly
-  labeled retained v0.1.47 or historical physical evidence because their
-  kernels did not change and were not rerun for v0.1.48.
+- The Releases API must remain empty unless the operator explicitly authorizes
+  a new binary distribution.
+- Historical release-note files were removed from the current branch. Git
+  history and tags remain sufficient for private recovery correlation.
+- A future release may state tested GPU/driver compatibility, commands, package
+  hashes, accepted/rejected recovery evidence and known limitations. It must not
+  publish performance rates or comparisons.

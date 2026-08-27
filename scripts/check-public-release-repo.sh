@@ -18,10 +18,22 @@ while IFS= read -r path; do
   esac
 done < <(git ls-files)
 
-if git ls-files -z -- README.md README-AI.md docs release-notes \
-  | xargs -0 rg -n -i \
-    '\buminer\b|\bo[0-9a-z]{50,}\b|/Users/|/root/|id_ed25519|BEGIN (OPENSSH|RSA|EC|PRIVATE) KEY'; then
+public_files=()
+while IFS= read -r -d '' path; do
+  [[ -f "$path" ]] && public_files+=("$path")
+done < <(git ls-files -z -- README.md README-AI.md docs release-notes)
+
+if (( ${#public_files[@]} > 0 )) && rg -n -i \
+  '\buminer\b|\bo[0-9a-z]{50,}\b|/Users/|/root/|id_ed25519|BEGIN (OPENSSH|RSA|EC|PRIVATE) KEY' \
+  "${public_files[@]}"; then
   echo "public repository contains legacy branding/endpoint or a private marker" >&2
+  bad=1
+fi
+
+if (( ${#public_files[@]} > 0 )) && rg -n -i \
+  '[0-9]+([.][0-9]+)?[[:space:]]*(k|m|g|t|p|e)?h/s|[0-9]+([.][0-9]+)?[[:space:]]*hash(es)?/s' \
+  "${public_files[@]}"; then
+  echo "public release material contains a prohibited mining-rate figure" >&2
   bad=1
 fi
 

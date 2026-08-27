@@ -19,24 +19,21 @@
   --worker YOUR_NOID_ADDRESS.RIG_NAME
 ```
 
-## GPU qualification
+## GPU compatibility qualification
 
-| GPU | SM | Package | Driver | Tested | Hashrate | Power limit | Average / peak power | Complete command | Difference |
-|---|---|---|---|---:|---|---:|---|---|---|
-| RTX 3080 | `sm_86` | `TO_BE_FILLED` | `TO_BE_FILLED` | No | — | — | — | — | qualification pending |
-| RTX 4070 SUPER | `sm_89` | `TO_BE_FILLED` | `TO_BE_FILLED` | No | — | — | — | — | qualification pending |
-| RTX 4090 | `sm_89` | `TO_BE_FILLED` | `TO_BE_FILLED` | No | — | — | — | — | qualification pending |
-| RTX 5090 | `sm_120` | `TO_BE_FILLED` | `TO_BE_FILLED` | No | — | — | — | — | qualification pending |
+| GPU | SM | Package | Driver | Physically tested | Complete command | Functional result |
+|---|---|---|---|---:|---|---|
+| RTX 3080 | `sm_86` | `TO_BE_FILLED` | `TO_BE_FILLED` | No | — | qualification pending |
+| RTX 4070 SUPER | `sm_89` | `TO_BE_FILLED` | `TO_BE_FILLED` | No | — | qualification pending |
+| RTX 4090 | `sm_89` | `TO_BE_FILLED` | `TO_BE_FILLED` | No | — | qualification pending |
+| RTX 5090 | `sm_120` | `TO_BE_FILLED` | `TO_BE_FILLED` | No | — | qualification pending |
 
-### Measurement interpretation
+### Public performance boundary
 
-For every performance row, state whether hardware controls were omitted or
-explicitly applied, and report measured average/peak power. If a result differs
-materially from an older release, run an old exact binary on the same host when
-possible. Do not label a cross-host difference as a miner optimization, driver
-gain, or universal GPU baseline unless a controlled same-card A/B isolates that
-variable. Preserve a conservative cross-host baseline alongside exceptional
-high-power host results.
+Do not publish hashrate, throughput, optimization percentages, estimated
+earnings or performance comparisons. Keep numerical benchmarks in the private
+engineering repository. Public notes may state only compatibility, pass/fail
+correctness, recovery evidence and known boundaries.
 
 ## Developer fee
 

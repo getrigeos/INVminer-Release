@@ -7,19 +7,15 @@ binary packages. It does **not** contain the proprietary Rust/CUDA mining
 source, vendored proof-system source, hardware-control implementation, wallet
 material, credentials, private build paths, or infrastructure secrets.
 
-## Current release
+## Public release status
 
-The current release is v0.1.48. It was rebuilt from a clean target in the private
-INVminer source with the InnovLab product identity.
+No public binary release is currently offered. All previous GitHub Releases and
+their downloadable assets were withdrawn on 2026-08-27. Existing Git tags are
+historical markers only and are not binary download commitments.
 
-Download only from the [official release page](https://github.com/getrigeos/INVminer/releases/tag/v0.1.48)
-and verify the published SHA-256 file before running it.
-
-v0.1.48 adds a dedicated CUDA 12 shared-GF8 SM75 kernel. Matched stock-clock
-testing improved CMP 40HX by 20.9%, CMP 50HX by 19.6%, and RTX 2080 Ti by
-18.3%. CPU-only AVX-512/AVX2 and SM86/SM89/SM120 kernels remain unchanged.
-See the release page for exact package hashes, per-card power and qualification
-scope.
+Future public releases, if any, will document compatibility, integrity and
+reliability but will not publish hashrate, throughput or comparative performance
+figures.
 
 ## Binary-only risk notice
 
@@ -70,9 +66,9 @@ per-user location automatically. Managed services may set
 
 ## CUDA and GPU packages
 
-INVminer publishes two Linux x86_64 packages, selected by host-driver
-compatibility rather than GPU model. Each package is one multi-architecture
-binary, not a separate build per card.
+If public distribution resumes, INVminer uses two Linux x86_64 packages selected
+by host-driver compatibility rather than GPU model. Each package is one
+multi-architecture binary, not a separate build per card.
 
 | Package | Host boundary | Embedded GPU families | Qualification evidence |
 |---|---|---|---|
@@ -81,8 +77,8 @@ binary, not a separate build per card.
 
 Architecture support is not a performance claim for every model. Each release
 page must distinguish tested cards from architecture-compatible but untested
-cards and include the exact command, driver, CUDA flavor, hashrate unit, power
-limit and measured average/peak power.
+cards and include the exact command, driver, CUDA flavor and functional gate
+status. Public material must not publish hashrate or comparative performance.
 
 CMP 40HX, CMP 50HX and RTX 2080 Ti are supported by the CUDA 12 package's
 optimized native shared-GF8 `sm_75` lane. They are not supported by the CUDA 13
@@ -98,12 +94,13 @@ can restart without leaving a silent zero-hash process.
 
 ## Release integrity
 
-Every release must provide:
+Any future release must provide:
 
 - `invminer-noid-vX.Y.Z-linux-x86_64-cuda12.tar.gz`;
 - `invminer-noid-vX.Y.Z-linux-x86_64-cuda13.tar.gz`;
 - `SHA256SUMS.txt`;
-- release notes containing commands, compatibility and physical test evidence.
+- release notes containing commands, compatibility and functional physical-test
+  evidence without hashrate or comparative performance figures.
 
 The public package contains only the stripped `invminer-noid` executable and
 its operator `README.txt`. Run `scripts/verify-release-archive.sh` before an

@@ -56,19 +56,17 @@ Before publishing a new tag:
 8. Verify the developer-fee schedule survives a process restart from a bounded,
    integrity-checked persistent state file. Exact fee-window start/end events
    and payout identities must be absent from public logs and assets.
-9. Record exact binary/archive SHA-256, driver, CUDA flavor, GPU, command,
-   hashrate unit, power limit and measured average/peak power.
+9. Record exact binary/archive SHA-256, driver, CUDA flavor, GPU, command and
+   functional gate status. Keep all hashrate, throughput and comparative
+   performance evidence private; it must not appear in public release material.
 10. Run both repository and archive verification scripts locally.
 11. Upload assets manually and confirm `releases/latest/download/...` resolves to
    the exact new files.
 
-No historical rate or power result may be represented as an exact measurement
-of a new INVminer host binary until that exact candidate is physically run. An
-operator may explicitly authorize reuse of physical device-lane evidence only
-when the embedded module is byte-identical and SHA-locked, the release profile
-is unchanged, and the GPU/driver/power conditions are recorded. Such a result
-must be labeled as reused frozen-lane evidence rather than a new host-binary
-measurement.
+Public documentation must not contain numerical mining-rate benchmarks,
+estimated earnings, optimization percentages or comparisons with another
+miner. Private qualification must still detect regressions before distribution,
+but only pass/fail compatibility and reliability outcomes cross this boundary.
 
 Managed deployments must retain the miner state directory across process and
 container restarts. The release archive verifier must reject the exact
