@@ -64,7 +64,9 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
 - Exact v0.1.47 RTX 4090 default-clock measurements and exact CPU-only AVX-512 /
   AVX2 measurements are in `release-notes/v0.1.47.md`. RTX 3080, RTX 4070 SUPER
   and RTX 5090 rows are explicitly labeled historical physical lane evidence.
-- The final candidate connected through the authorized redacted WebPKI gate and
-  recovered in-process after a forced socket close. The pool supplied no job in
-  that window, so the notes explicitly report that no exact v0.1.47 accepted
-  sample was obtained; never relabel an older accepted count as this candidate.
+- The exact final CUDA 13 candidate connected through the authorized redacted
+  WebPKI gate and finished with 99 accepted, 2 stale and 0 rejected shares.
+  After the only socket was forcibly closed, reconnects increased to one, the
+  process stayed alive and accepted continued increasing. These counters came
+  from the nested `/stats` `shares` object because per-share INFO logs are
+  intentionally absent.

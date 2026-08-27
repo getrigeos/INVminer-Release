@@ -19,8 +19,8 @@ v0.1.47 adds an explicit CPU-only NOID mode with runtime-selected AVX-512 or
 AVX2 packed execution. Normal GPU mode remains CUDA-only and never creates a
 CPU nonce-search pool. It also retains the status, monitoring, recovery,
 thermal protection and persistent developer-fee controls introduced in
-v0.1.45. See the release page for exact GPU/CPU measurements and the current
-pool-gate limitation.
+v0.1.45. See the release page for exact GPU/CPU measurements and live-pool
+acceptance/recovery evidence.
 
 ## Binary-only risk notice
 
