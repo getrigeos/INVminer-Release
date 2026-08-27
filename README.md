@@ -10,7 +10,7 @@ infrastructure are not published here.
 ## Current release
 
 The current release is
-[v0.1.50](https://github.com/getrigeos/INVminer/releases/tag/v0.1.50). Download
+[v0.1.50](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.50). Download
 only from that page and verify `SHA256SUMS.txt` before use.
 
 ## Required command shape

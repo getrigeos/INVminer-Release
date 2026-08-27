@@ -8,7 +8,7 @@ repository.
 - Product branding is `INVminer`; the only public executable is `invminer`.
   Coins are selected explicitly as `invminer --coin <coin>`; per-coin
   executables are forbidden.
-- The public release repository is `getrigeos/INVminer`.
+- The public release repository is `getrigeos/INVminer-Release`.
 - The canonical pool endpoint is
   `stratum+ssl://stratum.innovlab.cc:19601`.
 - Never copy proprietary Rust/CUDA source, Cargo workspaces, vendored source,
