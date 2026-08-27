@@ -2,6 +2,8 @@ INVminer v0.1.50 - Linux x86_64
 
 INVminer uses one executable. Select NOID explicitly:
 
+This release supports only NOID and contains no CUDA modules for other coins.
+
   ./invminer --coin noid \
     -o stratum+ssl://stratum.innovlab.cc:19601 \
     -u YOUR_NOID_ADDRESS.RIG_NAME \

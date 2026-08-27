@@ -78,19 +78,20 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
 ## v0.1.50 release handoff
 
 - Private release source is fixed to the reviewed INVminer source commit
-  `490476c5a6200395fe8a4ed81af3b8eca0c86f2b`; never copy that repository here.
-- CUDA 12/13 are two host-compatibility flavors of the same multi-coin
-  `invminer` program. They must not be renamed or split by coin or GPU model.
+  `3640e855e435badc62836232cd95cb7c27a24584`; never copy that repository here.
+- CUDA 12/13 are two host-compatibility flavors of the same `invminer` program.
+  v0.1.50 supports only `--coin noid`; both public binaries must contain only
+  NOID CUDA modules and must not be renamed or split by GPU model.
 - Ordinary archive SHA-256 values are
-  `c0b1367d2f8efd63aa8e72c80fc38924fbccefb04ad910c62f5eabb5c8065f39`
+  `4e1115b2f8093ec01686449787925424cab42d3dcd8ac454a0fa494e693412f6`
   (CUDA 12) and
-  `c0af6addf7d1fa2dd8199208f6cbb653a20e2ef25f767d1c5e9069ac22b5d209`
+  `f2df9c02b90cc4f617d2c51c1427c8601606885cf8df9c673930cc4366545a25`
   (CUDA 13). HiveOS archive SHA-256 values are
-  `5209bb4153b41ac314c3592179ffbeb755e3f557c5ac0f4a5dcf31fa594552aa`
-  and `fc484b5ee9a5262e2f006819c7c19acf55f4e8988c0605c88b1c4efc656313fb`.
+  `928d1ef6fa838227a3d232992328d329688308224ab9d58acac3b9c4aca8e9d6`
+  and `0148e309be2fccfe8c6eed46c437baf2677033aa2a818eeba65121f0000c79d4`.
 - CUDA 12/13 binary SHA-256 values are
-  `ce87b75081758cbf0fe18350b4acc732ff366952237e58462639721902a36784`
-  and `8421d5fadf141cab981129afe7964739f7f296b0c27fb885113f639177f610ef`.
+  `73de5728d3304da7bf4726d40a7443aaa2fdb8200f006f24cc5161f2a34212eb`
+  and `1d37573b70c9ad8bbde0a9a21f277048a66cd53956c2867d04dffe4eaa8e99e2`.
 - Both exact candidates were physically gated on one RTX 4070 with Linux driver
   580.178.04, default board controls and no clock arguments. Do not convert the
   private engineering benchmark into a public performance claim.

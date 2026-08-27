@@ -1,6 +1,6 @@
 # INVminer
 
-Official closed-source multi-coin miner for [InnovLab Pool](https://innovlab.cc).
+Official closed-source NOID miner for [InnovLab Pool](https://innovlab.cc).
 
 This public repository contains release binaries, checksums, operator
 documentation, and release notes only. Proprietary Rust/CUDA source,
@@ -16,7 +16,8 @@ only from that page and verify `SHA256SUMS.txt` before use.
 ## Required command shape
 
 INVminer has one executable, `invminer`. The algorithm is always selected
-explicitly with `--coin`; there are no per-coin executables.
+explicitly with `--coin`; there are no per-coin executables. The current public
+release supports only `--coin noid` and does not include other coin CUDA modules.
 
 All visible GPUs:
 
