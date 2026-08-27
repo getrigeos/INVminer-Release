@@ -9,18 +9,17 @@ material, credentials, private build paths, or infrastructure secrets.
 
 ## Current release
 
-The current release is v0.1.47. It was rebuilt reproducibly from the private
+The current release is v0.1.48. It was rebuilt from a clean target in the private
 INVminer source with the InnovLab product identity.
 
-Download only from the [official release page](https://github.com/getrigeos/INVminer/releases/tag/v0.1.47)
+Download only from the [official release page](https://github.com/getrigeos/INVminer/releases/tag/v0.1.48)
 and verify the published SHA-256 file before running it.
 
-v0.1.47 adds an explicit CPU-only NOID mode with runtime-selected AVX-512 or
-AVX2 packed execution. Normal GPU mode remains CUDA-only and never creates a
-CPU nonce-search pool. It also retains the status, monitoring, recovery,
-thermal protection and persistent developer-fee controls introduced in
-v0.1.45. See the release page for exact GPU/CPU measurements and live-pool
-acceptance/recovery evidence.
+v0.1.48 adds a dedicated CUDA 12 shared-GF8 SM75 kernel. Matched stock-clock
+testing improved CMP 40HX by 20.9%, CMP 50HX by 19.6%, and RTX 2080 Ti by
+18.3%. CPU-only AVX-512/AVX2 and SM86/SM89/SM120 kernels remain unchanged.
+See the release page for exact package hashes, per-card power and qualification
+scope.
 
 ## Binary-only risk notice
 
@@ -77,7 +76,7 @@ binary, not a separate build per card.
 
 | Package | Host boundary | Embedded GPU families | Qualification evidence |
 |---|---|---|---|
-| CUDA 12 | Driver 535-era and broad compatibility hosts | Turing/CMP (`sm_75`), RTX 30 (`sm_86`), RTX 40 (`sm_89`), RTX 50 (`sm_120`), plus tower fallback | CMP 40HX, CMP 50HX, RTX 2080 Ti, RTX 3080, RTX 4070 SUPER and RTX 4090 physically tested; RTX 5090 module evidence requires a new driver |
+| CUDA 12 | Driver 535-era and broad compatibility hosts | optimized Turing/CMP (`sm_75`), RTX 30 (`sm_86`), RTX 40 (`sm_89`), RTX 50 (`sm_120`), plus tower fallback | CMP 40HX, CMP 50HX, RTX 2080 Ti, RTX 3080, RTX 4070 SUPER and RTX 4090 physically tested; RTX 5090 module evidence requires a new driver |
 | CUDA 13 | Driver API 13.0 / Linux driver 580 or newer | RTX 30 (`sm_86`), RTX 40 (`sm_89`), RTX 50 (`sm_120`) | RTX 4090 and RTX 5090 physically tested; older-family module-load gates where available |
 
 Architecture support is not a performance claim for every model. Each release
@@ -86,7 +85,7 @@ cards and include the exact command, driver, CUDA flavor, hashrate unit, power
 limit and measured average/peak power.
 
 CMP 40HX, CMP 50HX and RTX 2080 Ti are supported by the CUDA 12 package's
-native `sm_75` tower lane. They are not supported by the default CUDA 13
+optimized native shared-GF8 `sm_75` lane. They are not supported by the CUDA 13
 package; use the CUDA 12 asset on these cards.
 
 ## Optional hardware controls

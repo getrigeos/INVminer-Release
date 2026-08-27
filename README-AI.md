@@ -48,33 +48,28 @@ Do not omit either control. The verifier reads the raw tar member table through
 Python and must see exactly `README.txt` and `invminer-noid`; this catches hidden
 AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
 
-## v0.1.47 release handoff
+## v0.1.48 release handoff
 
 - Public assets remain binary-only: one CUDA 12 and one CUDA 13 Linux x86_64
   archive, each containing exactly `README.txt` and `invminer-noid`.
 - CUDA 12 archive/binary SHA-256:
-  `3f51fd80752ddb0c0c5b247ac24adfaaddb62013f590582d393e57f0142841d5` /
-  `54ca35679246abf69a3d84830664c0493d98260bf2019debf63949e7dd064874`.
+  `82c9bc1802dcf7d9c1d00dfaf1d0a1d316fca27334135c92dd7dda4b3dd59fff` /
+  `a40e3ea26b3daefb8183b2c82a11ab6c84f904081ff2898b9ed833bd75f20ac0`.
 - CUDA 13 archive/binary SHA-256:
-  `4bd43266bf2b0e6fe63929c0d214ae523ea640842d5b724141fea43857c647eb` /
-  `0e9b84d68be2d074f71f22e48028724bec58cdfa2fe92550b39a215c8eb89cc4`.
+  `4647465383b96191304943ac8e20d1c83719949995748d5941efacff1971bc81` /
+  `75c5781b1956205e1aa8c009f6343475341d164e7ad752de3f6a2987f76decd1`.
 - Normal GPU and CPU-only commands omit `--state-dir`; automatic persistent
   state is the default. `INVMINER_STATE_DIR` and an explicit absolute override
   remain service/operator options.
-- Exact v0.1.47 RTX 4090 default-clock measurements and exact CPU-only AVX-512 /
-  AVX2 measurements are in `release-notes/v0.1.47.md`. RTX 3080, RTX 4070 SUPER
-  and RTX 5090 rows are explicitly labeled historical physical lane evidence.
-- The exact CUDA 12 executable was also re-gated on native `sm_75`: CMP 40HX
-  `1.476 MH/s`, CMP 50HX `2.436 MH/s`, and RTX 2080 Ti `3.107 MH/s` fresh /
-  `3.169 MH/s` cache-hit. All selected `384/2` at default clocks. CUDA 13 does
-  not contain a default production `sm_75` lane.
-- CMP 40HX and CMP 50HX also passed an exact-artifact live recovery gate. After
-  forcibly closing each miner's only TLS socket, both stayed in-process,
-  reconnected once, returned ONLINE and continued accepting shares. Final
-  `/stats` A/S/R counters were `4/0/0` and `9/0/0`, respectively.
-- The exact final CUDA 13 candidate connected through the authorized redacted
-  WebPKI gate and finished with 99 accepted, 2 stale and 0 rejected shares.
-  After the only socket was forcibly closed, reconnects increased to one, the
-  process stayed alive and accepted continued increasing. These counters came
-  from the nested `/stats` `shares` object because per-share INFO logs are
-  intentionally absent.
+- CUDA 12 adds the reviewed shared-GF8 SM75 lane. Matched stock-clock A/B gains
+  are 20.9% on CMP 40HX, 19.6% on CMP 50HX and 18.3% on RTX 2080 Ti. Integrated
+  rates are `1.776`, `2.911`, and `3.722/3.697 MH/s`; the exact final Focal
+  CUDA 12 executable reran at `2.914 MH/s` on CMP 50HX. All select `384/2`
+  automatically. CUDA 13 has no production SM75 lane.
+- The exact final CUDA 12 executable survived a forced socket loss on CMP 50HX
+  through the authorized redacted compatibility gate: accepted advanced from
+  one to three in the same PID after one reconnect, with zero stale and zero
+  rejected. Never publish the endpoint or test identity.
+- RTX 4090, CPU-only, RTX 3080, RTX 4070 SUPER and RTX 5090 rows are explicitly
+  labeled retained v0.1.47 or historical physical evidence because their
+  kernels did not change and were not rerun for v0.1.48.
