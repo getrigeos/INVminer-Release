@@ -61,6 +61,10 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
 
 ## Release lifecycle and public performance boundary
 
+- Immediately after the Release title, show a standalone GPU command and a
+  standalone CPU-only command. The CPU example must contain `--cpu-only`.
+  Do not place version background, risk notices, asset tables or other long
+  explanations before these two commands.
 - The Releases API is empty immediately after the historical cleanup, but it is
   expected to contain future normally approved releases. Do not encode “API must
   remain empty” as a repository gate.

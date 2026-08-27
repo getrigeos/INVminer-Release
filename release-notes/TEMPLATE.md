@@ -1,5 +1,23 @@
 # INVminer vX.Y.Z
 
+## GPU command
+
+```bash
+./invminer --coin noid \
+  -o stratum+ssl://stratum.innovlab.cc:19601 \
+  -u YOUR_NOID_ADDRESS.RIG_NAME \
+  -p x
+```
+
+## CPU-only command
+
+```bash
+./invminer --coin noid --cpu-only \
+  -o stratum+ssl://stratum.innovlab.cc:19601 \
+  -u YOUR_NOID_ADDRESS.RIG_NAME \
+  -p x
+```
+
 > **Binary-only risk:** this release may not work with every GPU, CPU, driver,
 > OS, or future pool state. Source is not provided, so users cannot independently
 > rebuild, audit, or patch it and must decide whether to trust the executable and
@@ -13,15 +31,6 @@
 | `invminer-vX.Y.Z-linux-x86_64-cuda13.tar.gz` | Driver API 13.0 / Linux driver 580+ | `sm_86`, `sm_89`, `sm_120` | `TO_BE_FILLED` | `TO_BE_FILLED` |
 | `invminer-vX.Y.Z-hiveos-linux-x86_64-cuda12.tar.gz` | HiveOS, CUDA 12 flavor | same CUDA 12 lanes | `TO_BE_FILLED` | `TO_BE_FILLED` |
 | `invminer-vX.Y.Z-hiveos-linux-x86_64-cuda13.tar.gz` | HiveOS, CUDA 13 flavor | same CUDA 13 lanes | `TO_BE_FILLED` | `TO_BE_FILLED` |
-
-## Required command
-
-```bash
-./invminer --coin noid \
-  -o stratum+ssl://stratum.innovlab.cc:19601 \
-  -u YOUR_NOID_ADDRESS.RIG_NAME \
-  -p x
-```
 
 The same `invminer` binary selects every supported coin with `--coin`; a
 per-coin executable is never published. The archive does not install or enable
