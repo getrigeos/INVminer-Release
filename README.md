@@ -77,13 +77,17 @@ binary, not a separate build per card.
 
 | Package | Host boundary | Embedded GPU families | Qualification evidence |
 |---|---|---|---|
-| CUDA 12 | Driver 535-era and broad compatibility hosts | RTX 30 (`sm_86`), RTX 40 (`sm_89`), RTX 50 (`sm_120`), plus tower fallback | RTX 3080, RTX 4070 SUPER and RTX 4090 physically tested; RTX 5090 module evidence requires a new driver |
+| CUDA 12 | Driver 535-era and broad compatibility hosts | Turing/CMP (`sm_75`), RTX 30 (`sm_86`), RTX 40 (`sm_89`), RTX 50 (`sm_120`), plus tower fallback | CMP 40HX, CMP 50HX, RTX 2080 Ti, RTX 3080, RTX 4070 SUPER and RTX 4090 physically tested; RTX 5090 module evidence requires a new driver |
 | CUDA 13 | Driver API 13.0 / Linux driver 580 or newer | RTX 30 (`sm_86`), RTX 40 (`sm_89`), RTX 50 (`sm_120`) | RTX 4090 and RTX 5090 physically tested; older-family module-load gates where available |
 
 Architecture support is not a performance claim for every model. Each release
 page must distinguish tested cards from architecture-compatible but untested
 cards and include the exact command, driver, CUDA flavor, hashrate unit, power
 limit and measured average/peak power.
+
+CMP 40HX, CMP 50HX and RTX 2080 Ti are supported by the CUDA 12 package's
+native `sm_75` tower lane. They are not supported by the default CUDA 13
+package; use the CUDA 12 asset on these cards.
 
 ## Optional hardware controls
 

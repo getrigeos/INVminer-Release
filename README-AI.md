@@ -64,6 +64,10 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
 - Exact v0.1.47 RTX 4090 default-clock measurements and exact CPU-only AVX-512 /
   AVX2 measurements are in `release-notes/v0.1.47.md`. RTX 3080, RTX 4070 SUPER
   and RTX 5090 rows are explicitly labeled historical physical lane evidence.
+- The exact CUDA 12 executable was also re-gated on native `sm_75`: CMP 40HX
+  `1.476 MH/s`, CMP 50HX `2.436 MH/s`, and RTX 2080 Ti `3.107 MH/s` fresh /
+  `3.169 MH/s` cache-hit. All selected `384/2` at default clocks. CUDA 13 does
+  not contain a default production `sm_75` lane.
 - The exact final CUDA 13 candidate connected through the authorized redacted
   WebPKI gate and finished with 99 accepted, 2 stale and 0 rejected shares.
   After the only socket was forcibly closed, reconnects increased to one, the
