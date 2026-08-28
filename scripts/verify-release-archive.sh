@@ -6,7 +6,7 @@ archive=${1:-}
   echo "usage: $0 <invminer-vX.Y.Z-linux-x86_64-cudaXX.tar.gz|invminer-X.Y.Z.tar.gz>" >&2
   exit 2
 }
-for command in file python3 rg strings tar; do
+for command in awk file python3 rg strings tar; do
   command -v "$command" >/dev/null || {
     echo "missing verification command: $command" >&2
     exit 1
@@ -38,8 +38,32 @@ while IFS= read -r member; do
   esac
 done <"$members"
 
+parse_hiveos_name() {
+  local name=$1 stem parsed_version parsed_miner
+  [[ $name =~ ^invminer-[0-9]+\.[0-9]+\.[0-9]+\.tar\.gz$ ]] || return 1
+  stem=${name%.tar.gz}
+  parsed_version=${stem##*-}
+  parsed_miner=${stem%-$parsed_version}
+  [[ $parsed_miner == invminer && $parsed_version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+}
+
 archive_name=${archive##*/}
-if [[ $archive_name =~ ^invminer-[0-9]+\.[0-9]+\.[0-9]+\.tar\.gz$ ]]; then
+hiveos_archive=0
+if parse_hiveos_name "$archive_name"; then
+  hiveos_archive=1
+  hiveos_stem=${archive_name%.tar.gz}
+  hiveos_version=${hiveos_stem##*-}
+  hiveos_miner=${hiveos_stem%-$hiveos_version}
+  for invalid_name in \
+    invminer-v0.1.51.tar.gz \
+    invminer-v0.1.51-hiveos-linux-x86_64.tar.gz \
+    invminer-v0.1.51-hiveos-linux-x86_64-cuda12.tar.gz \
+    invminer-v0.1.51-hiveos-linux-x86_64-cuda13.tar.gz; do
+    if parse_hiveos_name "$invalid_name"; then
+      echo "invalid HiveOS name fixture was accepted: $invalid_name" >&2
+      exit 1
+    fi
+  done
   printf '%s\n' \
     invminer \
     invminer/h-config.sh \
@@ -66,6 +90,22 @@ diff -u "$work/expected.sorted" "$work/members.sorted"
 tar -xzf "$archive" -C "$extract"
 [[ -x "$extract/$binary" ]] || { echo "invminer is not executable" >&2; exit 1; }
 file "$extract/$binary" | rg -q 'ELF 64-bit.*x86-64'
+if ((hiveos_archive == 1)); then
+  manifest_name=$(awk -F= '/^CUSTOM_NAME=/ {print $2; exit}' "$extract/invminer/h-manifest.conf")
+  manifest_version=$(awk -F= '/^CUSTOM_VERSION=/ {print $2; exit}' "$extract/invminer/h-manifest.conf")
+  [[ $manifest_name == "$hiveos_miner" ]] || {
+    echo "HiveOS manifest miner name does not match the archive parser" >&2
+    exit 1
+  }
+  [[ $manifest_version == "$hiveos_version" ]] || {
+    echo "HiveOS manifest version does not match the archive parser" >&2
+    exit 1
+  }
+  rg -Fq 'invminer-X.Y.Z.tar.gz' "$extract/invminer/h-readme.md" || {
+    echo "HiveOS readme lost the canonical name-version package rule" >&2
+    exit 1
+  }
+fi
 strings "$extract/$binary" >"$work/binary.strings"
 
 if rg -n -i \

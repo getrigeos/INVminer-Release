@@ -108,3 +108,8 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
 - HiveOS instructions must provide the canonical Installation URL as its own
   field. Extra config arguments are empty by default and must never contain an
   alternate CUDA package URL.
+- Every future HiveOS archive must pass the public archive verifier, whose
+  permanent negative fixtures reject tag `v`, platform/architecture, HiveOS and
+  CUDA filename labels. Before publishing, the exact archive digest must also be
+  launched on an idle HiveOS qualification host, reach `ONLINE`, produce at
+  least one accepted share with zero rejected shares, and pass `h-stats`.

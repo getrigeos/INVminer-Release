@@ -44,5 +44,20 @@ if (( ${#public_files[@]} > 0 )) && rg -n -i \
   bad=1
 fi
 
+for required in \
+  'invminer-X.Y.Z.tar.gz' \
+  '<miner-name>-<version>.tar.gz' \
+  'Extra config arguments'; do
+  rg -Fq "$required" README.md README-AI.md release-notes/TEMPLATE.md || {
+    echo "public HiveOS contract is missing: $required" >&2
+    bad=1
+  }
+done
+if rg -n 'invminer-vX\.Y\.Z-hiveos|invminer-vX\.Y\.Z\.tar\.gz' \
+  README.md README-AI.md release-notes/TEMPLATE.md; then
+  echo "public documentation restored a superseded HiveOS archive name" >&2
+  bad=1
+fi
+
 (( bad == 0 )) || exit 1
 echo "INVminer public release boundary: OK"

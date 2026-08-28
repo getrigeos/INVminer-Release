@@ -72,6 +72,9 @@ sessions may have different assigned difficulty.
 - disconnect and bounded recovery result;
 - one shared user connection and disjoint multi-GPU search domains;
 - HiveOS argv/statistics validation;
+- exact HiveOS `<name>-<version>` parser result and a live packaged-archive gate
+  with `ONLINE`, at least one accepted share, zero rejected shares, and passing
+  `h-stats`;
 - exact candidate hashes, archive boundary, GLIBC ceiling, and privacy scans.
 
 ## Known boundaries
