@@ -105,3 +105,27 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
 - Ordinary archives contain exactly `README.txt` and `invminer`. HiveOS archives
   use the fixed `invminer/` directory contract. Neither package creates or
   enables persistence.
+
+## v0.1.51 release handoff
+
+- Private binary source is fixed to reviewed commit
+  `b48a4c83676fff498a8566bdcc74b143addaf7e7`; private follow-up documentation
+  remains outside this public repository.
+- NOID is WebPKI TLS-only. Plaintext Stratum/TCP, insecure TLS and operator
+  certificate pins fail before device startup. Normal public-CA renewal and leaf
+  key rotation for the canonical hostname must continue without reconfiguration.
+- CUDA 12/13 binary SHA-256 values are
+  `8362a15a061030db2422c1142c89727a38309e695d1eb91ce0311a14da7c86a3`
+  and `52a9c23688ed56cd4ce57d3687b07130c876a52cbf5ae1b682846ae3efa67180`.
+- Ordinary archive SHA-256 values are
+  `39cb54790799e5d0e2f668ef85297a4c28cfcf952ec6b16eb56c2109e943e9e0`
+  and `d5a6f122ead5f0743587e7847a3e561d1585a1da94c7ebb7bdb7ae515d5fb153`.
+  HiveOS archive values are
+  `9c12dfc9c4495006d7f929ca72204fe31a46863684dfc253eb7d43f5237689e1`
+  and `53b454ae0e8d5a3f29de8626f6dc05bd46f7a21829e4908b844abaa99afebabb`.
+- Both exact candidates were physically gated on RTX 4070 / Driver 580.178.04
+  with default controls. Both passed exact CPU/GPU self-tests and submitted
+  accepted shares with zero resolved rejects; CUDA 12 also recovered in-process
+  from an injected loss of its only pool socket.
+- Ordinary archives contain exactly `README.txt` and `invminer`; HiveOS archives
+  retain the fixed `invminer/` contract. Neither package creates persistence.

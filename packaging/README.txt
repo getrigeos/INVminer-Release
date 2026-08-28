@@ -1,4 +1,4 @@
-INVminer v0.1.50 - Linux x86_64
+INVminer v0.1.51 - Linux x86_64
 
 INVminer uses one executable. Select NOID explicitly:
 
@@ -16,6 +16,11 @@ CPU-only mode:
     -u YOUR_NOID_ADDRESS.RIG_NAME \
     -p x
 
+NOID accepts only WebPKI-verified TLS in this release. Plaintext Stratum/TCP,
+insecure TLS, and operator certificate pins are rejected before device startup.
+A valid public-CA certificate renewal for the same hostname, including a new
+leaf key, requires no miner configuration change.
+
 Choose the CUDA 12 or CUDA 13 archive according to host-driver compatibility.
 The executable name remains invminer in both packages. Normal operation does
 not require --state-dir or mining-geometry arguments.
@@ -32,4 +37,4 @@ Extracting or running this package does not install or enable a boot service,
 scheduled task, cron job, login/startup item, or container restart policy.
 
 Official downloads and SHA-256 checksums:
-https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.50
+https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.51

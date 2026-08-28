@@ -10,7 +10,7 @@ infrastructure are not published here.
 ## Current release
 
 The current release is
-[v0.1.50](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.50). Download
+[v0.1.51](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.51). Download
 only from that page and verify `SHA256SUMS.txt` before use.
 
 ## Required command shape
@@ -52,6 +52,11 @@ non-overlapping search ranges. Do not supply GPU geometry, CPU thread count,
 batch size, or ISA flags; the miner selects reviewed defaults or a bounded
 first-run auto-tune. `--state-dir` is optional and is not part of the normal
 command.
+
+NOID accepts only WebPKI-verified TLS in v0.1.51. Plaintext Stratum/TCP,
+insecure TLS, and operator certificate pins are rejected before device startup.
+A valid public-CA certificate renewal for the same hostname, including a new
+leaf key, requires no miner configuration change.
 
 ## Downloads
 
