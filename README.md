@@ -60,12 +60,11 @@ leaf key, requires no miner configuration change.
 
 ## Downloads
 
-Each version provides two ordinary Linux archives and two HiveOS archives:
+Each version provides two ordinary Linux archives and one canonical HiveOS archive:
 
 - `invminer-vX.Y.Z-linux-x86_64-cuda12.tar.gz`
 - `invminer-vX.Y.Z-linux-x86_64-cuda13.tar.gz`
-- `invminer-vX.Y.Z-hiveos-linux-x86_64-cuda12.tar.gz`
-- `invminer-vX.Y.Z-hiveos-linux-x86_64-cuda13.tar.gz`
+- `invminer-vX.Y.Z-hiveos-linux-x86_64.tar.gz`
 
 Choose the CUDA flavor by host-driver compatibility, not by renaming the
 binary or downloading a GPU-specific build.
@@ -81,8 +80,9 @@ runtime. Architecture support is not a model-specific performance claim.
 
 ## HiveOS
 
-Use the HiveOS archive matching the host driver. In a Custom Miner flight
-sheet set:
+The canonical HiveOS archive uses the broad CUDA 12 host-compatibility flavor;
+its filename intentionally has no CUDA suffix because HiveOS validates the
+Custom Miner package name. In a Custom Miner flight sheet set:
 
 - Hash algorithm: `noid`
 - Pool URL: `stratum+ssl://stratum.innovlab.cc:19601`

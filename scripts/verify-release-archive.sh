@@ -39,6 +39,10 @@ while IFS= read -r member; do
 done <"$members"
 
 if [[ ${archive##*/} == *-hiveos-* ]]; then
+  if [[ ! ${archive##*/} =~ ^invminer-v[0-9]+\.[0-9]+\.[0-9]+-hiveos-linux-x86_64\.tar\.gz$ ]]; then
+    echo "HiveOS archive name violates the canonical Custom Miner package contract: ${archive##*/}" >&2
+    exit 1
+  fi
   printf '%s\n' \
     invminer \
     invminer/h-config.sh \

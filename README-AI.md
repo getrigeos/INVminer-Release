@@ -93,12 +93,14 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
 - Ordinary archive SHA-256 values are
   `39cb54790799e5d0e2f668ef85297a4c28cfcf952ec6b16eb56c2109e943e9e0`
   and `d5a6f122ead5f0743587e7847a3e561d1585a1da94c7ebb7bdb7ae515d5fb153`.
-  HiveOS archive values are
-  `9c12dfc9c4495006d7f929ca72204fe31a46863684dfc253eb7d43f5237689e1`
-  and `53b454ae0e8d5a3f29de8626f6dc05bd46f7a21829e4908b844abaa99afebabb`.
+  The single canonical HiveOS archive is named
+  `invminer-v0.1.51-hiveos-linux-x86_64.tar.gz` and its SHA-256 is
+  `77e2fb267eb23d29b25ecaddab4763745a66b3bb53c843e93e5c91eeb9239970`.
 - Both exact candidates were physically gated on RTX 4070 / Driver 580.178.04
   with default controls. Both passed exact CPU/GPU self-tests and submitted
   accepted shares with zero resolved rejects; CUDA 12 also recovered in-process
   from an injected loss of its only pool socket.
-- Ordinary archives contain exactly `README.txt` and `invminer`; HiveOS archives
-  retain the fixed `invminer/` contract. Neither package creates persistence.
+- Ordinary archives contain exactly `README.txt` and `invminer`; the canonical
+  HiveOS archive retains the fixed `invminer/` contract. HiveOS asset names must
+  not add a CUDA suffix; use the broad CUDA 12 binary for that one package.
+  Neither package creates persistence.
