@@ -10,7 +10,7 @@ infrastructure are not published here.
 ## Current release
 
 The current release is
-[v0.1.51](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.51). Download
+[v0.1.52](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.52). Download
 only from that page and verify `SHA256SUMS.txt` before use.
 
 ## Required command shape
@@ -53,7 +53,7 @@ batch size, or ISA flags; the miner selects reviewed defaults or a bounded
 first-run auto-tune. `--state-dir` is optional and is not part of the normal
 command.
 
-NOID accepts only WebPKI-verified TLS in v0.1.51. Plaintext Stratum/TCP,
+NOID accepts only WebPKI-verified TLS in v0.1.52. Plaintext Stratum/TCP,
 insecure TLS, and operator certificate pins are rejected before device startup.
 A valid public-CA certificate renewal for the same hostname, including a new
 leaf key, requires no miner configuration change.
@@ -82,10 +82,10 @@ runtime. Architecture support is not a model-specific performance claim.
 
 The canonical HiveOS archive uses the broad CUDA 12 host-compatibility flavor;
 its filename intentionally has no CUDA suffix because HiveOS validates the
-Custom Miner package name. For v0.1.51, set:
+Custom Miner package name. For v0.1.52, set:
 
 - Miner name: `invminer`
-- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.51/invminer-0.1.51.tar.gz`
+- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.52/invminer-0.1.52.tar.gz`
 - Hash algorithm: `noid`
 - Pool URL: `stratum+ssl://stratum.innovlab.cc:19601`
 - Wallet and worker template: `%WAL%.%WORKER_NAME%`

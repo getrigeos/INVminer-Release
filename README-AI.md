@@ -79,23 +79,23 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
   explicit operator decision; record that reason rather than treating withdrawal
   as an automatic post-release step.
 
-## v0.1.51 release handoff
+## v0.1.52 release handoff
 
 - Private binary source is fixed to reviewed commit
-  `b48a4c83676fff498a8566bdcc74b143addaf7e7`; private follow-up documentation
+  `1d12e951435734afe503e43392b9590e3bef0aee`; private follow-up documentation
   remains outside this public repository.
 - NOID is WebPKI TLS-only. Plaintext Stratum/TCP, insecure TLS and operator
   certificate pins fail before device startup. Normal public-CA renewal and leaf
   key rotation for the canonical hostname must continue without reconfiguration.
 - CUDA 12/13 binary SHA-256 values are
-  `8362a15a061030db2422c1142c89727a38309e695d1eb91ce0311a14da7c86a3`
-  and `52a9c23688ed56cd4ce57d3687b07130c876a52cbf5ae1b682846ae3efa67180`.
+  `900664a10a1954a863dada053e40584e8aa4827136d5edc3c2c1a6a38b223112`
+  and `40b0d106a7d581ccc971909321f75be15e2c9b111b694d78847d479fcddcdd9d`.
 - Ordinary archive SHA-256 values are
-  `39cb54790799e5d0e2f668ef85297a4c28cfcf952ec6b16eb56c2109e943e9e0`
-  and `d5a6f122ead5f0743587e7847a3e561d1585a1da94c7ebb7bdb7ae515d5fb153`.
+  `f129ca305fbc15fe090e06c865beb787426d5ce47d7622996c2ba948853e6d69`
+  and `00409a18013b3eef790f210046d0bd67e428012406542c30254af75344463fce`.
   The single canonical HiveOS archive is named
-  `invminer-0.1.51.tar.gz` and its SHA-256 is
-  `067c8d22d0cb2e38e97abddfd4625f585196e74200f5958d335d05410f2eca27`.
+  `invminer-0.1.52.tar.gz` and its SHA-256 is
+  `c13a9800b28647bbf6092f1fedcab0fc2ad1eebe5ce09e86aebc4cb727d16ab7`.
 - Both exact candidates were physically gated on RTX 4070 / Driver 580.178.04
   with default controls. Both passed exact CPU/GPU self-tests and submitted
   accepted shares with zero resolved rejects; CUDA 12 also recovered in-process
