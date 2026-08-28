@@ -79,33 +79,6 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
   explicit operator decision; record that reason rather than treating withdrawal
   as an automatic post-release step.
 
-## v0.1.50 release handoff
-
-- Private release source is fixed to the reviewed INVminer source commit
-  `3640e855e435badc62836232cd95cb7c27a24584`; never copy that repository here.
-- CUDA 12/13 are two host-compatibility flavors of the same `invminer` program.
-  v0.1.50 supports only `--coin noid`; both public binaries must contain only
-  NOID CUDA modules and must not be renamed or split by GPU model.
-- Ordinary archive SHA-256 values are
-  `4e1115b2f8093ec01686449787925424cab42d3dcd8ac454a0fa494e693412f6`
-  (CUDA 12) and
-  `f2df9c02b90cc4f617d2c51c1427c8601606885cf8df9c673930cc4366545a25`
-  (CUDA 13). HiveOS archive SHA-256 values are
-  `928d1ef6fa838227a3d232992328d329688308224ab9d58acac3b9c4aca8e9d6`
-  and `0148e309be2fccfe8c6eed46c437baf2677033aa2a818eeba65121f0000c79d4`.
-- CUDA 12/13 binary SHA-256 values are
-  `73de5728d3304da7bf4726d40a7443aaa2fdb8200f006f24cc5161f2a34212eb`
-  and `1d37573b70c9ad8bbde0a9a21f277048a66cd53956c2867d04dffe4eaa8e99e2`.
-- Both exact candidates were physically gated on one RTX 4070 with Linux driver
-  580.178.04, default board controls and no clock arguments. Do not convert the
-  private engineering benchmark into a public performance claim.
-- The canonical InnovLab endpoint was unavailable from the gate host. The
-  already-authorized WebPKI compatibility gate was used and remained redacted;
-  Release Notes disclose the substitution without naming its endpoint.
-- Ordinary archives contain exactly `README.txt` and `invminer`. HiveOS archives
-  use the fixed `invminer/` directory contract. Neither package creates or
-  enables persistence.
-
 ## v0.1.51 release handoff
 
 - Private binary source is fixed to reviewed commit
