@@ -64,7 +64,7 @@ Each version provides two ordinary Linux archives and one canonical HiveOS archi
 
 - `invminer-vX.Y.Z-linux-x86_64-cuda12.tar.gz`
 - `invminer-vX.Y.Z-linux-x86_64-cuda13.tar.gz`
-- `invminer-vX.Y.Z-hiveos-linux-x86_64.tar.gz`
+- `invminer-X.Y.Z.tar.gz`
 
 Choose the CUDA flavor by host-driver compatibility, not by renaming the
 binary or downloading a GPU-specific build.
@@ -85,7 +85,7 @@ its filename intentionally has no CUDA suffix because HiveOS validates the
 Custom Miner package name. For v0.1.51, set:
 
 - Miner name: `invminer`
-- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.51/invminer-v0.1.51-hiveos-linux-x86_64.tar.gz`
+- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.51/invminer-0.1.51.tar.gz`
 - Hash algorithm: `noid`
 - Pool URL: `stratum+ssl://stratum.innovlab.cc:19601`
 - Wallet and worker template: `%WAL%.%WORKER_NAME%`
@@ -93,8 +93,10 @@ Custom Miner package name. For v0.1.51, set:
 - Extra config arguments: leave empty unless ordinary runtime options are
   required; never put an alternate package URL here
 
-There is no separate CUDA 12 or CUDA 13 HiveOS URL. The single canonical
-HiveOS package already contains the broad CUDA 12 host build.
+HiveOS requires the package format `<miner-name>-<version>.tar.gz`; the tag's
+leading `v` and platform/CUDA labels are not part of this filename. There is no
+separate CUDA 12 or CUDA 13 HiveOS URL. The single package already contains the
+broad CUDA 12 host build.
 
 The wrapper builds `invminer --coin noid ...` as an argv array and reports
 aggregate and per-GPU statistics through HiveOS. Installing the archive does

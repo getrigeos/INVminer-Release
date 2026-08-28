@@ -3,7 +3,7 @@ set -euo pipefail
 
 archive=${1:-}
 [[ -f "$archive" ]] || {
-  echo "usage: $0 <invminer-vX.Y.Z[-hiveos]-linux-x86_64-cudaXX.tar.gz>" >&2
+  echo "usage: $0 <invminer-vX.Y.Z-linux-x86_64-cudaXX.tar.gz|invminer-X.Y.Z.tar.gz>" >&2
   exit 2
 }
 for command in file python3 rg strings tar; do
@@ -38,11 +38,8 @@ while IFS= read -r member; do
   esac
 done <"$members"
 
-if [[ ${archive##*/} == *-hiveos-* ]]; then
-  if [[ ! ${archive##*/} =~ ^invminer-v[0-9]+\.[0-9]+\.[0-9]+-hiveos-linux-x86_64\.tar\.gz$ ]]; then
-    echo "HiveOS archive name violates the canonical Custom Miner package contract: ${archive##*/}" >&2
-    exit 1
-  fi
+archive_name=${archive##*/}
+if [[ $archive_name =~ ^invminer-[0-9]+\.[0-9]+\.[0-9]+\.tar\.gz$ ]]; then
   printf '%s\n' \
     invminer \
     invminer/h-config.sh \
@@ -54,6 +51,10 @@ if [[ ${archive##*/} == *-hiveos-* ]]; then
   binary=invminer/invminer
   readme=invminer/h-readme.md
 else
+  if [[ ! $archive_name =~ ^invminer-v[0-9]+\.[0-9]+\.[0-9]+-linux-x86_64-cuda(12|13)\.tar\.gz$ ]]; then
+    echo "archive name violates the INVminer release contract: $archive_name" >&2
+    exit 1
+  fi
   printf '%s\n' README.txt invminer >"$work/expected-members"
   binary=invminer
   readme=README.txt

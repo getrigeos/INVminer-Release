@@ -29,7 +29,7 @@
 |---|---|---|---|---|
 | `invminer-vX.Y.Z-linux-x86_64-cuda12.tar.gz` | Broad/535-era host compatibility | `sm_75`, `sm_86`, `sm_89`, `sm_120`, fallback | `TO_BE_FILLED` | `TO_BE_FILLED` |
 | `invminer-vX.Y.Z-linux-x86_64-cuda13.tar.gz` | Driver API 13.0 / Linux driver 580+ | `sm_86`, `sm_89`, `sm_120` | `TO_BE_FILLED` | `TO_BE_FILLED` |
-| `invminer-vX.Y.Z-hiveos-linux-x86_64.tar.gz` | Canonical HiveOS package; broad CUDA 12 host flavor | same CUDA 12 lanes | `TO_BE_FILLED` | `TO_BE_FILLED` |
+| `invminer-X.Y.Z.tar.gz` | Canonical HiveOS `<name>-<version>` package; broad CUDA 12 host flavor | same CUDA 12 lanes | `TO_BE_FILLED` | `TO_BE_FILLED` |
 
 The same `invminer` binary selects every supported coin with `--coin`; a
 per-coin executable is never published. The archive does not install or enable
@@ -37,7 +37,8 @@ any boot service or scheduled startup.
 
 ## HiveOS
 
-Use the exact canonical HiveOS archive name above; do not add a CUDA suffix.
+Use the exact canonical HiveOS archive name above; do not add tag `v`, platform,
+architecture, HiveOS, or CUDA suffixes.
 Set Miner name to `invminer`, Installation URL to the canonical HiveOS asset,
 Hash algorithm to `noid`, Pool URL to the TLS endpoint above, Template to
 `%WAL%.%WORKER_NAME%`, and Pass to `x`. Leave Extra config arguments empty
