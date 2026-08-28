@@ -38,8 +38,10 @@ any boot service or scheduled startup.
 ## HiveOS
 
 Use the exact canonical HiveOS archive name above; do not add a CUDA suffix.
-Set Hash algorithm to `noid`, Pool URL to
-the TLS endpoint above, Template to `%WAL%.%WORKER_NAME%`, and Pass to `x`.
+Set Miner name to `invminer`, Installation URL to the canonical HiveOS asset,
+Hash algorithm to `noid`, Pool URL to the TLS endpoint above, Template to
+`%WAL%.%WORKER_NAME%`, and Pass to `x`. Leave Extra config arguments empty
+unless ordinary runtime flags are required; never put another package URL there.
 Record the installed-archive functional gate for dashboard statistics, username
 mapping, extra arguments, and logs.
 

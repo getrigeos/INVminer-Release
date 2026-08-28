@@ -104,3 +104,6 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
   HiveOS archive retains the fixed `invminer/` contract. HiveOS asset names must
   not add a CUDA suffix; use the broad CUDA 12 binary for that one package.
   Neither package creates persistence.
+- HiveOS instructions must provide the canonical Installation URL as its own
+  field. Extra config arguments are empty by default and must never contain an
+  alternate CUDA package URL.

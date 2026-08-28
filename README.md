@@ -82,12 +82,19 @@ runtime. Architecture support is not a model-specific performance claim.
 
 The canonical HiveOS archive uses the broad CUDA 12 host-compatibility flavor;
 its filename intentionally has no CUDA suffix because HiveOS validates the
-Custom Miner package name. In a Custom Miner flight sheet set:
+Custom Miner package name. For v0.1.51, set:
 
+- Miner name: `invminer`
+- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.51/invminer-v0.1.51-hiveos-linux-x86_64.tar.gz`
 - Hash algorithm: `noid`
 - Pool URL: `stratum+ssl://stratum.innovlab.cc:19601`
-- Template: `%WAL%.%WORKER_NAME%`
+- Wallet and worker template: `%WAL%.%WORKER_NAME%`
 - Pass: `x`
+- Extra config arguments: leave empty unless ordinary runtime options are
+  required; never put an alternate package URL here
+
+There is no separate CUDA 12 or CUDA 13 HiveOS URL. The single canonical
+HiveOS package already contains the broad CUDA 12 host build.
 
 The wrapper builds `invminer --coin noid ...` as an argv array and reports
 aggregate and per-GPU statistics through HiveOS. Installing the archive does
