@@ -43,10 +43,16 @@ Before every commit or release:
 
 ```bash
 bash scripts/check-public-release-repo.sh
+bash scripts/check-release-note-upgrade.sh X.Y.Z release-notes/vX.Y.Z.md
 bash scripts/verify-release-archive.sh dist/<archive>.tar.gz
 ```
 
-Only the second command requires a prepared release archive.
+Only the archive-verification command requires a prepared release archive.
+The Release Note upgrade gate is mandatory. Its version-derived command is
+offered only to older HiveOS installations that fail to replace the installed
+Custom Miner after their Installation URL changes. The command must remain one
+physical line, start with `miner stop`, verify the installed binary, and end
+with `miner start`; stale versions or Markdown line breaks block publication.
 
 On macOS, create archives with both copyfile metadata and xattrs disabled:
 

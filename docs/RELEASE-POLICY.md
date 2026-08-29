@@ -87,6 +87,11 @@ Before publishing a new tag:
 10. Run both repository and archive verification scripts locally.
 11. Upload assets manually and confirm `releases/latest/download/...` resolves to
    the exact new files.
+12. Run `scripts/check-release-note-upgrade.sh X.Y.Z release-notes/vX.Y.Z.md`.
+    The note must limit manual replacement to older HiveOS installations that
+    failed to auto-update, and contain exactly one unsplit command generated
+    from the current version. Missing stop/start, stale archive/URL versions,
+    or a wrapped shell command blocks publication.
 
 Public documentation must not contain numerical mining-rate benchmarks,
 estimated earnings, optimization percentages or comparisons with another

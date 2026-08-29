@@ -59,5 +59,23 @@ if rg -n 'invminer-vX\.Y\.Z-hiveos|invminer-vX\.Y\.Z\.tar\.gz' \
   bad=1
 fi
 
+current_version=$(sed -nE \
+  's#^\[v([0-9]+\.[0-9]+\.[0-9]+)\]\(https://github\.com/getrigeos/INVminer-Release/releases/tag/v[0-9]+\.[0-9]+\.[0-9]+\).*#\1#p' \
+  README.md | head -n 1)
+if [[ -z $current_version ]]; then
+  echo 'README current release does not expose one parseable X.Y.Z version' >&2
+  bad=1
+else
+  if ! rg -Fq "[v${current_version}](https://github.com/getrigeos/INVminer-Release/releases/tag/v${current_version})" README.md; then
+    echo 'README current release label and tag URL versions differ' >&2
+    bad=1
+  fi
+  current_note="release-notes/v${current_version}.md"
+  if ! bash scripts/check-release-note-upgrade.sh "$current_version" "$current_note"; then
+    echo "current public Release Note failed the mandatory older-HiveOS upgrade gate: $current_note" >&2
+    bad=1
+  fi
+fi
+
 (( bad == 0 )) || exit 1
 echo "INVminer public release boundary: OK"

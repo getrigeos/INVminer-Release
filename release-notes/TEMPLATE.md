@@ -46,6 +46,18 @@ unless ordinary runtime flags are required; never put another package URL there.
 Record the installed-archive functional gate for dashboard statistics, username
 mapping, extra arguments, and logs.
 
+### Manual upgrade for older HiveOS installations
+
+Only some older HiveOS installations need this manual replacement. Use it only when HiveOS does not update the installed custom miner after the Installation URL is changed to this release.
+
+```bash
+miner stop && cd /tmp && rm -rf invminer && rm -f invminer-X.Y.Z.tar.gz && wget -O invminer-X.Y.Z.tar.gz https://github.com/getrigeos/INVminer-Release/releases/download/vX.Y.Z/invminer-X.Y.Z.tar.gz && tar -xzf invminer-X.Y.Z.tar.gz && mkdir -p /hive/miners/custom/invminer && rm -f /hive/miners/custom/invminer/invminer && cp -af invminer/. /hive/miners/custom/invminer/ && chmod +x /hive/miners/custom/invminer/invminer /hive/miners/custom/invminer/h-*.sh && /hive/miners/custom/invminer/invminer --version && miner start
+```
+
+### 舊版 HiveOS 手動升級
+
+僅部分舊版 HiveOS 需要此手動覆蓋；只有在更新 Installation URL 後仍未替換已安裝的 Custom Miner 時才執行。
+
 ## Compatibility qualification
 
 | GPU family | SM | CUDA 12 | CUDA 13 | Tested in this release | Functional result |
