@@ -10,7 +10,7 @@ infrastructure are not published here.
 ## Current release
 
 The current release is
-[v0.1.54](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.54). Download
+[v0.1.55](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.55). Download
 only from that page and verify `SHA256SUMS.txt` before use.
 
 ## Required command shape
@@ -53,10 +53,33 @@ batch size, or ISA flags; the miner selects reviewed defaults or a bounded
 first-run auto-tune. `--state-dir` is optional and is not part of the normal
 command.
 
-NOID accepts only WebPKI-verified TLS in v0.1.54. Plaintext Stratum/TCP,
+NOID accepts only WebPKI-verified TLS in v0.1.55. Plaintext Stratum/TCP,
 insecure TLS, and operator certificate pins are rejected before device startup.
 A valid public-CA certificate renewal for the same hostname, including a new
 leaf key, requires no miner configuration change.
+
+## Optional NVIDIA controls
+
+v0.1.55 can apply the reviewed NVIDIA settings from the `invminer` command
+itself. The supported controls are `--power-limit`, `--lock-core` (core upper
+bound), `--locked-core-clock` (fixed core), `--lock-mem` (fixed memory clock),
+and `--core-clock-offset`. Core-offset users may also select
+`--nvidia-display` and `--nvidia-xauthority` for `nvidia-settings`.
+
+For example, the miner can own a reviewed RTX 4090 power and memory profile:
+
+```bash
+./invminer --coin noid --devices 0 --power-limit 450 --lock-mem 810 \
+  -o stratum+ssl://stratum.innovlab.cc:19601 \
+  -u YOUR_NOID_ADDRESS.RIG_NAME \
+  -p x
+```
+
+`--lock-core` and `--locked-core-clock` are mutually exclusive. An unsupported
+clock, missing driver permission, or unavailable display produces a warning and
+mining continues at the verified original/default state. If a partially applied
+profile cannot be rolled back safely, the miner stops instead of running under
+unknown settings.
 
 ## Downloads
 
@@ -82,10 +105,10 @@ runtime. Architecture support is not a model-specific performance claim.
 
 The canonical HiveOS archive uses the broad CUDA 12 host-compatibility flavor;
 its filename intentionally has no CUDA suffix because HiveOS validates the
-Custom Miner package name. For v0.1.54, set:
+Custom Miner package name. For v0.1.55, set:
 
 - Miner name: `invminer`
-- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.54/invminer-0.1.54.tar.gz`
+- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.55/invminer-0.1.55.tar.gz`
 - Hash algorithm: `noid`
 - Pool URL: `stratum+ssl://stratum.innovlab.cc:19601`
 - Wallet and worker template: `%WAL%.%WORKER_NAME%`
