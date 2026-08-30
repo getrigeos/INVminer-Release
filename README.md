@@ -10,7 +10,7 @@ infrastructure are not published here.
 ## Current release
 
 The current release is
-[v0.1.57](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.57). Download
+[v0.1.59](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.59). Download
 only from that page and verify `SHA256SUMS.txt` before use.
 
 ## Required command shape
@@ -57,14 +57,14 @@ batch size, or ISA flags; the miner selects reviewed defaults or a bounded
 first-run auto-tune. `--state-dir` is optional and is not part of the normal
 command.
 
-NOID accepts only WebPKI-verified TLS in v0.1.57. Plaintext Stratum/TCP,
+NOID accepts only WebPKI-verified TLS in v0.1.59. Plaintext Stratum/TCP,
 insecure TLS, and operator certificate pins are rejected before device startup.
 A valid public-CA certificate renewal for the same hostname, including a new
 leaf key, requires no miner configuration change.
 
 ## Optional NVIDIA controls
 
-v0.1.57 can apply the reviewed NVIDIA settings from the `invminer` command
+v0.1.59 can apply the reviewed NVIDIA settings from the `invminer` command
 itself. The supported controls are `--power-limit`, `--lock-core` (core upper
 bound), `--locked-core-clock` (fixed core), `--lock-mem` (fixed memory clock),
 and `--core-clock-offset`. Core-offset users may also select
@@ -105,14 +105,21 @@ Turing/CMP cards such as CMP 40HX, CMP 50HX, and RTX 2080 Ti must use the CUDA
 12 package. RTX 30, RTX 40, and RTX 50 families select their embedded lane at
 runtime. Architecture support is not a model-specific performance claim.
 
+On Ampere `sm_86`, the CUDA 12/HiveOS binary first loads the reviewed native
+performance profile. If the installed driver rejects that image as
+incompatible, INVminer automatically loads its embedded CUDA 12.2 native
+`sm_86` compatibility profile. No alternate HiveOS package, module environment
+variable, or manual CUDA selection is required. The CUDA 12 driver floor is
+NVIDIA Linux driver 535.
+
 ## HiveOS
 
 The canonical HiveOS archive uses the broad CUDA 12 host-compatibility flavor;
 its filename intentionally has no CUDA suffix because HiveOS validates the
-Custom Miner package name. For v0.1.57, set:
+Custom Miner package name. For v0.1.59, set:
 
 - Miner name: `invminer`
-- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.57/invminer-0.1.57.tar.gz`
+- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.59/invminer-0.1.59.tar.gz`
 - Hash algorithm: `noid`
 - Pool URL: `stratum+ssl://eu.innovlab.cc:19601`
 - Wallet and worker template: `%WAL%.%WORKER_NAME%`

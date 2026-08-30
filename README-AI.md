@@ -9,8 +9,11 @@ repository.
   Coins are selected explicitly as `invminer --coin <coin>`; per-coin
   executables are forbidden.
 - The public release repository is `getrigeos/INVminer-Release`.
-- The canonical pool endpoint is
-  `stratum+ssl://stratum.innovlab.cc:19601`.
+- Official user-pool examples may use only
+  `stratum+ssl://eu.innovlab.cc:19601` or
+  `stratum+ssl://hk.innovlab.cc:19601`; examples default to Europe and replace
+  only the hostname for Hong Kong. Do not restore `stratum.innovlab.cc` in
+  user-facing commands.
 - Never copy proprietary Rust/CUDA source, Cargo workspaces, vendored source,
   hardware-control source, source archives, build caches or internal recovery
   material into this repository.
@@ -38,6 +41,11 @@ repository.
   service, scheduled task, login/startup item, cron job or container restart
   policy. Any persistence template is opt-in and requires a separate explicit
   administrator action.
+- The canonical CUDA 12/HiveOS binary must contain both the reviewed SM86
+  performance profile and the embedded CUDA 12.2 native SM86 compatibility
+  fallback. A driver image-compatibility failure must select that fallback
+  automatically; never instruct HiveOS users to choose a second package or set
+  a diagnostic module environment variable.
 
 Before every commit or release:
 

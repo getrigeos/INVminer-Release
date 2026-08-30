@@ -30,6 +30,26 @@ if (( ${#public_files[@]} > 0 )) && rg -n -i \
   bad=1
 fi
 
+documented_version=$(sed -nE \
+  's#^\[v([0-9]+\.[0-9]+\.[0-9]+)\]\(https://github\.com/getrigeos/INVminer-Release/releases/tag/v[0-9]+\.[0-9]+\.[0-9]+\).*#\1#p' \
+  README.md | head -n 1)
+endpoint_files=(README.md README-AI.md release-notes/TEMPLATE.md)
+if [[ -n $documented_version && -f release-notes/v${documented_version}.md ]]; then
+  endpoint_files+=("release-notes/v${documented_version}.md")
+fi
+if rg -n -F 'stratum+ssl://stratum.innovlab.cc' "${endpoint_files[@]}"; then
+  echo 'public user commands restored the retired NOID hostname' >&2
+  bad=1
+fi
+for endpoint in \
+  'stratum+ssl://eu.innovlab.cc:19601' \
+  'stratum+ssl://hk.innovlab.cc:19601'; do
+  rg -Fq "$endpoint" README.md README-AI.md release-notes/TEMPLATE.md || {
+    echo "public release contract is missing official NOID endpoint: $endpoint" >&2
+    bad=1
+  }
+done
+
 if (( ${#public_files[@]} > 0 )) && rg -n -i \
   '[0-9]+([.][0-9]+)?[[:space:]]*(k|m|g|t|p|e)?h/s|[0-9]+([.][0-9]+)?[[:space:]]*hash(es)?/s' \
   "${public_files[@]}"; then
@@ -59,9 +79,7 @@ if rg -n 'invminer-vX\.Y\.Z-hiveos|invminer-vX\.Y\.Z\.tar\.gz' \
   bad=1
 fi
 
-current_version=$(sed -nE \
-  's#^\[v([0-9]+\.[0-9]+\.[0-9]+)\]\(https://github\.com/getrigeos/INVminer-Release/releases/tag/v[0-9]+\.[0-9]+\.[0-9]+\).*#\1#p' \
-  README.md | head -n 1)
+current_version=$documented_version
 if [[ -z $current_version ]]; then
   echo 'README current release does not expose one parseable X.Y.Z version' >&2
   bad=1

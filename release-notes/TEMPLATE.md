@@ -71,6 +71,11 @@ miner stop && cd /tmp && rm -rf invminer && rm -f invminer-X.Y.Z.tar.gz && wget 
 | RTX 40 | `sm_89` | Supported | Supported | `TO_BE_FILLED` | `TO_BE_FILLED` |
 | RTX 50 | `sm_120` | Supported | Supported | `TO_BE_FILLED` | `TO_BE_FILLED` |
 
+For CUDA 12/HiveOS on `sm_86`, state whether the exact affected model was
+physically tested. The package must automatically select its embedded CUDA 12.2
+native compatibility profile when the driver rejects the primary image; users
+must not be told to switch HiveOS packages or select a module manually.
+
 Do not publish hashrate, throughput, optimization percentages, estimated
 earnings, or performance comparisons. Public notes may state only compatibility,
 pass/fail correctness, recovery evidence, and known boundaries.

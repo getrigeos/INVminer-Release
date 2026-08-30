@@ -92,6 +92,11 @@ Before publishing a new tag:
     failed to auto-update, and contain exactly one unsplit command generated
     from the current version. Missing stop/start, stale archive/URL versions,
     or a wrapped shell command blocks publication.
+13. For the CUDA 12 and canonical HiveOS assets, verify that the final binary
+    contains both the reviewed SM86 performance profile and the embedded CUDA
+    12.2 native SM86 compatibility fallback. The private build gate must also
+    verify both module digests, native `sm_86` images, and typed handling of
+    image-compatibility load errors.
 
 Public documentation must not contain numerical mining-rate benchmarks,
 estimated earnings, optimization percentages or comparisons with another
