@@ -23,16 +23,20 @@ All visible GPUs:
 
 ```bash
 ./invminer --coin noid \
-  -o stratum+ssl://stratum.innovlab.cc:19601 \
+  -o stratum+ssl://eu.innovlab.cc:19601 \
   -u YOUR_NOID_ADDRESS.RIG_NAME \
   -p x
 ```
+
+Use one of the two official NOID TLS endpoints: `eu.innovlab.cc:19601`
+(Europe) or `hk.innovlab.cc:19601` (Hong Kong). The examples use Europe;
+replace only the hostname to use Hong Kong.
 
 One selected GPU:
 
 ```bash
 ./invminer --coin noid \
-  -o stratum+ssl://stratum.innovlab.cc:19601 \
+  -o stratum+ssl://eu.innovlab.cc:19601 \
   -u YOUR_NOID_ADDRESS.RIG_NAME \
   -p x \
   --device 0
@@ -42,7 +46,7 @@ CPU-only mode:
 
 ```bash
 ./invminer --coin noid --cpu-only \
-  -o stratum+ssl://stratum.innovlab.cc:19601 \
+  -o stratum+ssl://eu.innovlab.cc:19601 \
   -u YOUR_NOID_ADDRESS.RIG_NAME \
   -p x
 ```
@@ -70,7 +74,7 @@ For example, the miner can own a reviewed RTX 4090 power and memory profile:
 
 ```bash
 ./invminer --coin noid --devices 0 --power-limit 450 --lock-mem 810 \
-  -o stratum+ssl://stratum.innovlab.cc:19601 \
+  -o stratum+ssl://eu.innovlab.cc:19601 \
   -u YOUR_NOID_ADDRESS.RIG_NAME \
   -p x
 ```
@@ -110,7 +114,7 @@ Custom Miner package name. For v0.1.57, set:
 - Miner name: `invminer`
 - Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.57/invminer-0.1.57.tar.gz`
 - Hash algorithm: `noid`
-- Pool URL: `stratum+ssl://stratum.innovlab.cc:19601`
+- Pool URL: `stratum+ssl://eu.innovlab.cc:19601`
 - Wallet and worker template: `%WAL%.%WORKER_NAME%`
 - Pass: `x`
 - Extra config arguments: leave empty unless ordinary runtime options are

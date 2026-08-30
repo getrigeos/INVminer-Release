@@ -5,14 +5,18 @@ INVminer uses one executable. Select NOID explicitly:
 This release supports only NOID and contains no CUDA modules for other coins.
 
   ./invminer --coin noid \
-    -o stratum+ssl://stratum.innovlab.cc:19601 \
+    -o stratum+ssl://eu.innovlab.cc:19601 \
     -u YOUR_NOID_ADDRESS.RIG_NAME \
     -p x
+
+Official NOID TLS endpoints: eu.innovlab.cc:19601 (Europe) and
+hk.innovlab.cc:19601 (Hong Kong). The examples use Europe; replace only the
+hostname to use Hong Kong.
 
 CPU-only mode:
 
   ./invminer --coin noid --cpu-only \
-    -o stratum+ssl://stratum.innovlab.cc:19601 \
+    -o stratum+ssl://eu.innovlab.cc:19601 \
     -u YOUR_NOID_ADDRESS.RIG_NAME \
     -p x
 

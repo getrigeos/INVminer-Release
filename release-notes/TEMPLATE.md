@@ -4,16 +4,20 @@
 
 ```bash
 ./invminer --coin noid \
-  -o stratum+ssl://stratum.innovlab.cc:19601 \
+  -o stratum+ssl://eu.innovlab.cc:19601 \
   -u YOUR_NOID_ADDRESS.RIG_NAME \
   -p x
 ```
+
+Use only an official NOID TLS endpoint: `eu.innovlab.cc:19601` (Europe) or
+`hk.innovlab.cc:19601` (Hong Kong). Release examples default to Europe; replace
+only the hostname to use Hong Kong.
 
 ## CPU-only command
 
 ```bash
 ./invminer --coin noid --cpu-only \
-  -o stratum+ssl://stratum.innovlab.cc:19601 \
+  -o stratum+ssl://eu.innovlab.cc:19601 \
   -u YOUR_NOID_ADDRESS.RIG_NAME \
   -p x
 ```
