@@ -15,6 +15,10 @@ repository README, package README, announcement, table or image may contain
 numerical hashrate, throughput, optimization percentages, estimated earnings or
 performance comparisons. Private qualification evidence remains mandatory.
 
+Public command examples must keep `-p/--pass` optional. Omission on the CLI and
+an empty HiveOS Pass both use the compatible default `x`; release instructions
+must not make an explicit password field look mandatory.
+
 ## Private build baseline
 
 The initial migration baseline is private miner tag `v0.1.41`, commit

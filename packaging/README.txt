@@ -1,4 +1,4 @@
-INVminer v0.1.60 - Linux x86_64
+INVminer v0.1.63 - Linux x86_64
 
 INVminer uses one executable. Select NOID explicitly:
 
@@ -6,8 +6,7 @@ This release supports only NOID and contains no CUDA modules for other coins.
 
   ./invminer --coin noid \
     -o stratum+ssl://eu.innovlab.cc:19601 \
-    -u YOUR_NOID_ADDRESS.RIG_NAME \
-    -p x
+    -u YOUR_NOID_ADDRESS.RIG_NAME
 
 Official NOID TLS endpoints: eu.innovlab.cc:19601 (Europe) and
 hk.innovlab.cc:19601 (Hong Kong). The examples use Europe; replace only the
@@ -17,8 +16,10 @@ CPU-only mode:
 
   ./invminer --coin noid --cpu-only \
     -o stratum+ssl://eu.innovlab.cc:19601 \
-    -u YOUR_NOID_ADDRESS.RIG_NAME \
-    -p x
+    -u YOUR_NOID_ADDRESS.RIG_NAME
+
+The password option is optional. When -p/--pass is omitted or HiveOS Pass is
+left empty, INVminer uses the compatible default value x.
 
 NOID accepts only WebPKI-verified TLS in this release. Plaintext Stratum/TCP,
 insecure TLS, and operator certificate pins are rejected before device startup.
@@ -41,4 +42,4 @@ Extracting or running this package does not install or enable a boot service,
 scheduled task, cron job, login/startup item, or container restart policy.
 
 Official downloads and SHA-256 checksums:
-https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.60
+https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.63

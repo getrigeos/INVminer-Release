@@ -14,6 +14,8 @@ repository.
   `stratum+ssl://hk.innovlab.cc:19601`; examples default to Europe and replace
   only the hostname for Hong Kong. Do not restore `stratum.innovlab.cc` in
   user-facing commands.
+- Public command examples omit `-p/--pass`: the option is not required and an
+  omitted CLI password or empty HiveOS Pass uses the compatible default `x`.
 - Never copy proprietary Rust/CUDA source, Cargo workspaces, vendored source,
   hardware-control source, source archives, build caches or internal recovery
   material into this repository.

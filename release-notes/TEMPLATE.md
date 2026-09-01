@@ -5,8 +5,7 @@
 ```bash
 ./invminer --coin noid \
   -o stratum+ssl://eu.innovlab.cc:19601 \
-  -u YOUR_NOID_ADDRESS.RIG_NAME \
-  -p x
+  -u YOUR_NOID_ADDRESS.RIG_NAME
 ```
 
 Use only an official NOID TLS endpoint: `eu.innovlab.cc:19601` (Europe) or
@@ -18,8 +17,7 @@ only the hostname to use Hong Kong.
 ```bash
 ./invminer --coin noid --cpu-only \
   -o stratum+ssl://eu.innovlab.cc:19601 \
-  -u YOUR_NOID_ADDRESS.RIG_NAME \
-  -p x
+  -u YOUR_NOID_ADDRESS.RIG_NAME
 ```
 
 > **Binary-only risk:** this release may not work with every GPU, CPU, driver,
@@ -45,7 +43,8 @@ Use the exact canonical HiveOS archive name above; do not add tag `v`, platform,
 architecture, HiveOS, or CUDA suffixes.
 Set Miner name to `invminer`, Installation URL to the canonical HiveOS asset,
 Hash algorithm to `noid`, Pool URL to the TLS endpoint above, Template to
-`%WAL%.%WORKER_NAME%`, and Pass to `x`. Leave Extra config arguments empty
+`%WAL%.%WORKER_NAME%`, and Pass empty (or `x`; both use the compatible default).
+Leave Extra config arguments empty
 unless ordinary runtime flags are required; never put another package URL there.
 Record the installed-archive functional gate for dashboard statistics, username
 mapping, extra arguments, and logs.

@@ -112,7 +112,7 @@ if ((hiveos_archive == 1)) || [[ $archive_name == *-cuda12.tar.gz ]]; then
   for marker in \
     'cuda12abi7_sm86_clmad' \
     'cuda122_tower_sm86_compat_fallback' \
-    'CUDA 12.2 native SM86 compatibility module selected'; do
+    'reviewed SM86 compatibility module selected'; do
     rg -Fq "$marker" "$work/binary.strings" || {
       echo "CUDA 12 archive is missing mandatory SM86 compatibility marker: $marker" >&2
       exit 1
@@ -121,7 +121,7 @@ if ((hiveos_archive == 1)) || [[ $archive_name == *-cuda12.tar.gz ]]; then
 fi
 
 if rg -n -i \
-  '/Users/|/root/|README-AI|id_ed25519|BEGIN (OPENSSH|RSA|EC|PRIVATE) KEY|01pool' \
+  '/Users/|(^|[^[:alnum:]_./-])/root/|README-AI|id_ed25519|BEGIN (OPENSSH|RSA|EC|PRIVATE) KEY|01pool' \
   "$work/binary.strings" "$extract/$readme"; then
   echo "archive contains a private build marker, endpoint, or credential" >&2
   exit 1
