@@ -40,8 +40,9 @@ repository.
   throughput benchmarks or comparative performance figures unless the operator
   explicitly approves a release-specific disclosure. Each exception must be
   exact, recorded in the repository gate, paired with GPU model, power cap and
-  test duration, and must not authorize unrelated performance claims. v0.1.63
-  currently has the only approved exception.
+  test duration, and must not authorize unrelated performance claims. The
+  approved v0.1.64 exception covers only the exact final RTX 3080, RTX 4070,
+  tuned RTX 4090, and tuned RTX 5090 60-second results.
 - Public assets must state that the executable never installs or enables an OS
   service, scheduled task, login/startup item, cron job or container restart
   policy. Any persistence template is opt-in and requires a separate explicit

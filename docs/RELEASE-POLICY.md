@@ -17,8 +17,9 @@ performance comparisons unless the operator explicitly approves an exact,
 release-specific exception. An approved exception must state GPU model, power
 cap and test duration, must be represented by an exact repository-gate
 allowlist, and does not authorize any unrelated performance claim. Private
-qualification evidence remains mandatory. v0.1.63 has one such approved RTX
-3080 sample disclosure.
+qualification evidence remains mandatory. The approved v0.1.64 exception is
+limited to the exact final RTX 3080 and RTX 4070 default-control results and
+the exact final tuned RTX 4090 and RTX 5090 results, each from a 60-second run.
 
 Public command examples must keep `-p/--pass` optional. Omission on the CLI and
 an empty HiveOS Pass both use the compatible default `x`; release instructions

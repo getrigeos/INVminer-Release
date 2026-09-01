@@ -54,11 +54,12 @@ if (( ${#public_files[@]} > 0 )); then
   performance_hits=$(rg -n -i \
     '[0-9]+([.][0-9]+)?[[:space:]]*(k|m|g|t|p|e)?h/s|[0-9]+([.][0-9]+)?[[:space:]]*hash(es)?/s' \
     "${public_files[@]}" || true)
-  # The operator explicitly approved the exact bilingual v0.1.63 profile rows
+  # The operator explicitly approved only the exact bilingual profile rows
   # below. Keep every exception release-specific; every other numeric mining
   # rate remains blocked.
   unexpected_performance_hits=$(printf '%s\n' "$performance_hits" | rg -v \
-    '^release-notes/v0\.1\.63\.md:[0-9]+:\| RTX (3080 10GB \| (HiveOS/CUDA 12; INVminer controls|HiveOS／CUDA 12；INVminer 控制) \| 320 W \| 810 MHz \| \+260 MHz \| 64\.386 MH/s|4090 \| (HiveOS/CUDA 12; default clocks|HiveOS／CUDA 12；預設頻率) \| 450 W \| (Default|預設) \| 0 \| 148\.972 MH/s|4090 \| (CUDA 13; operating-system tuning|CUDA 13；作業系統調優) \| 450 W \| 810 MHz \| \+250 MHz \| 161\.447 MH/s|5090 \| (CUDA 13; default clocks|CUDA 13；預設頻率) \| 575 W \| (Default|預設) \| 0 \| 192\.195 MH/s|5090 \| (CUDA 13; operating-system tuning|CUDA 13；作業系統調優) \| 575 W \| 810 MHz \| \+250 MHz \| 204\.917 MH/s) \|$' \
+    -e '^release-notes/v0\.1\.63\.md:[0-9]+:\| RTX (3080 10GB \| (HiveOS/CUDA 12; INVminer controls|HiveOS／CUDA 12；INVminer 控制) \| 320 W \| 810 MHz \| \+260 MHz \| 64\.386 MH/s|4090 \| (HiveOS/CUDA 12; default clocks|HiveOS／CUDA 12；預設頻率) \| 450 W \| (Default|預設) \| 0 \| 148\.972 MH/s|4090 \| (CUDA 13; operating-system tuning|CUDA 13；作業系統調優) \| 450 W \| 810 MHz \| \+250 MHz \| 161\.447 MH/s|5090 \| (CUDA 13; default clocks|CUDA 13；預設頻率) \| 575 W \| (Default|預設) \| 0 \| 192\.195 MH/s|5090 \| (CUDA 13; operating-system tuning|CUDA 13；作業系統調優) \| 575 W \| 810 MHz \| \+250 MHz \| 204\.917 MH/s) \|$' \
+    -e '^release-notes/v0\.1\.64\.md:[0-9]+:\| RTX (3080 10GB \| (Linux CUDA 12; default controls|Linux CUDA 12；預設控制) \| 320 W \| (Default|預設) \| 0 \| 57\.823 MH/s|4070 \| (HiveOS / CUDA 12; default controls|HiveOS／CUDA 12；預設控制) \| 200 W \| (Default|預設) \| 0 \| 56\.243 MH/s|4090 \| (Linux CUDA 13; INVminer tuning|Linux CUDA 13；INVminer 調優) \| 450 W \| 810 MHz \| \+250 MHz \| 161\.054 MH/s|5090 \| (Linux CUDA 13; INVminer tuning|Linux CUDA 13；INVminer 調優) \| 575 W \| 810 MHz \| \+400 MHz \| 231\.271 MH/s) \|$' \
     || true)
   if [[ -n $unexpected_performance_hits ]]; then
     printf '%s\n' "$unexpected_performance_hits"
