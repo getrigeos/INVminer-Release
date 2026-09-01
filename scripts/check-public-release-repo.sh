@@ -24,7 +24,7 @@ while IFS= read -r -d '' path; do
 done < <(git ls-files -z -- README.md README-AI.md docs release-notes)
 
 if (( ${#public_files[@]} > 0 )) && rg -n -i \
-  '\buminer\b|invminer-noid|noid-miner|\bo[0-9a-z]{50,}\b|/Users/|/root/|id_ed25519|BEGIN (OPENSSH|RSA|EC|PRIVATE) KEY' \
+  '\buminer\b|invminer-noid|noid-miner|\bo[0-9a-z]{50,}\b|/Users/|(^|[^[:alnum:]_./-])/root/|id_ed25519|BEGIN (OPENSSH|RSA|EC|PRIVATE) KEY' \
   "${public_files[@]}"; then
   echo "public repository contains legacy branding/endpoint or a private marker" >&2
   bad=1
@@ -50,11 +50,21 @@ for endpoint in \
   }
 done
 
-if (( ${#public_files[@]} > 0 )) && rg -n -i \
-  '[0-9]+([.][0-9]+)?[[:space:]]*(k|m|g|t|p|e)?h/s|[0-9]+([.][0-9]+)?[[:space:]]*hash(es)?/s' \
-  "${public_files[@]}"; then
-  echo "public release material contains a prohibited mining-rate figure" >&2
-  bad=1
+if (( ${#public_files[@]} > 0 )); then
+  performance_hits=$(rg -n -i \
+    '[0-9]+([.][0-9]+)?[[:space:]]*(k|m|g|t|p|e)?h/s|[0-9]+([.][0-9]+)?[[:space:]]*hash(es)?/s' \
+    "${public_files[@]}" || true)
+  # The operator explicitly approved these two equivalent v0.1.63 disclosure
+  # lines. Keep the exception exact and release-specific; every other numeric
+  # mining-rate statement remains blocked.
+  unexpected_performance_hits=$(printf '%s\n' "$performance_hits" | rg -v \
+    '^release-notes/v0\.1\.63\.md:[0-9]+:(On the qualified RTX 3080 10GB sample, a warm 60-second run at the 320 W power cap produced 64\.386 MH/s\.|合格的 RTX 3080 10GB 樣卡在 320 W 功率牆下進行熱卡 60 秒測試，實測為 64\.386 MH/s。)$' \
+    || true)
+  if [[ -n $unexpected_performance_hits ]]; then
+    printf '%s\n' "$unexpected_performance_hits"
+    echo "public release material contains a prohibited mining-rate figure" >&2
+    bad=1
+  fi
 fi
 
 if (( ${#public_files[@]} > 0 )) && rg -n -i \

@@ -37,8 +37,11 @@ repository.
   historical cleanup. This is not a standing ban: future versions may follow
   the normal release workflow and are not automatically withdrawn afterward.
 - Future public pages, notes and package READMEs must not state hashrate,
-  throughput benchmarks or comparative performance figures. Those records are
-  private engineering evidence only.
+  throughput benchmarks or comparative performance figures unless the operator
+  explicitly approves a release-specific disclosure. Each exception must be
+  exact, recorded in the repository gate, paired with GPU model, power cap and
+  test duration, and must not authorize unrelated performance claims. v0.1.63
+  currently has the only approved exception.
 - Public assets must state that the executable never installs or enables an OS
   service, scheduled task, login/startup item, cron job or container restart
   policy. Any persistence template is opt-in and requires a separate explicit
@@ -89,7 +92,8 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
 - A future release may state tested GPU/driver compatibility, commands, package
   hashes, accepted/rejected recovery evidence and known limitations. It must not
   publish hashrate, throughput, optimization percentages, estimated earnings or
-  performance comparisons.
+  performance comparisons without the exact operator-approved, release-specific
+  exception described above.
 - A newly published release remains available by default. Withdraw it only for
   a version-specific security leak, corrupt asset, correctness failure or an
   explicit operator decision; record that reason rather than treating withdrawal

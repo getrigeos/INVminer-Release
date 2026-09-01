@@ -13,7 +13,12 @@ recorded.
 The standing public restriction is performance disclosure: no public Release,
 repository README, package README, announcement, table or image may contain
 numerical hashrate, throughput, optimization percentages, estimated earnings or
-performance comparisons. Private qualification evidence remains mandatory.
+performance comparisons unless the operator explicitly approves an exact,
+release-specific exception. An approved exception must state GPU model, power
+cap and test duration, must be represented by an exact repository-gate
+allowlist, and does not authorize any unrelated performance claim. Private
+qualification evidence remains mandatory. v0.1.63 has one such approved RTX
+3080 sample disclosure.
 
 Public command examples must keep `-p/--pass` optional. Omission on the CLI and
 an empty HiveOS Pass both use the compatible default `x`; release instructions
@@ -104,9 +109,10 @@ Before publishing a new tag:
 
 Public documentation must not contain numerical mining-rate benchmarks,
 estimated earnings, optimization percentages or comparisons with another
-miner or an earlier INVminer version. Private qualification must still detect
-regressions before distribution, but only pass/fail compatibility and
-reliability outcomes cross this boundary.
+miner or an earlier INVminer version except for an exact operator-approved,
+release-specific disclosure governed above. Private qualification must still
+detect regressions before distribution; compatibility and reliability outcomes
+remain part of every public release.
 
 Managed deployments must retain the miner state directory across process and
 container restarts. The release archive verifier must reject the exact

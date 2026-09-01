@@ -76,8 +76,11 @@ native compatibility profile when the driver rejects the primary image; users
 must not be told to switch HiveOS packages or select a module manually.
 
 Do not publish hashrate, throughput, optimization percentages, estimated
-earnings, or performance comparisons. Public notes may state only compatibility,
-pass/fail correctness, recovery evidence, and known boundaries.
+earnings, or performance comparisons unless the operator explicitly approves
+an exact release-specific disclosure. Such an exception must include GPU model,
+power cap and test duration and must have an exact repository-gate allowlist;
+it does not authorize unrelated figures. Otherwise public notes state only
+compatibility, pass/fail correctness, recovery evidence, and known boundaries.
 
 ## Developer fee
 

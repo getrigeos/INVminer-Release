@@ -156,9 +156,11 @@ restart policy. Hardware-control options are disabled unless explicitly
 provided; unsupported optional controls warn and continue at verified
 defaults.
 
-Public releases document compatibility and functional qualification but do
-not publish numerical hashrate, throughput, optimization percentages,
-estimated earnings, or comparative performance.
+Public releases document compatibility and functional qualification. Numerical
+hashrate, throughput, optimization percentages, estimated earnings, or
+comparative performance remain private unless the operator explicitly approves
+an exact release-specific disclosure with its GPU, power cap, duration and
+repository-gate allowlist. See each Release Note for any approved exception.
 
 See [release policy](docs/RELEASE-POLICY.md) and the
 [release-notes template](release-notes/TEMPLATE.md).
