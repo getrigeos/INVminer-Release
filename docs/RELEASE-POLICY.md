@@ -20,6 +20,9 @@ allowlist, and does not authorize any unrelated performance claim. Private
 qualification evidence remains mandatory. The approved v0.1.64 exception is
 limited to the exact final RTX 3080 and RTX 4070 default-control results and
 the exact final tuned RTX 4090 and RTX 5090 results, each from a 60-second run.
+The approved v0.1.65 exception is likewise limited to its exact final RTX 3080
+and RTX 4070 default-control rows and tuned RTX 4090 and RTX 5090 rows, each
+from a 60-second run.
 
 Public command examples must keep `-p/--pass` optional. Omission on the CLI and
 an empty HiveOS Pass both use the compatible default `x`; release instructions

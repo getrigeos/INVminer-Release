@@ -43,6 +43,8 @@ repository.
   test duration, and must not authorize unrelated performance claims. The
   approved v0.1.64 exception covers only the exact final RTX 3080, RTX 4070,
   tuned RTX 4090, and tuned RTX 5090 60-second results.
+  The approved v0.1.65 exception has the same four-model scope and covers only
+  the exact final v0.1.65 rows recorded in its bilingual Release Note.
 - Public assets must state that the executable never installs or enables an OS
   service, scheduled task, login/startup item, cron job or container restart
   policy. Any persistence template is opt-in and requires a separate explicit

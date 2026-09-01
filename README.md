@@ -10,7 +10,7 @@ infrastructure are not published here.
 ## Current release
 
 The current release is
-[v0.1.64](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.64). Download
+[v0.1.65](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.65). Download
 only from that page and verify `SHA256SUMS.txt` before use.
 
 ## Required command shape
@@ -57,14 +57,14 @@ command.
 The password option is optional. When `-p/--pass` is omitted, INVminer uses the
 compatible default value `x`.
 
-NOID accepts only WebPKI-verified TLS in v0.1.64. Plaintext Stratum/TCP,
+NOID accepts only WebPKI-verified TLS in v0.1.65. Plaintext Stratum/TCP,
 insecure TLS, and operator certificate pins are rejected before device startup.
 A valid public-CA certificate renewal for the same hostname, including a new
 leaf key, requires no miner configuration change.
 
 ## Optional NVIDIA controls
 
-v0.1.64 can apply the reviewed NVIDIA settings from the `invminer` command
+v0.1.65 can apply the reviewed NVIDIA settings from the `invminer` command
 itself. The supported controls are `--power-limit`, `--lock-core` (core upper
 bound), `--locked-core-clock` (fixed core), `--lock-mem` (fixed memory clock),
 and `--core-clock-offset`. Core-offset users may also select
@@ -115,10 +115,10 @@ NVIDIA Linux driver 535.
 
 The canonical HiveOS archive uses the broad CUDA 12 host-compatibility flavor;
 its filename intentionally has no CUDA suffix because HiveOS validates the
-Custom Miner package name. For v0.1.64, set:
+Custom Miner package name. For v0.1.65, set:
 
 - Miner name: `invminer`
-- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.64/invminer-0.1.64.tar.gz`
+- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.65/invminer-0.1.65.tar.gz`
 - Hash algorithm: `noid`
 - Pool URL: `stratum+ssl://eu.innovlab.cc:19601`
 - Wallet and worker template: `%WAL%.%WORKER_NAME%`
