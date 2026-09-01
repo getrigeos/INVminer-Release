@@ -54,11 +54,11 @@ if (( ${#public_files[@]} > 0 )); then
   performance_hits=$(rg -n -i \
     '[0-9]+([.][0-9]+)?[[:space:]]*(k|m|g|t|p|e)?h/s|[0-9]+([.][0-9]+)?[[:space:]]*hash(es)?/s' \
     "${public_files[@]}" || true)
-  # The operator explicitly approved these equivalent v0.1.63 RTX 3080 and
-  # RTX 4090 disclosure lines. Keep every exception exact and release-specific;
-  # every other numeric mining-rate statement remains blocked.
+  # The operator explicitly approved the exact bilingual v0.1.63 profile rows
+  # below. Keep every exception release-specific; every other numeric mining
+  # rate remains blocked.
   unexpected_performance_hits=$(printf '%s\n' "$performance_hits" | rg -v \
-    '^release-notes/v0\.1\.63\.md:[0-9]+:(On the qualified RTX 3080 10GB sample, a warm 60-second run at the 320 W power cap produced 64\.386 MH/s\.|合格的 RTX 3080 10GB 樣卡在 320 W 功率牆下進行熱卡 60 秒測試，實測為 64\.386 MH/s。|On the qualified RTX 4090 sample, the public HiveOS package produced 148\.972 MH/s in a 60-second offline run at default clocks and the default 450 W power limit\.|合格的 RTX 4090 樣卡使用公開 HiveOS 套件、預設 450 W 功率牆與預設頻率進行離線 60 秒測試，實測為 148\.972 MH/s。|With the operating-system profile set to a 450 W power limit, 810 MHz locked memory, and \+250 MHz core offset, the qualified RTX 4090 sample produced 161\.447 MH/s in a 60-second offline run\.|作業系統設定 450 W 功率牆、顯存鎖定 810 MHz 與核心 offset \+250 MHz 後，合格的 RTX 4090 樣卡進行離線 60 秒測試，實測為 161\.447 MH/s。)$' \
+    '^release-notes/v0\.1\.63\.md:[0-9]+:\| RTX (3080 10GB \| (HiveOS/CUDA 12; INVminer controls|HiveOS／CUDA 12；INVminer 控制) \| 320 W \| 810 MHz \| \+260 MHz \| 64\.386 MH/s|4090 \| (HiveOS/CUDA 12; default clocks|HiveOS／CUDA 12；預設頻率) \| 450 W \| (Default|預設) \| 0 \| 148\.972 MH/s|4090 \| (CUDA 13; operating-system tuning|CUDA 13；作業系統調優) \| 450 W \| 810 MHz \| \+250 MHz \| 161\.447 MH/s|5090 \| (CUDA 13; default clocks|CUDA 13；預設頻率) \| 575 W \| (Default|預設) \| 0 \| 192\.195 MH/s|5090 \| (CUDA 13; operating-system tuning|CUDA 13；作業系統調優) \| 575 W \| 810 MHz \| \+250 MHz \| 204\.917 MH/s) \|$' \
     || true)
   if [[ -n $unexpected_performance_hits ]]; then
     printf '%s\n' "$unexpected_performance_hits"
