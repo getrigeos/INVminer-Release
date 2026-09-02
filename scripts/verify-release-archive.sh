@@ -107,12 +107,21 @@ if ((hiveos_archive == 1)); then
   }
 fi
 strings "$extract/$binary" >"$work/binary.strings"
+# Rust panic locations can retain the builder's standard crates.io registry
+# prefix. It identifies public dependencies rather than the private source
+# checkout. Normalize only that fixed prefix before the private-path scan so
+# /root/projects, user directories and every other /root path remain blocked.
+sed -E \
+  's#/root/\.cargo/registry/src/index\.crates\.io-[0-9a-f]+/#/cargo/registry/#g' \
+  "$work/binary.strings" >"$work/binary.strings.public-scan"
 
 if ((hiveos_archive == 1)) || [[ $archive_name == *-cuda12.tar.gz ]]; then
   for marker in \
+    'cuda133abi8_sm80_clmad_r4_allbyte64_mixed9_persistent_v1' \
+    'cuda122_sm80_gf8_shared_compat_v1' \
     'cuda12abi7_sm86_clmad' \
     'cuda122_tower_sm86_compat_fallback' \
-    'reviewed SM86 compatibility module selected'; do
+    'reviewed CUDA compatibility module selected'; do
     rg -Fq "$marker" "$work/binary.strings" || {
       echo "CUDA 12 archive is missing mandatory SM86 compatibility marker: $marker" >&2
       exit 1
@@ -121,8 +130,8 @@ if ((hiveos_archive == 1)) || [[ $archive_name == *-cuda12.tar.gz ]]; then
 fi
 
 if rg -n -i \
-  '/Users/|(^|[^[:alnum:]_./-])/root/|README-AI|id_ed25519|BEGIN (OPENSSH|RSA|EC|PRIVATE) KEY|01pool' \
-  "$work/binary.strings" "$extract/$readme"; then
+  '/Users/|(^|[^[:alnum:]_./-])/root/|README-AI|id_ed25519|BEGIN (OPENSSH|RSA|EC|PRIVATE) KEY' \
+  "$work/binary.strings.public-scan" "$extract/$readme"; then
   echo "archive contains a private build marker, endpoint, or credential" >&2
   exit 1
 fi

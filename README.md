@@ -10,7 +10,7 @@ infrastructure are not published here.
 ## Current release
 
 The current release is
-[v0.1.65](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.65). Download
+[v0.1.68](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.68). Download
 only from that page and verify `SHA256SUMS.txt` before use.
 
 ## Required command shape
@@ -57,14 +57,14 @@ command.
 The password option is optional. When `-p/--pass` is omitted, INVminer uses the
 compatible default value `x`.
 
-NOID accepts only WebPKI-verified TLS in v0.1.65. Plaintext Stratum/TCP,
+NOID accepts only WebPKI-verified TLS in v0.1.68. Plaintext Stratum/TCP,
 insecure TLS, and operator certificate pins are rejected before device startup.
 A valid public-CA certificate renewal for the same hostname, including a new
 leaf key, requires no miner configuration change.
 
 ## Optional NVIDIA controls
 
-v0.1.65 can apply the reviewed NVIDIA settings from the `invminer` command
+v0.1.68 can apply the reviewed NVIDIA settings from the `invminer` command
 itself. The supported controls are `--power-limit`, `--lock-core` (core upper
 bound), `--locked-core-clock` (fixed core), `--lock-mem` (fixed memory clock),
 and `--core-clock-offset`. Core-offset users may also select
@@ -97,28 +97,28 @@ binary or downloading a GPU-specific build.
 
 | Flavor | Host boundary | Embedded NVIDIA lanes |
 |---|---|---|
-| CUDA 12 | Broad compatibility, including 535-era hosts | `sm_75`, `sm_86`, `sm_89`, `sm_120`, plus fallback |
-| CUDA 13 | CUDA Driver API 13.0 / Linux driver 580 or newer | `sm_86`, `sm_89`, `sm_120` |
+| CUDA 12 | Broad compatibility, including 535-era hosts | `sm_75`, `sm_80`, `sm_86`, `sm_89`, `sm_120`, plus fallback |
+| CUDA 13 | CUDA Driver API 13.0 / Linux driver 580 or newer | `sm_80`, `sm_86`, `sm_89`, `sm_120` |
 
 Turing/CMP cards such as CMP 40HX, CMP 50HX, and RTX 2080 Ti must use the CUDA
 12 package. RTX 30, RTX 40, and RTX 50 families select their embedded lane at
 runtime. Architecture support is not a model-specific performance claim.
 
-On Ampere `sm_86`, the CUDA 12/HiveOS binary first loads the reviewed native
-performance profile. If the installed driver rejects that image as
+On Ampere `sm_80` and `sm_86`, the CUDA 12/HiveOS binary selects the reviewed
+native profile supported by the installed driver. If a newer image is
 incompatible, INVminer automatically loads its embedded CUDA 12.2 native
-`sm_86` compatibility profile. No alternate HiveOS package, module environment
-variable, or manual CUDA selection is required. The CUDA 12 driver floor is
-NVIDIA Linux driver 535.
+compatibility profile. No alternate HiveOS package, module environment variable,
+or manual CUDA selection is required. The CUDA 12 driver floor is NVIDIA Linux
+driver 535.
 
 ## HiveOS
 
 The canonical HiveOS archive uses the broad CUDA 12 host-compatibility flavor;
 its filename intentionally has no CUDA suffix because HiveOS validates the
-Custom Miner package name. For v0.1.65, set:
+Custom Miner package name. For v0.1.68, set:
 
 - Miner name: `invminer`
-- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.65/invminer-0.1.65.tar.gz`
+- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.68/invminer-0.1.68.tar.gz`
 - Hash algorithm: `noid`
 - Pool URL: `stratum+ssl://eu.innovlab.cc:19601`
 - Wallet and worker template: `%WAL%.%WORKER_NAME%`
