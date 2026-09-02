@@ -45,6 +45,12 @@ repository.
   tuned RTX 4090, and tuned RTX 5090 60-second results.
   The approved v0.1.65 exception has the same four-model scope and covers only
   the exact final v0.1.65 rows recorded in its bilingual Release Note.
+  The operator explicitly approved a v0.1.70 disclosure of all latest validated
+  baseline and tuned sample-card rows. The v0.1.70 exact RTX 4070 row and the
+  explicitly version-labelled preserved-module rows for CMP 50HX, A100, RTX
+  3080, RTX 4090, and RTX 5090 are the complete exception; no percentage,
+  efficiency, earnings, comparison, or unlabelled v0.1.70 performance claim is
+  authorized.
 - Public assets must state that the executable never installs or enables an OS
   service, scheduled task, login/startup item, cron job or container restart
   policy. Any persistence template is opt-in and requires a separate explicit

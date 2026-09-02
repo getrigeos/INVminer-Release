@@ -1,4 +1,4 @@
-INVminer v0.1.68 - Linux x86_64
+INVminer v0.1.70 - Linux x86_64
 
 INVminer uses one executable. Select NOID explicitly:
 
@@ -26,6 +26,11 @@ insecure TLS, and operator certificate pins are rejected before device startup.
 A valid public-CA certificate renewal for the same hostname, including a new
 leaf key, requires no miner configuration change.
 
+Temporary DNS, certificate, or pool-service failures do not require a process
+restart. INVminer retries with bounded backoff, re-resolves the hostname, and
+resumes after the service and its valid certificate are restored. TLS
+certificate-chain and hostname verification remain enabled on every reconnect.
+
 Choose the CUDA 12 or CUDA 13 archive according to host-driver compatibility.
 The executable name remains invminer in both packages. Normal operation does
 not require --state-dir or mining-geometry arguments.
@@ -42,4 +47,4 @@ Extracting or running this package does not install or enable a boot service,
 scheduled task, cron job, login/startup item, or container restart policy.
 
 Official downloads and SHA-256 checksums:
-https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.68
+https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.70
