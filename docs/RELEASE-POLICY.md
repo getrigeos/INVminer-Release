@@ -104,7 +104,11 @@ Before publishing a new tag:
     The note must limit manual replacement to older HiveOS installations that
     failed to auto-update, and contain exactly one unsplit command generated
     from the current version. Missing stop/start, stale archive/URL versions,
-    or a wrapped shell command blocks publication.
+    or a wrapped shell command blocks publication. The same gate also requires
+    one single-line foreground troubleshooting command generated from the
+    current public GitHub tag and asset. It must begin with
+    `(miner stop || true) &&`, use `YOUR_NOID_ADDRESS`, and must not contain a
+    private wallet, internal OSS URL, stale version, or `\` line continuation.
 13. For the CUDA 12 and canonical HiveOS assets, verify that the final binary
     contains both the reviewed SM86 performance profile and the embedded CUDA
     12.2 native SM86 compatibility fallback. The private build gate must also
