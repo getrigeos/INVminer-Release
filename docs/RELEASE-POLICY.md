@@ -107,8 +107,12 @@ Before publishing a new tag:
     or a wrapped shell command blocks publication. The same gate also requires
     one single-line foreground troubleshooting command generated from the
     current public GitHub tag and asset. It must begin with
-    `(miner stop || true) &&`, use `YOUR_NOID_ADDRESS`, and must not contain a
-    private wallet, internal OSS URL, stale version, or `\` line continuation.
+    `(miner stop || true) &&`, enter a fresh `mktemp -d` directory whose prefix
+    is derived from the current version, use `YOUR_NOID_ADDRESS`, and must not
+    contain a fixed/reused directory, destructive cleanup, a private wallet,
+    internal OSS URL, stale version, or `\` line continuation. Render the long
+    command as one Markdown inline-code line, not a fenced code block, so the
+    release page wraps it instead of hiding the tail behind horizontal scroll.
 13. For the CUDA 12 and canonical HiveOS assets, verify that the final binary
     contains both the reviewed SM86 performance profile and the embedded CUDA
     12.2 native SM86 compatibility fallback. The private build gate must also
