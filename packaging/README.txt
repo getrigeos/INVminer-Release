@@ -1,16 +1,10 @@
-INVminer v0.1.70 - Linux x86_64
+INVminer v0.1.71 - Linux x86_64
 
-INVminer uses one executable. Select NOID explicitly:
-
-This release supports only NOID and contains no CUDA modules for other coins.
+INVminer uses one executable and this release supports only NOID:
 
   ./invminer --coin noid \
     -o stratum+ssl://eu.innovlab.cc:19601 \
     -u YOUR_NOID_ADDRESS.RIG_NAME
-
-Official NOID TLS endpoints: eu.innovlab.cc:19601 (Europe) and
-hk.innovlab.cc:19601 (Hong Kong). The examples use Europe; replace only the
-hostname to use Hong Kong.
 
 CPU-only mode:
 
@@ -19,21 +13,37 @@ CPU-only mode:
     -u YOUR_NOID_ADDRESS.RIG_NAME
 
 The password option is optional. When -p/--pass is omitted or HiveOS Pass is
-left empty, INVminer uses the compatible default value x.
+left empty, INVminer uses the compatible default value x. A worker suffix is
+also optional when the pool accepts the wallet address by itself.
 
-NOID accepts only WebPKI-verified TLS in this release. Plaintext Stratum/TCP,
-insecure TLS, and operator certificate pins are rejected before device startup.
-A valid public-CA certificate renewal for the same hostname, including a new
-leaf key, requires no miner configuration change.
+Ordered backup pools can be comma-separated or supplied by repeating -o:
+
+  ./invminer --coin noid \
+    -o stratum+ssl://eu.innovlab.cc:19601 \
+    -o stratum+ssl://hk2.innovlab.cc:19601 \
+    -o stratum+ssl://us.innovlab.cc:19601 \
+    -o stratum+ssl://ru.innovlab.cc:19601 \
+    -u YOUR_NOID_ADDRESS.RIG_NAME
+
+The default primary mode keeps one active mining connection. While mining on a
+backup, it uses only a short, bounded primary probe and returns after consecutive
+successful probes. Rotate mode advances on failure without proactive return.
+INVminer does not keep persistent sessions open to every configured pool.
+
+Public binaries accept only the approved innovlab.cc and 01pool.com TLS domain
+boundary. NOID accepts only WebPKI-verified TLS in this public artifact.
+Plaintext Stratum/TCP, insecure TLS, and operator certificate pins are rejected
+before device startup.
 
 Temporary DNS, certificate, or pool-service failures do not require a process
-restart. INVminer retries with bounded backoff, re-resolves the hostname, and
-resumes after the service and its valid certificate are restored. TLS
-certificate-chain and hostname verification remain enabled on every reconnect.
+restart. INVminer retries with bounded backoff, re-resolves through the system
+configuration, and resumes after the service and its valid certificate are
+restored. TLS certificate-chain and exact-hostname verification remain enabled
+on every reconnect; TLS is never downgraded to plaintext.
 
 Choose the CUDA 12 or CUDA 13 archive according to host-driver compatibility.
-The executable name remains invminer in both packages. Normal operation does
-not require --state-dir or mining-geometry arguments.
+The executable name remains invminer in both packages. The CUDA 12 package is
+the broad compatibility choice, including the embedded Ampere fallback.
 
 NOID developer fee: 5% of effective mining time. Waiting and unavailable fee
 work are not charged. The payout identity is not printed in normal logs.
@@ -47,4 +57,4 @@ Extracting or running this package does not install or enable a boot service,
 scheduled task, cron job, login/startup item, or container restart policy.
 
 Official downloads and SHA-256 checksums:
-https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.70
+https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.71
