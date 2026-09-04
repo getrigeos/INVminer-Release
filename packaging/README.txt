@@ -1,4 +1,4 @@
-INVminer v0.1.71 - Linux x86_64
+INVminer v0.1.73 - Linux x86_64
 
 INVminer uses one executable and this release supports only NOID:
 
@@ -45,7 +45,7 @@ Choose the CUDA 12 or CUDA 13 archive according to host-driver compatibility.
 The executable name remains invminer in both packages. The CUDA 12 package is
 the broad compatibility choice, including the embedded Ampere fallback.
 
-NOID developer fee: 5% of effective mining time. Waiting and unavailable fee
+NOID developer fee: 1% of effective mining time. Waiting and unavailable fee
 work are not charged. The payout identity is not printed in normal logs.
 
 This is closed-source, binary-only software and is provided without warranty.
@@ -57,4 +57,4 @@ Extracting or running this package does not install or enable a boot service,
 scheduled task, cron job, login/startup item, or container restart policy.
 
 Official downloads and SHA-256 checksums:
-https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.71
+https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.73

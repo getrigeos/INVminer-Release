@@ -10,7 +10,7 @@ infrastructure are not published here.
 ## Current release
 
 The current release is
-[v0.1.71](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.71). Download
+[v0.1.73](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.73). Download
 only from that page and verify `SHA256SUMS.txt` before use.
 
 ## Required command shape
@@ -57,7 +57,7 @@ command.
 The password option is optional. When `-p/--pass` is omitted, INVminer uses the
 compatible default value `x`.
 
-NOID accepts only WebPKI-verified TLS in v0.1.71. Plaintext Stratum/TCP,
+NOID accepts only WebPKI-verified TLS in v0.1.73. Plaintext Stratum/TCP,
 insecure TLS, and operator certificate pins are rejected before device startup.
 A valid public-CA certificate renewal for the same hostname, including a new
 leaf key, requires no miner configuration change.
@@ -78,7 +78,7 @@ embedded.
 
 ## Optional NVIDIA controls
 
-v0.1.71 can apply the reviewed NVIDIA settings from the `invminer` command
+v0.1.73 can apply the reviewed NVIDIA settings from the `invminer` command
 itself. The supported controls are `--power-limit`, `--lock-core` (core upper
 bound), `--locked-core-clock` (fixed core), `--lock-mem` (fixed memory clock),
 and `--core-clock-offset`. Core-offset users may also select
@@ -129,10 +129,10 @@ driver 535.
 
 The canonical HiveOS archive uses the broad CUDA 12 host-compatibility flavor;
 its filename intentionally has no CUDA suffix because HiveOS validates the
-Custom Miner package name. For v0.1.71, set:
+Custom Miner package name. For v0.1.73, set:
 
 - Miner name: `invminer`
-- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.71/invminer-0.1.71.tar.gz`
+- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.73/invminer-0.1.73.tar.gz`
 - Hash algorithm: `noid`
 - Pool URL: `stratum+ssl://eu.innovlab.cc:19601`
 - Wallet and worker template: `%WAL%.%WORKER_NAME%`
@@ -152,7 +152,7 @@ flight sheet.
 
 ## Developer fee
 
-NOID uses a 5% developer fee measured from effective mining time. Waiting,
+NOID uses a 1% developer fee measured from effective mining time. Waiting,
 connection preparation failures, and unavailable fee work are not charged.
 The payout identity is private and is not printed in normal logs or public
 documentation.

@@ -56,6 +56,11 @@ repository.
   unchanged-module rows for CMP 50HX, A100, RTX 3080, RTX 4090, and RTX 5090.
   Percentages, efficiency, earnings, comparisons, and unlabelled v0.1.71
   performance claims remain forbidden.
+  The operator explicitly approved the same complete disclosure scope for
+  v0.1.73: the exact v0.1.73 RTX 4070 row plus the explicitly version-labelled
+  unchanged-module rows for CMP 50HX, A100, RTX 3080, RTX 4090, and RTX 5090.
+  Percentages, efficiency, earnings, comparisons, and unlabelled v0.1.73
+  performance claims remain forbidden.
 - Public assets must state that the executable never installs or enables an OS
   service, scheduled task, login/startup item, cron job or container restart
   policy. Any persistence template is opt-in and requires a separate explicit
