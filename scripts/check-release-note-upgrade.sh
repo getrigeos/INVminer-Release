@@ -16,6 +16,10 @@ note=$2
   echo "release note is missing: $note" >&2
   exit 1
 }
+if rg -n -i '01pool' "$note"; then
+  echo 'release note contains forbidden 01pool wording' >&2
+  exit 1
+fi
 
 english_scope='Only some older HiveOS installations need this manual replacement. Use it only when HiveOS does not update the installed custom miner after the Installation URL is changed to this release.'
 traditional_scope='僅部分舊版 HiveOS 需要此手動覆蓋；只有在更新 Installation URL 後仍未替換已安裝的 Custom Miner 時才執行。'

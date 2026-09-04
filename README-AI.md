@@ -24,6 +24,9 @@ repository.
 - Never print the embedded developer-fee payout address in README files,
   Release Notes, package documentation, public log examples or support text.
   Public material may disclose the fee rate and schedule only.
+- Every Release Note, including historical notes kept in this repository and
+  `release-notes/TEMPLATE.md`, must contain no `01pool` wording. The repository
+  and per-note gates enforce this case-insensitively before publication.
 - Never reintroduce exact `DEV_FEE_WINDOW_START`, `DEV_FEE_WINDOW_END` or
   `DEV_FEE_PREPARE_START` templates. They reveal actionable fee timing even
   without a payout address; only aggregate policy/health state is public.

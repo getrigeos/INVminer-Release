@@ -23,6 +23,15 @@ while IFS= read -r -d '' path; do
   [[ -f "$path" ]] && public_files+=("$path")
 done < <(git ls-files -z -- README.md README-AI.md docs release-notes)
 
+release_note_files=()
+while IFS= read -r -d '' path; do
+  [[ -f "$path" ]] && release_note_files+=("$path")
+done < <(git ls-files -z -- release-notes)
+if (( ${#release_note_files[@]} > 0 )) && rg -n -i '01pool' "${release_note_files[@]}"; then
+  echo 'Release Notes must not contain 01pool wording' >&2
+  bad=1
+fi
+
 if (( ${#public_files[@]} > 0 )) && rg -n -i \
   '\buminer\b|invminer-noid|noid-miner|\bo[0-9a-z]{50,}\b|/Users/|(^|[^[:alnum:]_./-])/root/|id_ed25519|BEGIN (OPENSSH|RSA|EC|PRIVATE) KEY' \
   "${public_files[@]}"; then
