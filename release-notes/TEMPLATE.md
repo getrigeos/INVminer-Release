@@ -1,5 +1,9 @@
 # INVminer vX.Y.Z
 
+For the operator-authorized v0.1.74 release only, use its gated compact
+version-to-version hashrate and board-power comparison table instead of the
+sections below. Other releases retain this template unless separately authorized.
+
 ## GPU command
 
 ```bash

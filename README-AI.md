@@ -64,6 +64,13 @@ repository.
   unchanged-module rows for CMP 50HX, A100, RTX 3080, RTX 4090, and RTX 5090.
   Percentages, efficiency, earnings, comparisons, and unlabelled v0.1.73
   performance claims remain forbidden.
+- The operator separately authorized v0.1.74 notes to contain only measured
+  v0.1.73-to-v0.1.74 hashrate, board-power and efficiency changes, with necessary
+  GPU/settings/power-limit and warmed 60-second conditions. Pin the approved
+  final-package table in the repository gate. Do not append upgrade commands,
+  troubleshooting, development details, or unrelated claims to this one note.
+  The older note contract remains in force for other versions. RTX 4070 OC is
+  explicitly excluded; its row uses default controls only.
 - Public assets must state that the executable never installs or enables an OS
   service, scheduled task, login/startup item, cron job or container restart
   policy. Any persistence template is opt-in and requires a separate explicit

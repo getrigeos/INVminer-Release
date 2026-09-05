@@ -21,6 +21,13 @@ if rg -n -i '01pool' "$note"; then
   exit 1
 fi
 
+# This release alone has explicit user authorization for a compact comparison.
+# Keep all other versions on the existing upgrade/troubleshooting contract.
+if [[ $version == 0.1.74 ]]; then
+  python3 "$(dirname "${BASH_SOURCE[0]}")/check-release-note-performance.py" "$version" "$note"
+  exit 0
+fi
+
 english_scope='Only some older HiveOS installations need this manual replacement. Use it only when HiveOS does not update the installed custom miner after the Installation URL is changed to this release.'
 traditional_scope='僅部分舊版 HiveOS 需要此手動覆蓋；只有在更新 Installation URL 後仍未替換已安裝的 Custom Miner 時才執行。'
 upgrade_command="miner stop && cd /tmp && rm -rf invminer && rm -f invminer-${version}.tar.gz && wget -O invminer-${version}.tar.gz https://github.com/getrigeos/INVminer-Release/releases/download/v${version}/invminer-${version}.tar.gz && tar -xzf invminer-${version}.tar.gz && mkdir -p /hive/miners/custom/invminer && rm -f /hive/miners/custom/invminer/invminer && cp -af invminer/. /hive/miners/custom/invminer/ && chmod +x /hive/miners/custom/invminer/invminer /hive/miners/custom/invminer/h-*.sh && /hive/miners/custom/invminer/invminer --version && miner start"

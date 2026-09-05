@@ -42,6 +42,18 @@ fi
 documented_version=$(sed -nE \
   's#^\[v([0-9]+\.[0-9]+\.[0-9]+)\]\(https://github\.com/getrigeos/INVminer-Release/releases/tag/v[0-9]+\.[0-9]+\.[0-9]+\).*#\1#p' \
   README.md | head -n 1)
+
+# Operator authorization is scoped to these final-package measurements only.
+# Keep the complete note pinned even when a later release becomes current.
+if [[ -f release-notes/v0.1.74.md ]]; then
+  approved_v174_sha256=05d233038add50eea08445377edc9f92ee3a363ed79bc416a65fc26907a2f4ee
+  actual_v174_sha256=$(shasum -a 256 release-notes/v0.1.74.md | awk '{print $1}')
+  if [[ $actual_v174_sha256 != "$approved_v174_sha256" ]] \
+    || ! bash scripts/check-release-note-upgrade.sh 0.1.74 release-notes/v0.1.74.md; then
+    echo 'v0.1.74 performance note differs from the approved final-package evidence' >&2
+    bad=1
+  fi
+fi
 endpoint_files=(README.md README-AI.md release-notes/TEMPLATE.md)
 if [[ -n $documented_version && -f release-notes/v${documented_version}.md ]]; then
   endpoint_files+=("release-notes/v${documented_version}.md")

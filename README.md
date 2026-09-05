@@ -10,7 +10,7 @@ infrastructure are not published here.
 ## Current release
 
 The current release is
-[v0.1.73](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.73). Download
+[v0.1.74](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.74). Download
 only from that page and verify `SHA256SUMS.txt` before use.
 
 ## Required command shape
@@ -57,7 +57,7 @@ command.
 The password option is optional. When `-p/--pass` is omitted, INVminer uses the
 compatible default value `x`.
 
-NOID accepts only WebPKI-verified TLS in v0.1.73. Plaintext Stratum/TCP,
+NOID accepts only WebPKI-verified TLS in v0.1.74. Plaintext Stratum/TCP,
 insecure TLS, and operator certificate pins are rejected before device startup.
 A valid public-CA certificate renewal for the same hostname, including a new
 leaf key, requires no miner configuration change.

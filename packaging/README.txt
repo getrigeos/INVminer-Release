@@ -1,4 +1,4 @@
-INVminer v0.1.73 - Linux x86_64
+INVminer v0.1.74 - Linux x86_64
 
 INVminer uses one executable and this release supports only NOID:
 
@@ -57,4 +57,4 @@ Extracting or running this package does not install or enable a boot service,
 scheduled task, cron job, login/startup item, or container restart policy.
 
 Official downloads and SHA-256 checksums:
-https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.73
+https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.74
