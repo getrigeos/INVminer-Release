@@ -1,16 +1,16 @@
-INVminer v0.1.74 - Linux x86_64
+INVminer v0.1.76 - Linux x86_64
 
 INVminer uses one executable and this release supports only NOID:
 
   ./invminer --coin noid \
     -o stratum+ssl://eu.innovlab.cc:19601 \
-    -u YOUR_NOID_ADDRESS.RIG_NAME
+    -u YOUR_NOID_ADDRESS
 
 CPU-only mode:
 
   ./invminer --coin noid --cpu-only \
     -o stratum+ssl://eu.innovlab.cc:19601 \
-    -u YOUR_NOID_ADDRESS.RIG_NAME
+    -u YOUR_NOID_ADDRESS
 
 The password option is optional. When -p/--pass is omitted or HiveOS Pass is
 left empty, INVminer uses the compatible default value x. A worker suffix is
@@ -20,18 +20,15 @@ Ordered backup pools can be comma-separated or supplied by repeating -o:
 
   ./invminer --coin noid \
     -o stratum+ssl://eu.innovlab.cc:19601 \
-    -o stratum+ssl://hk2.innovlab.cc:19601 \
-    -o stratum+ssl://us.innovlab.cc:19601 \
-    -o stratum+ssl://ru.innovlab.cc:19601 \
-    -u YOUR_NOID_ADDRESS.RIG_NAME
+    -o stratum+ssl://hk.innovlab.cc:19601 \
+    -u YOUR_NOID_ADDRESS
 
 The default primary mode keeps one active mining connection. While mining on a
 backup, it uses only a short, bounded primary probe and returns after consecutive
 successful probes. Rotate mode advances on failure without proactive return.
 INVminer does not keep persistent sessions open to every configured pool.
 
-Public binaries accept only the approved innovlab.cc and 01pool.com TLS domain
-boundary. NOID accepts only WebPKI-verified TLS in this public artifact.
+Public binaries enforce the compiled approved TLS endpoint policy. NOID accepts only WebPKI-verified TLS in this public artifact.
 Plaintext Stratum/TCP, insecure TLS, and operator certificate pins are rejected
 before device startup.
 
@@ -57,4 +54,4 @@ Extracting or running this package does not install or enable a boot service,
 scheduled task, cron job, login/startup item, or container restart policy.
 
 Official downloads and SHA-256 checksums:
-https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.74
+https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.76
