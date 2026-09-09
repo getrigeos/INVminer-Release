@@ -55,6 +55,20 @@ if [[ -f release-notes/v0.1.74.md ]]; then
   fi
 fi
 endpoint_files=(README.md README-AI.md release-notes/TEMPLATE.md)
+if [[ -f release-notes/v0.1.78.md ]]; then
+  approved_v178_sha256=0fd55734acc19869930b1009a3ed508326594d186557e0e29b430289a5cf0cff
+  actual_v178_sha256=$(shasum -a 256 release-notes/v0.1.78.md | awk '{print $1}')
+  if [[ $actual_v178_sha256 != "$approved_v178_sha256" ]] || ! bash scripts/check-release-note-upgrade.sh 0.1.78 release-notes/v0.1.78.md; then
+    echo 'v0.1.78 three-card note differs from the approved final-byte evidence' >&2
+    bad=1
+  fi
+fi
+# Only this exact SHA-pinned note has the separately approved v0.1.78 disclosure.
+# Keep privacy/brand scans over every file, and numeric restrictions on all others.
+performance_files=()
+for path in "${public_files[@]}"; do
+  [[ $path == release-notes/v0.1.78.md ]] || performance_files+=("$path")
+done
 if [[ -n $documented_version && -f release-notes/v${documented_version}.md ]]; then
   endpoint_files+=("release-notes/v${documented_version}.md")
 fi
@@ -74,7 +88,7 @@ done
 if (( ${#public_files[@]} > 0 )); then
   performance_hits=$(rg -n -i \
     '[0-9]+([.][0-9]+)?[[:space:]]*(k|m|g|t|p|e)?h/s|[0-9]+([.][0-9]+)?[[:space:]]*hash(es)?/s' \
-    "${public_files[@]}" || true)
+    "${performance_files[@]}" || true)
   # The operator explicitly approved only the exact bilingual profile rows
   # below. Keep every exception release-specific; every other numeric mining
   # rate remains blocked.
@@ -97,7 +111,7 @@ fi
 
 if (( ${#public_files[@]} > 0 )) && rg -n -i \
   '([0-9]+([.][0-9]+)?[[:space:]]*%[[:space:]]*(faster|slower|gain|gains|improvement|higher|lower))|((faster|slower|gain|gains|improvement|higher|lower)[^[:cntrl:]]{0,40}[0-9]+([.][0-9]+)?[[:space:]]*%)|[0-9]+([.][0-9]+)?[[:space:]]*(samples|solutions|candidates|targets?)/s' \
-  "${public_files[@]}"; then
+  "${performance_files[@]}"; then
   echo "public release material contains a prohibited numerical performance claim" >&2
   bad=1
 fi

@@ -71,6 +71,13 @@ repository.
   troubleshooting, development details, or unrelated claims to this one note.
   The older note contract remains in force for other versions. RTX 4070 OC is
   explicitly excluded; its row uses default controls only.
+- For v0.1.78 only, the operator additionally authorized final desktop RTX
+  4070/4090/5090 default-control rates, board power and efficiency, comparison
+  with v0.1.77 and same-card Fl4shMiner 1.3.8 controls. Pin the entire approved
+  bilingual note by SHA-256 in the repository gate. Identify the warmed
+  60-second method and power caps; retain the RTX 4070 legacy-profile tradeoff
+  and explicitly state that RTX 5090 has no new improvement over v0.1.77.
+  This exception does not extend to README/package documents or later versions.
 - Public assets must state that the executable never installs or enables an OS
   service, scheduled task, login/startup item, cron job or container restart
   policy. Any persistence template is opt-in and requires a separate explicit
