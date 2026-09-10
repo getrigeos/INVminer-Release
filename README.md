@@ -1,188 +1,103 @@
 # INVminer
 
-Official closed-source NOID miner for [InnovLab Pool](https://innovlab.cc).
-
-This public repository contains release binaries, checksums, operator
-documentation, and release notes only. Proprietary Rust/CUDA source,
-hardware-control implementation, credentials, wallet material, and private
-infrastructure are not published here.
+Official closed-source NOID and QUAN miner for [InnovLab Pool](https://innovlab.cc).
+This repository contains release binaries, checksums, operator documentation,
+and release notes. It does not contain miner source or private credentials.
 
 ## Current release
 
 The current release is
-[v0.1.78](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.78). Download
-only from that page and verify `SHA256SUMS.txt` before use.
+[v0.1.81](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.81).
+Download only from that page and verify `SHA256SUMS.txt` before use.
 
-## Required command shape
+## Commands
 
-INVminer has one executable, `invminer`. The algorithm is always selected
-explicitly with `--coin`; there are no per-coin executables. The current public
-release supports only `--coin noid` and does not include other coin CUDA modules.
-
-All visible GPUs:
+NOID on all visible GPUs:
 
 ```bash
 ./invminer --coin noid \
   -o stratum+ssl://eu.innovlab.cc:19601 \
-  -u YOUR_NOID_ADDRESS
+  -u YOUR_NOID_ADDRESS[.WORKER]
 ```
 
-Use one of the two official NOID TLS endpoints: `eu.innovlab.cc:19601`
-(Europe) or `hk.innovlab.cc:19601` (Hong Kong). The examples use Europe;
-replace only the hostname to use Hong Kong.
-
-One selected GPU:
+QUAN on all visible GPUs:
 
 ```bash
-./invminer --coin noid \
-  -o stratum+ssl://eu.innovlab.cc:19601 \
-  -u YOUR_NOID_ADDRESS \
-  --device 0
+./invminer --coin quan \
+  -o stratum+ssl://eu2.innovlab.cc:17601 \
+  -u YOUR_QUANTUS_ADDRESS[.WORKER]
 ```
 
-CPU-only mode:
+NOID CPU-only mode:
 
 ```bash
 ./invminer --coin noid --cpu-only \
   -o stratum+ssl://eu.innovlab.cc:19601 \
-  -u YOUR_NOID_ADDRESS
+  -u YOUR_NOID_ADDRESS[.WORKER]
 ```
 
-With no device list, supported GPUs share one user-pool connection and use
-non-overlapping search ranges. Do not supply GPU geometry, CPU thread count,
-batch size, or ISA flags; the miner selects reviewed defaults or a bounded
-first-run auto-tune. `--state-dir` is optional and is not part of the normal
-command.
+`--coin noid` or `--coin quan` is required. A missing or unsupported coin exits
+before network or GPU startup. The worker suffix and `--pass` are optional; an
+omitted password uses the compatible value `x`.
 
-The password option is optional. When `-p/--pass` is omitted, INVminer uses the
-compatible default value `x`.
+When neither `--device` nor `--devices` is supplied, INVminer starts every
+visible supported GPU in one process. The GPUs share one user-pool connection
+and receive disjoint search domains. Use `--device 0` for one GPU or
+`--devices 0,2` for an explicit subset.
 
-NOID accepts only WebPKI-verified TLS in v0.1.78. Plaintext Stratum/TCP,
-insecure TLS, and operator certificate pins are rejected before device startup.
-A valid public-CA certificate renewal for the same hostname, including a new
-leaf key, requires no miner configuration change.
-
-Temporary DNS, certificate, or pool-service failures do not require a miner
-restart. INVminer keeps the same process alive, retries with bounded backoff,
-re-resolves the pool hostname, and resumes after the service and its valid
-certificate are restored. Certificate-chain and hostname verification remain
-mandatory on every TLS reconnect.
-
-For hot standby, repeat `--pool` or provide a comma-separated pool list. The
-miner keeps one steady mining connection, rotates only after bounded failures,
-and periodically probes the primary with a short-lived connection. It returns
-only after consecutive successful probes; unstable pools receive progressively
-longer avoidance. `/etc/hosts` and the host's normal resolver configuration are
-honoured on every reconnect. No public DNS server or site-specific resolver is
-embedded.
-
-## Optional compute profile
-
-Desktop RTX 4070 / RTX 4090 automatically select the updated NOID profile on
-supported drivers (580+). `--noid-legacy-profile` opts into the previous compute
-profile when lower board power is preferred. It does not change GPU clocks or
-power limits and cannot be combined with `--cpu-only`. Other models retain their
-existing selection; the RTX 5090 optimization from v0.1.77 is preserved.
-
-## Optional NVIDIA controls
-
-v0.1.78 can apply the reviewed NVIDIA settings from the `invminer` command
-itself. The supported controls are `--power-limit`, `--lock-core` (core upper
-bound), `--locked-core-clock` (fixed core), `--lock-mem` (fixed memory clock),
-and `--core-clock-offset`. Core-offset users may also select
-`--nvidia-display` and `--nvidia-xauthority` for `nvidia-settings`.
-
-For example, the miner can own a reviewed RTX 4090 power and memory profile:
-
-```bash
-./invminer --coin noid --devices 0 --power-limit 450 --lock-mem 810 \
-  -o stratum+ssl://eu.innovlab.cc:19601 \
-  -u YOUR_NOID_ADDRESS
-```
-
-`--lock-core` and `--locked-core-clock` are mutually exclusive. An unsupported
-clock, missing driver permission, or unavailable display produces a warning and
-mining continues at the verified original/default state. If a partially applied
-profile cannot be rolled back safely, the miner stops instead of running under
-unknown settings.
+NOID endpoints are `eu.innovlab.cc:19601` (Europe) and
+`hk.innovlab.cc:19601` (Hong Kong). QUAN uses
+`eu2.innovlab.cc:17601` (Europe).
 
 ## Downloads
 
-Each version provides two ordinary Linux archives and one canonical HiveOS archive:
+Each version provides two Linux archives and one canonical HiveOS archive:
 
 - `invminer-vX.Y.Z-linux-x86_64-cuda12.tar.gz`
 - `invminer-vX.Y.Z-linux-x86_64-cuda13.tar.gz`
 - `invminer-X.Y.Z.tar.gz`
 
-Choose the CUDA flavor by host-driver compatibility, not by renaming the
-binary or downloading a GPU-specific build.
+Choose the CUDA flavor for host-driver compatibility. The CUDA 12 archive is
+the broad compatibility build and is also used by HiveOS. The CUDA 13 archive
+requires the CUDA Driver API 13.0 generation. Linux x86_64 requires glibc 2.30
+or newer.
 
-| Flavor | Host boundary | Embedded NVIDIA lanes |
-|---|---|---|
-| CUDA 12 | Broad compatibility, including 535-era hosts | `sm_75`, `sm_80`, `sm_86`, `sm_89`, `sm_120`, plus fallback |
-| CUDA 13 | CUDA Driver API 13.0 / Linux driver 580 or newer | `sm_80`, `sm_86`, `sm_89`, `sm_120` |
-
-Turing/CMP cards such as CMP 40HX, CMP 50HX, and RTX 2080 Ti must use the CUDA
-12 package. RTX 30, RTX 40, and RTX 50 families select their embedded lane at
-runtime. Architecture support is not a model-specific performance claim.
-
-On Ampere `sm_80` and `sm_86`, the CUDA 12/HiveOS binary selects the reviewed
-native profile supported by the installed driver. If a newer image is
-incompatible, INVminer automatically loads its embedded CUDA 12.2 native
-compatibility profile. No alternate HiveOS package, module environment variable,
-or manual CUDA selection is required. The CUDA 12 driver floor is NVIDIA Linux
-driver 535.
+Supported embedded NVIDIA architectures include `sm_75`, `sm_80`, `sm_86`,
+`sm_89`, and `sm_120`, subject to the package and driver limits in each Release
+Note. v0.1.81 adds an exact-model QUAN lane for NVIDIA A40 while preserving the
+existing generic RTX 30 `sm_86` lane.
 
 ## HiveOS
 
-The canonical HiveOS archive uses the broad CUDA 12 host-compatibility flavor;
-its filename intentionally has no CUDA suffix because HiveOS validates the
-Custom Miner package name. For v0.1.78, set:
+HiveOS requires the package format `<miner-name>-<version>.tar.gz`. For v0.1.81:
 
 - Miner name: `invminer`
-- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.78/invminer-0.1.78.tar.gz`
-- Hash algorithm: `noid`
-- Pool URL: `stratum+ssl://eu.innovlab.cc:19601`
+- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.81/invminer-0.1.81.tar.gz`
+- Coin: Custom
+- Hash algorithm: leave blank
+- Pool URL: use the NOID or QUAN TLS endpoint shown above
 - Wallet and worker template: `%WAL%.%WORKER_NAME%`
-- Pass: leave empty (or enter `x`; both use the compatible default)
-- Extra config arguments: leave empty unless ordinary runtime options are
-  required; never put an alternate package URL here
+- Pass: `x`
+- Extra config arguments: `--coin noid` or `--coin quan`
 
-HiveOS requires the package format `<miner-name>-<version>.tar.gz`; the tag's
-leading `v` and platform/CUDA labels are not part of this filename. There is no
-separate CUDA 12 or CUDA 13 HiveOS URL. The single package already contains the
-broad CUDA 12 host build.
-
-The wrapper builds `invminer --coin noid ...` as an argv array and reports
-aggregate and per-GPU statistics through HiveOS. Installing the archive does
-not itself start the miner; HiveOS starts it only after the operator applies a
-flight sheet.
+No `--devices` argument is needed to use all visible GPUs. The wrapper reports
+aggregate and per-GPU statistics through HiveOS.
 
 ## Developer fee
 
-NOID uses a 1% developer fee measured from effective mining time. Waiting,
-connection preparation failures, and unavailable fee work are not charged.
-The payout identity is private and is not printed in normal logs or public
-documentation.
+NOID uses a 1% developer fee and QUAN uses a 5% developer fee, measured from
+effective mining time. Waiting, connection preparation failures, and unavailable
+fee work are not charged.
 
 ## Binary-only risk and process behavior
 
 The software may be incompatible with a particular GPU, CPU, driver, OS, or
-future pool state. Source is not provided, so users cannot independently
-rebuild, audit, or patch it and must decide whether to trust the binary and
-published checksums. The software is provided without warranty.
+future pool state. Source is not provided, so users cannot independently rebuild,
+audit, or patch it. The software is provided without warranty.
 
 Extracting or running INVminer does not install or enable a systemd service,
 cron job, scheduled task, login/startup item, registry Run key, or container
-restart policy. Hardware-control options are disabled unless explicitly
-provided; unsupported optional controls warn and continue at verified
-defaults.
+restart policy. Hardware controls remain disabled unless explicitly requested.
 
-Public releases document compatibility and functional qualification. Numerical
-hashrate, throughput, optimization percentages, estimated earnings, or
-comparative performance remain private unless the operator explicitly approves
-an exact release-specific disclosure with its GPU, power cap, duration and
-repository-gate allowlist. See each Release Note for any approved exception.
-
-See [release policy](docs/RELEASE-POLICY.md) and the
-[release-notes template](release-notes/TEMPLATE.md).
+See the [release policy](docs/RELEASE-POLICY.md) and
+[release-note template](release-notes/TEMPLATE.md).
