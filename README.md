@@ -7,7 +7,7 @@ and release notes. It does not contain miner source or private credentials.
 ## Current release
 
 The current release is
-[v0.1.81](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.81).
+[v0.1.82](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.82).
 Download only from that page and verify `SHA256SUMS.txt` before use.
 
 ## Commands
@@ -46,8 +46,9 @@ and receive disjoint search domains. Use `--device 0` for one GPU or
 `--devices 0,2` for an explicit subset.
 
 NOID endpoints are `eu.innovlab.cc:19601` (Europe) and
-`hk.innovlab.cc:19601` (Hong Kong). QUAN uses
-`eu2.innovlab.cc:17601` (Europe).
+`hk.innovlab.cc:19601` (Hong Kong). QUAN defaults to
+`eu2.innovlab.cc:17601` (Europe) and also accepts compatible QUAN QUIC, TCP,
+and TLS pools selected by the user.
 
 ## Downloads
 
@@ -64,15 +65,15 @@ or newer.
 
 Supported embedded NVIDIA architectures include `sm_75`, `sm_80`, `sm_86`,
 `sm_89`, and `sm_120`, subject to the package and driver limits in each Release
-Note. v0.1.81 adds an exact-model QUAN lane for NVIDIA A40 while preserving the
-existing generic RTX 30 `sm_86` lane.
+Note. v0.1.82 integrates the qualified RTX 5090 sparse path and CMP 50HX c2
+pipeline while preserving the RTX 4090, A40, RTX 3080, A100 and generic lanes.
 
 ## HiveOS
 
-HiveOS requires the package format `<miner-name>-<version>.tar.gz`. For v0.1.81:
+HiveOS requires the package format `<miner-name>-<version>.tar.gz`. For v0.1.82:
 
 - Miner name: `invminer`
-- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.81/invminer-0.1.81.tar.gz`
+- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.82/invminer-0.1.82.tar.gz`
 - Coin: Custom
 - Hash algorithm: leave blank
 - Pool URL: use the NOID or QUAN TLS endpoint shown above
@@ -85,7 +86,7 @@ aggregate and per-GPU statistics through HiveOS.
 
 ## Developer fee
 
-NOID uses a 1% developer fee and QUAN uses a 5% developer fee, measured from
+NOID uses a 1% developer fee and QUAN uses a 3% developer fee, measured from
 effective mining time. Waiting, connection preparation failures, and unavailable
 fee work are not charged.
 

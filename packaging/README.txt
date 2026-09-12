@@ -1,49 +1,39 @@
-INVminer v0.1.77 - Linux x86_64
+INVminer v0.1.82 - Linux x86_64
 
-INVminer uses one executable and this release supports only NOID:
+INVminer is one unified executable for NOID and QUAN. Select the coin explicitly:
 
   ./invminer --coin noid \
     -o stratum+ssl://eu.innovlab.cc:19601 \
-    -u YOUR_NOID_ADDRESS
+    -u YOUR_NOID_ADDRESS[.WORKER]
 
-CPU-only mode:
+  ./invminer --coin quan \
+    -o stratum+ssl://eu2.innovlab.cc:17601 \
+    -u YOUR_QUANTUS_ADDRESS[.WORKER]
+
+CPU-only NOID:
 
   ./invminer --coin noid --cpu-only \
     -o stratum+ssl://eu.innovlab.cc:19601 \
-    -u YOUR_NOID_ADDRESS
+    -u YOUR_NOID_ADDRESS[.WORKER]
 
-The password option is optional. When -p/--pass is omitted or HiveOS Pass is
-left empty, INVminer uses the compatible default value x. A worker suffix is
-also optional when the pool accepts the wallet address by itself.
+The password is optional. When -p/--pass is omitted, INVminer uses the compatible
+default value x. When neither --device nor --devices is supplied, every visible
+supported GPU is selected. Explicit device selection remains available.
 
-Ordered backup pools can be comma-separated or supplied by repeating -o:
+NOID public artifacts accept only approved WebPKI-verified TLS endpoints. QUAN
+accepts compatible QUIC, TCP and TLS endpoints selected by the user, including
+Quanpool, Kryptex and LuckyPool protocol families. Hostnames are resolved for each
+connection; no resolved Quanpool IP is embedded.
 
-  ./invminer --coin noid \
-    -o stratum+ssl://eu.innovlab.cc:19601 \
-    -o stratum+ssl://hk.innovlab.cc:19601 \
-    -u YOUR_NOID_ADDRESS
+Choose CUDA 12 for broad driver compatibility or CUDA 13 for current drivers.
+The canonical HiveOS archive uses the CUDA 12 executable. RTX 50 series requires
+a Blackwell-capable NVIDIA driver. Linux x86_64 requires glibc 2.30 or newer.
 
-The default primary mode keeps one active mining connection. While mining on a
-backup, it uses only a short, bounded primary probe and returns after consecutive
-successful probes. Rotate mode advances on failure without proactive return.
-INVminer does not keep persistent sessions open to every configured pool.
-
-Public binaries enforce the compiled approved TLS endpoint policy. NOID accepts only WebPKI-verified TLS in this public artifact.
-Plaintext Stratum/TCP, insecure TLS, and operator certificate pins are rejected
-before device startup.
-
-Temporary DNS, certificate, or pool-service failures do not require a process
-restart. INVminer retries with bounded backoff, re-resolves through the system
-configuration, and resumes after the service and its valid certificate are
-restored. TLS certificate-chain and exact-hostname verification remain enabled
-on every reconnect; TLS is never downgraded to plaintext.
-
-Choose the CUDA 12 or CUDA 13 archive according to host-driver compatibility.
-The executable name remains invminer in both packages. The CUDA 12 package is
-the broad compatibility choice, including the embedded Ampere fallback.
-
-NOID developer fee: 1% of effective mining time. Waiting and unavailable fee
-work are not charged. The payout identity is not printed in normal logs.
+NOID developer fee: 1% of effective mining time.
+QUAN developer fee: 3% of effective mining time, using the dedicated official
+Quanpool hostname independently of the user's compatible mining pool. Waiting,
+connection preparation failures and unavailable fee work are not charged. The
+payout identity is not printed in normal logs.
 
 This is closed-source, binary-only software and is provided without warranty.
 It may be incompatible with a particular GPU, CPU, driver, OS, or future pool
@@ -54,4 +44,218 @@ Extracting or running this package does not install or enable a boot service,
 scheduled task, cron job, login/startup item, or container restart policy.
 
 Official downloads and SHA-256 checksums:
-https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.77
+https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.82
+
+
+Third-party license notices
+===========================
+
+ring 0.16.20:
+
+Note that it is easy for this file to get out of sync with the licenses in the
+source code files. It's recommended to compare the licenses in the source code
+with what's mentioned here.
+
+*ring* is derived from BoringSSL, so the licensing situation in *ring* is
+similar to BoringSSL.
+
+*ring* uses an ISC-style license like BoringSSL for code in new files,
+including in particular all the Rust code:
+
+   Copyright 2015-2016 Brian Smith.
+
+   Permission to use, copy, modify, and/or distribute this software for any
+   purpose with or without fee is hereby granted, provided that the above
+   copyright notice and this permission notice appear in all copies.
+
+   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHORS DISCLAIM ALL WARRANTIES
+   WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+   MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY
+   SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+   WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION
+   OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
+   CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+BoringSSL is a fork of OpenSSL. As such, large parts of it fall under OpenSSL
+licensing. Files that are completely new have a Google copyright and an ISC
+license. This license is reproduced at the bottom of this file.
+
+Contributors to BoringSSL are required to follow the CLA rules for Chromium:
+https://cla.developers.google.com/clas
+
+Files in third_party/ have their own licenses, as described therein. The MIT
+license, for third_party/fiat, which, unlike other third_party directories, is
+compiled into non-test libraries, is included below.
+
+The OpenSSL toolkit stays under a dual license, i.e. both the conditions of the
+OpenSSL License and the original SSLeay license apply to the toolkit. See below
+for the actual license texts. Actually both licenses are BSD-style Open Source
+licenses. In case of any license issues related to OpenSSL please contact
+openssl-core@openssl.org.
+
+The following are Google-internal bug numbers where explicit permission from
+some authors is recorded for use of their work:
+  27287199
+  27287880
+  27287883
+
+  OpenSSL License
+  ---------------
+
+/* ====================================================================
+ * Copyright (c) 1998-2011 The OpenSSL Project.  All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the
+ *    distribution.
+ *
+ * 3. All advertising materials mentioning features or use of this
+ *    software must display the following acknowledgment:
+ *    "This product includes software developed by the OpenSSL Project
+ *    for use in the OpenSSL Toolkit. (http://www.openssl.org/)"
+ *
+ * 4. The names "OpenSSL Toolkit" and "OpenSSL Project" must not be used to
+ *    endorse or promote products derived from this software without
+ *    prior written permission. For written permission, please contact
+ *    openssl-core@openssl.org.
+ *
+ * 5. Products derived from this software may not be called "OpenSSL"
+ *    nor may "OpenSSL" appear in their names without prior written
+ *    permission of the OpenSSL Project.
+ *
+ * 6. Redistributions of any form whatsoever must retain the following
+ *    acknowledgment:
+ *    "This product includes software developed by the OpenSSL Project
+ *    for use in the OpenSSL Toolkit (http://www.openssl.org/)"
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT ``AS IS'' AND ANY
+ * EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR
+ * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
+ * ====================================================================
+ *
+ * This product includes cryptographic software written by Eric Young
+ * (eay@cryptsoft.com).  This product includes software written by Tim
+ * Hudson (tjh@cryptsoft.com).
+ *
+ */
+
+ Original SSLeay License
+ -----------------------
+
+/* Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com)
+ * All rights reserved.
+ *
+ * This package is an SSL implementation written
+ * by Eric Young (eay@cryptsoft.com).
+ * The implementation was written so as to conform with Netscapes SSL.
+ *
+ * This library is free for commercial and non-commercial use as long as
+ * the following conditions are aheared to.  The following conditions
+ * apply to all code found in this distribution, be it the RC4, RSA,
+ * lhash, DES, etc., code; not just the SSL code.  The SSL documentation
+ * included with this distribution is covered by the same copyright terms
+ * except that the holder is Tim Hudson (tjh@cryptsoft.com).
+ *
+ * Copyright remains Eric Young's, and as such any Copyright notices in
+ * the code are not to be removed.
+ * If this package is used in a product, Eric Young should be given attribution
+ * as the author of the parts of the library used.
+ * This can be in the form of a textual message at program startup or
+ * in documentation (online or textual) provided with the package.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. All advertising materials mentioning features or use of this software
+ *    must display the following acknowledgement:
+ *    "This product includes cryptographic software written by
+ *     Eric Young (eay@cryptsoft.com)"
+ *    The word 'cryptographic' can be left out if the rouines from the library
+ *    being used are not cryptographic related :-).
+ * 4. If you include any Windows specific code (or a derivative thereof) from
+ *    the apps directory (application code) you must include an acknowledgement:
+ *    "This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
+ *
+ * THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ *
+ * The licence and distribution terms for any publically available version or
+ * derivative of this code cannot be changed.  i.e. this code cannot simply be
+ * copied and put under another distribution licence
+ * [including the GNU Public Licence.]
+ */
+
+
+ISC license used for completely new code in BoringSSL:
+
+/* Copyright (c) 2015, Google Inc.
+ *
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+ * SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION
+ * OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
+ * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. */
+
+
+The code in third_party/fiat carries the MIT license:
+
+Copyright (c) 2015-2016 the fiat-crypto authors (see
+https://github.com/mit-plv/fiat-crypto/blob/master/AUTHORS).
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+quantus-miner-api 0.3.0 is licensed under MIT-0.
