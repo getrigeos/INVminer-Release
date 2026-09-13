@@ -9,11 +9,12 @@ repository.
   Coins are selected explicitly as `invminer --coin <coin>`; per-coin
   executables are forbidden.
 - The public release repository is `getrigeos/INVminer-Release`.
-- Official user-pool examples may use only
-  `stratum+ssl://eu.innovlab.cc:19601` or
-  `stratum+ssl://hk.innovlab.cc:19601`; examples default to Europe and replace
-  only the hostname for Hong Kong. Do not restore `stratum.innovlab.cc` in
-  user-facing commands.
+- Official user-pool examples may use only the WebPKI TLS endpoints
+  `stratum+ssl://eu.innovlab.cc:19601`,
+  `stratum+ssl://hk.innovlab.cc:19601`, or
+  `stratum+ssl://eu2.innovlab.cc:17601`. NOID examples default to Europe and
+  replace only the hostname for Hong Kong. QUAN examples default to `eu2`. Do
+  not restore `stratum.innovlab.cc` or publish an official plaintext example.
 - Public command examples omit `-p/--pass`: the option is not required and an
   omitted CLI password or empty HiveOS Pass uses the compatible default `x`.
 - Never copy proprietary Rust/CUDA source, Cargo workspaces, vendored source,
@@ -169,3 +170,25 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
   CUDA filename labels. Before publishing, the exact archive digest must also be
   launched on an idle HiveOS qualification host, reach `ONLINE`, produce at
   least one accepted share with zero rejected shares, and pass `h-stats`.
+
+
+## v0.1.83 release handoff
+
+- The reviewed source is fixed at commit
+  `091b923d9e704c2b3f220e388f06201ebc9715f9`; follow-up evidence stays in the
+  private source repository.
+- The official QUAN endpoint is `stratum+ssl://eu2.innovlab.cc:17601`. It uses
+  the LuckyPool-compatible Full256 protocol and selects that dialect
+  automatically. HiveOS host-and-port-only input defaults to authenticated TLS.
+- The CUDA 12/13 public binary SHA-256 values are
+  `74e9cb15b155b9c82fd74a6d81736cb89d5af300210bcbce66c2b59e9ef99455` and
+  `4a11ea986a0abe3a30310b92ede48dbcf9c1ce9092e4eaa45b173e8010df657b`.
+- The CUDA 12/13 Linux archive SHA-256 values are
+  `7ed6c068af6d47847b854072fe32f99ed9249e9dee5a1847a0d8b4b433256f51` and
+  `5a3fc40a4451ec9788342c1e93f05e39c7652990c4481ea1e41ffba3a59d8f5b`.
+  The canonical HiveOS archive SHA-256 is
+  `3133231f9d3589dc4733e7d82ff37b187bf35c14544462d81ab550c9dcbaec71`.
+- Both public flavors were reproduced byte for byte from the frozen source. The
+  exact HiveOS archive passed CMP 40HX native GPU/CPU self-test, live WebPKI TLS
+  mining with accepted shares and zero rejected/stale shares, and `h-stats`.
+- Public v0.1.83 material contains no numerical performance claim.

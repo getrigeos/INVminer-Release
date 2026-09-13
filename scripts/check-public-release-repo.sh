@@ -84,6 +84,22 @@ for endpoint in \
     bad=1
   }
 done
+if [[ $documented_version == 0.1.83 ]]; then
+  rg -Fq 'stratum+ssl://eu2.innovlab.cc:17601' README.md README-AI.md release-notes/v0.1.83.md || {
+    echo 'v0.1.83 public contract is missing the official QUAN TLS endpoint' >&2
+    bad=1
+  }
+  if rg -n 'stratum\+tcp://eu2\.innovlab\.cc:17601|mining\.subscribe|quan/1' README.md release-notes/v0.1.83.md; then
+    echo 'v0.1.83 public material restored plaintext or the retired QUAN handshake' >&2
+    bad=1
+  fi
+  for phrase in 'host-and-port-only' 'defaults to authenticated TLS' 'Full256'; do
+    rg -Fq "$phrase" README.md README-AI.md release-notes/v0.1.83.md || {
+      echo "v0.1.83 public TLS/protocol contract is missing: $phrase" >&2
+      bad=1
+    }
+  done
+fi
 
 if (( ${#public_files[@]} > 0 )); then
   performance_hits=$(rg -n -i \

@@ -7,7 +7,7 @@ and release notes. It does not contain miner source or private credentials.
 ## Current release
 
 The current release is
-[v0.1.82](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.82).
+[v0.1.83](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.83).
 Download only from that page and verify `SHA256SUMS.txt` before use.
 
 ## Commands
@@ -65,21 +65,22 @@ or newer.
 
 Supported embedded NVIDIA architectures include `sm_75`, `sm_80`, `sm_86`,
 `sm_89`, and `sm_120`, subject to the package and driver limits in each Release
-Note. v0.1.82 integrates the qualified RTX 5090 sparse path and CMP 50HX c2
-pipeline while preserving the RTX 4090, A40, RTX 3080, A100 and generic lanes.
+Note. v0.1.83 adds the qualified CMP 40HX path and updates the official QUAN TLS
+endpoint to the LuckyPool-compatible Full256 protocol. It preserves the qualified
+RTX 5090, CMP 50HX, RTX 4090, A40, RTX 3080, A100 and generic lanes.
 
 ## HiveOS
 
-HiveOS requires the package format `<miner-name>-<version>.tar.gz`. For v0.1.82:
+HiveOS requires the package format `<miner-name>-<version>.tar.gz`. For v0.1.83:
 
 - Miner name: `invminer`
-- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.82/invminer-0.1.82.tar.gz`
+- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.83/invminer-0.1.83.tar.gz`
 - Coin: Custom
-- Hash algorithm: leave blank
-- Pool URL: use the NOID or QUAN TLS endpoint shown above
+- Hash algorithm: `noid` or `quan`
+- Pool URL: use the NOID or QUAN endpoint shown above; a host-and-port-only value defaults to authenticated TLS
 - Wallet and worker template: `%WAL%.%WORKER_NAME%`
 - Pass: `x`
-- Extra config arguments: `--coin noid` or `--coin quan`
+- Extra config arguments: empty by default; use only for optional INVminer flags
 
 No `--devices` argument is needed to use all visible GPUs. The wrapper reports
 aggregate and per-GPU statistics through HiveOS.

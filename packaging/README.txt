@@ -1,4 +1,4 @@
-INVminer v0.1.82 - Linux x86_64
+INVminer v0.1.83 - Linux x86_64
 
 INVminer is one unified executable for NOID and QUAN. Select the coin explicitly:
 
@@ -44,7 +44,7 @@ Extracting or running this package does not install or enable a boot service,
 scheduled task, cron job, login/startup item, or container restart policy.
 
 Official downloads and SHA-256 checksums:
-https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.82
+https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.83
 
 
 Third-party license notices
