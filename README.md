@@ -7,7 +7,7 @@ and release notes. It does not contain miner source or private credentials.
 ## Current release
 
 The current release is
-[v0.1.84](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.84).
+[v0.1.85](https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.85).
 Download only from that page and verify `SHA256SUMS.txt` before use.
 
 ## Commands
@@ -65,16 +65,17 @@ or newer.
 
 Supported embedded NVIDIA architectures include `sm_75`, `sm_80`, `sm_86`,
 `sm_89`, and `sm_120`, subject to the package and driver limits in each Release
-Note. v0.1.84 makes the qualified RTX 4090 Full256 path automatic, keeps the selected
-CMP 50HX scheduling path, and changes the disclosed QUAN developer fee to 2%.
-It preserves the v0.1.83 CMP 40HX, A40, RTX 5090 and compatible QUAN pool behavior.
+Note. v0.1.85 keeps the qualified QUAN Full256 paths and adds an automatic NOID
+SM89 fallback for CUDA Driver API 12.2 hosts. It also makes physical CUDA 12 and
+CUDA 13 qualification mandatory for a release. QUAN retains its disclosed 2%
+developer fee and compatible user-selected pool behavior.
 
 ## HiveOS
 
-HiveOS requires the package format `<miner-name>-<version>.tar.gz`. For v0.1.84:
+HiveOS requires the package format `<miner-name>-<version>.tar.gz`. For v0.1.85:
 
 - Miner name: `invminer`
-- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.84/invminer-0.1.84.tar.gz`
+- Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.1.85/invminer-0.1.85.tar.gz`
 - Coin: Custom
 - Hash algorithm: `noid` or `quan`
 - Pool URL: use the NOID or QUAN endpoint shown above; a host-and-port-only value defaults to authenticated TLS

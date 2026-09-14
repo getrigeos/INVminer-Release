@@ -84,7 +84,7 @@ for endpoint in \
     bad=1
   }
 done
-if [[ $documented_version == 0.1.83 || $documented_version == 0.1.84 ]]; then
+if [[ $documented_version == 0.1.83 || $documented_version == 0.1.84 || $documented_version == 0.1.85 ]]; then
   rg -Fq 'stratum+ssl://eu2.innovlab.cc:17601' README.md README-AI.md "release-notes/v${documented_version}.md" || {
     echo "v${documented_version} public contract is missing the official QUAN TLS endpoint" >&2
     bad=1

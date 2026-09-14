@@ -6,7 +6,7 @@ archive=${1:-}
   echo "usage: $0 <invminer-vX.Y.Z-linux-x86_64-cudaXX.tar.gz|invminer-X.Y.Z.tar.gz>" >&2
   exit 2
 }
-for command in awk file python3 rg strings tar; do
+for command in awk bash file jq python3 rg sha256sum strings tar; do
   command -v "$command" >/dev/null || {
     echo "missing verification command: $command" >&2
     exit 1
@@ -37,6 +37,12 @@ while IFS= read -r member; do
       ;;
   esac
 done <"$members"
+normalized_members="$work/members.normalized"
+sed -E 's#^\./##' "$members" | sed -e '/^$/d' -e '/^\.$/d' >"$normalized_members"
+if [[ $(sort "$normalized_members" | uniq -d | wc -l | awk '{print $1}') != 0 ]]; then
+  echo "archive contains duplicate normalized member names" >&2
+  exit 1
+fi
 
 parse_hiveos_name() {
   local name=$1 stem parsed_version parsed_miner
@@ -49,6 +55,7 @@ parse_hiveos_name() {
 
 archive_name=${archive##*/}
 hiveos_archive=0
+full_package=0
 if parse_hiveos_name "$archive_name"; then
   hiveos_archive=1
   hiveos_stem=${archive_name%.tar.gz}
@@ -79,11 +86,34 @@ else
     echo "archive name violates the INVminer release contract: $archive_name" >&2
     exit 1
   fi
-  printf '%s\n' README.txt invminer >"$work/expected-members"
+  ordinary_version=${archive_name#invminer-v}
+  ordinary_version=${ordinary_version%%-linux-*}
+  if rg -Fxq 'BUILD-MANIFEST.json' "$normalized_members"; then
+    full_package=1
+    printf '%s\n' \
+      BUILD-MANIFEST.json \
+      ERROR-CATALOG-SCHEMA.json \
+      ERROR-CATALOG.json \
+      EULA.txt \
+      README.txt \
+      RELEASE-KEY-METADATA.json \
+      RELEASE-REVOKED-KEYS.txt \
+      SBOM.cargo-metadata.json \
+      THIRD-PARTY-NOTICES.txt \
+      h-config.sh \
+      h-manifest.conf \
+      h-readme.md \
+      h-run.sh \
+      h-stats.sh \
+      invminer \
+      invminer-config.example.json >"$work/expected-members"
+  else
+    printf '%s\n' README.txt invminer >"$work/expected-members"
+  fi
   binary=invminer
   readme=README.txt
 fi
-sort -u "$members" >"$work/members.sorted"
+sort -u "$normalized_members" >"$work/members.sorted"
 sort -u "$work/expected-members" >"$work/expected.sorted"
 diff -u "$work/expected.sorted" "$work/members.sorted"
 
@@ -106,6 +136,56 @@ if ((hiveos_archive == 1)); then
     exit 1
   }
 fi
+if ((full_package == 1)); then
+  for executable in h-config.sh h-run.sh h-stats.sh; do
+    [[ -x "$extract/$executable" ]] || {
+      echo "full release package contains a non-executable adapter: $executable" >&2
+      exit 1
+    }
+  done
+  bash -n "$extract/h-config.sh" "$extract/h-run.sh" "$extract/h-stats.sh"
+  jq -e --arg version "$ordinary_version" --arg archive "$archive_name" '
+    .product == "invminer"
+    and .version == $version
+    and .release_channel == "public"
+    and .user_pool_endpoint_policy == "coin-specific-v1"
+    and .user_pool_endpoint_policies.noid == "public-approved-tls-domains-v1"
+    and .user_pool_endpoint_policies.quan == "quan-compatible-tcp-tls-quic-endpoints-v2"
+    and (.source_commit | test("^[0-9a-f]{40}$"))
+    and (.cuda_flavor == (if ($archive | contains("-cuda12.")) then "cuda12" else "cuda13" end))
+    and .fee_assets.release_mode == "active"
+    and .fee_assets.configured_coin_ppm == {"noid":10000,"quan":20000}
+    and .fee_assets.catalog_coin_ppm == .fee_assets.configured_coin_ppm
+  ' "$extract/BUILD-MANIFEST.json" >/dev/null || {
+    echo "full release package build manifest violates the public contract" >&2
+    exit 1
+  }
+  jq -e '
+    .schema_version == 1
+    and .key_id == "invminer-release-2026-ed25519"
+    and .fingerprint_algorithm == "sha256-spki-der"
+    and .public_key_sha256 == "5dfba8946575cd2dcc95aea2a384427cd9cf42ef8ac670fc85e775db9128fb20"
+    and .status == "active"
+    and (.trust_anchor_url | startswith("https://raw.githubusercontent.com/getrigeos/INVminer-Release/"))
+  ' "$extract/RELEASE-KEY-METADATA.json" >/dev/null || {
+    echo "full release package key metadata violates the public trust-anchor contract" >&2
+    exit 1
+  }
+  [[ $(sha256sum "$extract/ERROR-CATALOG.json" | awk '{print $1}') == \
+    $(jq -r .error_catalog.sha256 "$extract/BUILD-MANIFEST.json") ]] || {
+    echo "full release package error catalog digest mismatch" >&2
+    exit 1
+  }
+  [[ $(sha256sum "$extract/ERROR-CATALOG-SCHEMA.json" | awk '{print $1}') == \
+    $(jq -r .error_catalog.schema_sha256 "$extract/BUILD-MANIFEST.json") ]] || {
+    echo "full release package error schema digest mismatch" >&2
+    exit 1
+  }
+  [[ $(awk -F= '/^CUSTOM_VERSION=/ {print $2; exit}' "$extract/h-manifest.conf") == "$ordinary_version" ]] || {
+    echo "full release package HiveOS manifest version mismatch" >&2
+    exit 1
+  }
+fi
 strings "$extract/$binary" >"$work/binary.strings"
 # Rust panic locations can retain the builder's standard crates.io registry
 # prefix. It identifies public dependencies rather than the private source
@@ -121,6 +201,7 @@ if ((hiveos_archive == 1)) || [[ $archive_name == *-cuda12.tar.gz ]]; then
     'cuda122_sm80_gf8_shared_compat_v1' \
     'cuda12abi7_sm86_clmad' \
     'cuda122_tower_sm86_compat_fallback' \
+    'cuda122_tower_sm89_compat_fallback' \
     'reviewed CUDA compatibility module selected'; do
     rg -Fq "$marker" "$work/binary.strings" || {
       echo "CUDA 12 archive is missing mandatory SM86 compatibility marker: $marker" >&2

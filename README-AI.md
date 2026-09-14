@@ -88,6 +88,9 @@ repository.
   fallback. A driver image-compatibility failure must select that fallback
   automatically; never instruct HiveOS users to choose a second package or set
   a diagnostic module environment variable.
+- The same canonical CUDA 12/HiveOS binary must retain the reviewed native SM89
+  path and its CUDA 12.2 native SM89 fallback. Driver 535 / CUDA Driver API 12.2
+  physical qualification must cover NOID and QUAN on every visible GPU.
 
 Before every commit or release:
 
@@ -104,7 +107,14 @@ Custom Miner after their Installation URL changes. The command must remain one
 physical line, start with `miner stop`, verify the installed binary, and end
 with `miner start`; stale versions or Markdown line breaks block publication.
 
-On macOS, create archives with both copyfile metadata and xattrs disabled:
+The v0.1.84 and earlier ordinary Linux archives contain only `README.txt` and
+`invminer`. Starting with v0.1.85, ordinary Linux archives use the fixed audited
+package contract checked by `verify-release-archive.sh`: binary, documentation,
+SBOM, build manifest, error catalogs, example config, HiveOS adapters, and
+release-key metadata. Do not repack a qualified archive in this repository.
+
+When recreating a legacy two-member archive on macOS, use both copyfile and
+xattr controls:
 
 ```bash
 COPYFILE_DISABLE=1 tar --no-xattrs -C dist/stage -czf dist/package.tar.gz \
@@ -112,8 +122,9 @@ COPYFILE_DISABLE=1 tar --no-xattrs -C dist/stage -czf dist/package.tar.gz \
 ```
 
 Do not omit either control. The verifier reads the raw tar member table through
-Python and must see exactly `README.txt` and `invminer`; this catches hidden
-AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
+Python and checks the exact version-specific member contract; this catches
+hidden AppleDouble `._*` members that BSD tar may suppress while listing or
+extracting.
 
 ## Release lifecycle and public performance boundary
 
@@ -212,3 +223,21 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
   configuration defaults to authenticated TLS; the packaged adapter reached Full256 mining,
   accepted a share with zero rejected or stale shares, and returned valid `h-stats` on CMP 50HX.
 - Public v0.1.84 material contains no numerical performance claim.
+
+## v0.1.85 release handoff
+
+- The reviewed source and final source tag resolve to commit
+  `7a04f752e8f6dd66d73e0220a37c25a77c3f329a`.
+- The CUDA 12/13 public binary SHA-256 values are
+  `790929a6951e58f003b73340fa5c113e50ccd70ad3b6d4a8296c111c97c5a1ea` and
+  `dbfe39276d5160acc1bbb5a41d1a9601c1972f76c871c7c9d3c2950d68779745`.
+- The CUDA 12/13 Linux archive SHA-256 values are
+  `3b9cc4fffbbe1fb1563e72fdbf12d3ec60836459a6e1a4aa5760cd0e15a7b95b` and
+  `36648d3f3726d1def43a349d94333820ac83f0b4cdcfa7fa283febd305233444`.
+  The canonical HiveOS archive SHA-256 is
+  `78a6855999fdaf304b4c2e23032ff3db644d76356415cc1fd9ac11df405aa2bf`.
+- All four public/companion CUDA combinations were built twice and were
+  byte-identical. The public CUDA 12 archive passed Driver 535 six-GPU NOID
+  compatibility, QUAN native self-tests, live TLS shares, and HiveOS adapters.
+  The CUDA 13 archive passed native self-test and live TLS shares on RTX 5090.
+- Public v0.1.85 material contains no numerical performance claim.
