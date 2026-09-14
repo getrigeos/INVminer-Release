@@ -192,3 +192,23 @@ AppleDouble `._*` members that BSD tar may suppress while listing or extracting.
   exact HiveOS archive passed CMP 40HX native GPU/CPU self-test, live WebPKI TLS
   mining with accepted shares and zero rejected/stale shares, and `h-stats`.
 - Public v0.1.83 material contains no numerical performance claim.
+
+## v0.1.84 release handoff
+
+- The reviewed source is fixed at commit
+  `945303cb75f5d02b48e0e6903b23d0cea0dca3a9`; private performance evidence remains in the source repository.
+- QUAN uses a disclosed 2% developer fee through the official Quanpool hostname. User-selected
+  compatible QUAN pools remain independent and hostnames are resolved at connection time.
+- The CUDA 12/13 public binary SHA-256 values are
+  `034055a62c732c9d8cdd7c25d491856153ebf9e6893055a6fbe639c4c1e688c2` and
+  `c404289d9dc5c44ddbbebcb34beeb6f88822460747c305ccbf0876b9f2e8168b`.
+- The CUDA 12/13 Linux archive SHA-256 values are
+  `a2550253042cb254ed615209f86f0009a40df490fe96290e808e8a8981524d09` and
+  `d4b5a5da71da80eb89c90d179633e71784c1f366f58a182161ce616dfa8eb5a7`.
+  The canonical HiveOS archive SHA-256 is
+  `71ad0d147c54f25f930df9901ce707bd51b2a0bb83c4ecf8fe93cd8fb24f6da5`.
+- Both public flavors were reproduced byte for byte from the frozen source. The exact canonical
+  archive passed native QUAN self-tests on CMP 50HX and RTX 4090. Its host-and-port-only HiveOS
+  configuration defaults to authenticated TLS; the packaged adapter reached Full256 mining,
+  accepted a share with zero rejected or stale shares, and returned valid `h-stats` on CMP 50HX.
+- Public v0.1.84 material contains no numerical performance claim.

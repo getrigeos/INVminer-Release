@@ -1,4 +1,4 @@
-INVminer v0.1.83 - Linux x86_64
+INVminer v0.1.84 - Linux x86_64
 
 INVminer is one unified executable for NOID and QUAN. Select the coin explicitly:
 
@@ -30,7 +30,7 @@ The canonical HiveOS archive uses the CUDA 12 executable. RTX 50 series requires
 a Blackwell-capable NVIDIA driver. Linux x86_64 requires glibc 2.30 or newer.
 
 NOID developer fee: 1% of effective mining time.
-QUAN developer fee: 3% of effective mining time, using the dedicated official
+QUAN developer fee: 2% of effective mining time, using the dedicated official
 Quanpool hostname independently of the user's compatible mining pool. Waiting,
 connection preparation failures and unavailable fee work are not charged. The
 payout identity is not printed in normal logs.
@@ -44,7 +44,7 @@ Extracting or running this package does not install or enable a boot service,
 scheduled task, cron job, login/startup item, or container restart policy.
 
 Official downloads and SHA-256 checksums:
-https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.83
+https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.84
 
 
 Third-party license notices
