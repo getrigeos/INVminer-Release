@@ -1,3 +1,0 @@
-78a6855999fdaf304b4c2e23032ff3db644d76356415cc1fd9ac11df405aa2bf  invminer-0.1.85.tar.gz
-3b9cc4fffbbe1fb1563e72fdbf12d3ec60836459a6e1a4aa5760cd0e15a7b95b  invminer-v0.1.85-linux-x86_64-cuda12.tar.gz
-36648d3f3726d1def43a349d94333820ac83f0b4cdcfa7fa283febd305233444  invminer-v0.1.85-linux-x86_64-cuda13.tar.gz
