@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "version": "0.2.22",
+  "channel": "public",
+  "note_sha256": "956a0968e4d58d042677e1ef3f0d2c8d82b3d836907829dff43509a95204e21f",
+  "reviewed_by": "release agent",
+  "reference_release": "https://github.com/getrigeos/INVminer-Release/releases/tag/v0.1.85",
+  "checks": {
+    "current_user_visible_changes_only": true,
+    "previous_release_format_reviewed": true,
+    "commands_downloads_fees_and_compatibility_checked": true,
+    "performance_claims_supported": true,
+    "internal_process_details_kept_in_validation_records": true
+  },
+  "changes": [
+    {
+      "text": "Improve NOID mining performance on NVIDIA GeForce RTX 4090. The optimized path is selected automatically with a CUDA 13-capable driver.",
+      "evidence": [
+        "releases/0.2.22/RELEASE-MANIFEST.json",
+        "Reviewed retained RTX 4090 NOID optimization and driver selection against the release source; no numerical or new benchmark claim."
+      ]
+    }
+  ]
+}

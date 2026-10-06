@@ -1,5 +1,7 @@
 # INVminer public release repository
 
+Release Note review is a mandatory publication gate for every release and text correction. Read [the review contract](docs/RELEASE-NOTE-GATE.md). The repository check requires a review bound to each current note; verify the fresh live body after publishing. The release agent performs the review without requesting routine owner approval.
+
 Current owner policy: the only product difference between public and internal distribution is the supported coin set. Public builds contain NOID/QUAN only and must physically exclude Pearl GPU kernels. Both distributions accept compatible third-party pools and use the same NOID/QUAN implementations, fees and runtime behavior.
 
 This policy replaces all historical public-only restrictions and version-specific exceptions. No pool-provider whitelist, forced TLS for bare addresses, single-CUDA HiveOS rule, or historical release-note template is a publication prerequisite.

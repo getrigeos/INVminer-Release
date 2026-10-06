@@ -17,3 +17,13 @@ for name in filter(None,names):
 assert Path('docs/RELEASE-POLICY.md').is_file()
 print('Public metadata boundary: passed')
 CHECK
+
+# Every current note must have a review bound to the exact final text.
+notes=(release-notes/v*.md)
+[[ -f ${notes[0]} ]] || { echo 'No public release note found' >&2; exit 1; }
+for note in "${notes[@]}"; do
+  version=${note##*/v}
+  version=${version%.md}
+  python3 scripts/release_note_review.py --channel public --version "$version" \
+    --note "$note" --review "${note%.md}.review.json"
+done
