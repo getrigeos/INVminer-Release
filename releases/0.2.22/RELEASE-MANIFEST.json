@@ -1,0 +1,111 @@
+{
+  "assets": {
+    "invminer-0.2.22.tar.gz": {
+      "sha256": "83bbf7c669595c5abf8b3078e57e5c35550fe8076733aafd69a4db90595540df",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v0.2.22/invminer-0.2.22.tar.gz.sig",
+      "size": 56216867,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v0.2.22/invminer-0.2.22.tar.gz"
+    },
+    "invminer-v0.2.22-linux-x86_64-cuda12.tar.gz": {
+      "sha256": "0567c390e66699882e04f332267e24a490586bbe8cb444072fb2c277572195ad",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v0.2.22/invminer-v0.2.22-linux-x86_64-cuda12.tar.gz.sig",
+      "size": 45973071,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v0.2.22/invminer-v0.2.22-linux-x86_64-cuda12.tar.gz"
+    },
+    "invminer-v0.2.22-linux-x86_64-cuda13.tar.gz": {
+      "sha256": "1893efe7a5ac4f4819bc685d9f542063c9c3653fa33be066d45038973e6009c1",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v0.2.22/invminer-v0.2.22-linux-x86_64-cuda13.tar.gz.sig",
+      "size": 10426513,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v0.2.22/invminer-v0.2.22-linux-x86_64-cuda13.tar.gz"
+    }
+  },
+  "binary_sha256": {
+    "cuda12": "ffe00f155a08fb42938c2f0cf009e8e9cf9feac8f275d4ab5d751f2a21a8eb43",
+    "cuda13": "7914499d7659ae2d9e57bcc48d648d291f03238b5c940cedbbce59a430d5fd30"
+  },
+  "coins": [
+    "noid",
+    "quan"
+  ],
+  "fee_ppm": {
+    "noid": 10000,
+    "quan": 50000
+  },
+  "qualification": {
+    "archive_negative_cases": 7,
+    "binaries_reproducible": true,
+    "builds_per_flavor": 2,
+    "coin_boundary": [
+      "noid",
+      "quan"
+    ],
+    "compatible_third_party_pools": true,
+    "direct_build_guard_cases": 7,
+    "embedded_cuda_elf_counts": {
+      "cuda12": 44,
+      "cuda13": 26
+    },
+    "expected_architecture_rejection": {
+      "coin": "noid",
+      "cuda_flavor": "cuda13",
+      "expected_exit_code": 3,
+      "log_sha256": "231f6a3aa7924bb9601e820c2b208ef6f7744c94b4016f478442156002f91ae5",
+      "sm": 75,
+      "supported_on_this_gpu": false
+    },
+    "gpu_restored": true,
+    "gpu_selftests": [
+      {
+        "coin": "noid",
+        "cuda_flavor": "cuda12",
+        "exit_code": 0,
+        "log_sha256": "3ba18b8817ea77836a6a889860e7eac573e03b9a8f2a1d1d010cd484fcac43d3"
+      },
+      {
+        "coin": "quan",
+        "cuda_flavor": "cuda12",
+        "exit_code": 0,
+        "log_sha256": "f59af952f08ba2c9db1f88f58d5b58d412504193421f540ea72eb7a11e2ba9b7"
+      },
+      {
+        "coin": "quan",
+        "cuda_flavor": "cuda13",
+        "exit_code": 0,
+        "log_sha256": "f59af952f08ba2c9db1f88f58d5b58d412504193421f540ea72eb7a11e2ba9b7"
+      }
+    ],
+    "hiveos_fee_display_final_package_cases": 34,
+    "hiveos_fee_display_source_cases": 39,
+    "hiveos_selector_cases": 14,
+    "hiveos_selector_live": [
+      {
+        "coin": "noid",
+        "cuda_flavor": "cuda12",
+        "log_sha256": "8475a0105e448c228a7e946866fc9e42ed484d4dcb7dcc702516fe60abcb7e0d",
+        "passed": true
+      },
+      {
+        "coin": "quan",
+        "cuda_flavor": "cuda12",
+        "log_sha256": "8475a0105e448c228a7e946866fc9e42ed484d4dcb7dcc702516fe60abcb7e0d",
+        "passed": true
+      }
+    ],
+    "limits": [
+      "One CMP40HX used for final-package GPU self-tests; no new full GPU matrix or live-pool performance benchmark."
+    ],
+    "packages_reproducible": true,
+    "pearl_gpu_modules_absent": true,
+    "product_regression_cases": 11,
+    "status": "passed"
+  },
+  "release_channel": "public",
+  "restrict_pool_endpoints": false,
+  "signing": {
+    "algorithm": "RSA-3072 PKCS1v1.5 SHA256",
+    "public_key_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v0.2.22/invminer-2026.pem",
+    "spki_sha256": "125c228a41bc97fce5c1d9c4aeff98a7a9cee8c69abcf1ad6c8eaba4a46fd9b7"
+  },
+  "source_commit": "f3a6ba16321b3b54dbf41f818ea7a2a9007f280d",
+  "version": "0.2.22"
+}
