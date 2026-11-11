@@ -9,3 +9,8 @@ Use `invminer --coin noid` or `invminer --coin quan`, with your pool URL and wal
 New releases provide CUDA12/CUDA13 Linux packages and one HiveOS package that chooses the suitable bundled executable. Download assets and their SHA-256/signature files from Releases. [Signing key](trust/README.md).
 
 HiveOS Installation URL: `https://github.com/getrigeos/INVminer-Release/releases/download/v0.2.22/invminer-0.2.22.tar.gz`
+
+Flight sheets and pool comparison on [rigeos.ai](https://rigeos.ai/?src=invminer-readme), the mining directory:
+
+- NOID: [flight sheet generator](https://rigeos.ai/setup?coin=noid&miner=invminer&src=invminer-readme) (RigeOS / HiveOS / Linux) · [pools, fees and calculator](https://rigeos.ai/coins/noid?src=invminer-readme)
+- QUAN: [flight sheet generator](https://rigeos.ai/setup?coin=quan&miner=invminer&src=invminer-readme) (RigeOS / HiveOS / Linux) · [pools, fees and calculator](https://rigeos.ai/coins/quan?src=invminer-readme)
