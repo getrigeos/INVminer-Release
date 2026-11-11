@@ -9,3 +9,11 @@ This policy replaces all historical public-only restrictions and version-specifi
 Keep source, credentials, internal addresses and build paths out of this public repository and its assets. Binaries belong in GitHub Releases, not Git. Preserve normal identity, archive safety, signatures, hashes and correctness checks. Never relabel an internal three-coin binary as public.
 
 Before publication run `bash scripts/check-public-release-repo.sh`, then verify every final archive with `bash scripts/verify-release-archive.sh ARCHIVE` on Linux. Publish both CUDA flavors from the same source, plus the unified HiveOS package. Check final public downloads and signatures. Record actual validation coverage; do not invent runtime or performance results.
+
+## rigeos.ai reads this repository
+
+rigeos.ai (the mining directory) takes INVminer's version, download URLs, SHA-256 values, supported coins and developer fee from `releases/<version>/RELEASE-MANIFEST.json`: the fields `version`, `assets` (file name → `url`, `sha256`, `size`), `coins` and `fee_ppm`. Keep these fields and their shapes. Every asset `url` must be this repository's release download of the same version; the site rejects a manifest that points anywhere else.
+
+Keep the rigeos.ai links at the end of `README.md`, with `src=invminer-readme` unchanged (the site counts visits by it), and add one line per new coin.
+
+After publishing a release, update the site: in the rigeos-ai-cc repository run `pnpm sync:release invminer`, pass its gates, commit and deploy.
