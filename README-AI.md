@@ -16,7 +16,7 @@ rigeos.ai (the mining directory) takes INVminer's version, download URLs, SHA-25
 
 Keep the rigeos.ai links at the end of `README.md`, with `src=invminer-readme` unchanged (the site counts visits by it), and add one line per new coin.
 
-For releases of the existing NOID/QUAN product, update the site in rigeos-ai-cc with `pnpm sync:release invminer --version <NOID/QUAN version>`, pass its gates, commit and deploy. The current site has only one INVminer product snapshot and its sync script sorts all releases by publication time. Do not overwrite that snapshot with a Proxima-only release: GitHub `latest=false` does not protect this script. Proxima catalog integration requires a separate product mapping before syncing or deploying; the GitHub release/download links remain the current Proxima distribution entry.
+For releases of the existing NOID/QUAN product, update the site in rigeos-ai-cc with `pnpm sync:release invminer --version <NOID/QUAN version>`, pass its gates, commit and deploy. The NOID/QUAN snapshot uses product ID `invminer`; Proxima uses the separate `invminer-proxima` directory product. The sync script sorts all releases by publication time. Do not overwrite the NOID/QUAN snapshot with a Proxima-only release: GitHub `latest=false` does not protect this script. Update Proxima through its separate catalog mapping and explicit versioned download URLs, preserving the other product.
 
 ## Proxima public release product
 
