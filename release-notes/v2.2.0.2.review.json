@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "version": "2.2.0.2",
+  "channel": "public",
+  "note_sha256": "2352b994ef046c8817aa6e5d6afaa5d6839bc0a0efca9d675c77f89dd4a1688a",
+  "reviewed_by": "release maintainer (Codex)",
+  "reference_release": "https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.1",
+  "changes": [
+    {
+      "text": "Optimize Proxima BLAKE2b GPU kernels while preserving complete nonce-range coverage.",
+      "evidence": [
+        "releases/2.2.0.2/RELEASE-MANIFEST.json",
+        "Final public-package physical qualification and SHA-256-bound benchmark records"
+      ]
+    }
+  ],
+  "checks": {
+    "current_user_visible_changes_only": true,
+    "previous_release_format_reviewed": true,
+    "commands_downloads_fees_and_compatibility_checked": true,
+    "performance_claims_supported": true,
+    "internal_process_details_kept_in_validation_records": true
+  }
+}

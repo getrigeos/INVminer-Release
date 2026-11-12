@@ -1,0 +1,112 @@
+{
+  "algorithm": "Proxima upgrade-6 BLAKE2b-256 txid search",
+  "assets": {
+    "invminer-2.2.0.2.tar.gz": {
+      "sha256": "5aae0a8c84e391dfaff0c97d415a295b9c92b4d220b33de0bb727842a842e469",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.2/invminer-2.2.0.2.tar.gz.sig",
+      "size": 12797552,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.2/invminer-2.2.0.2.tar.gz"
+    },
+    "invminer-v2.2.0.2-linux-x86_64-cuda12.tar.gz": {
+      "sha256": "3c109981de159d173e8d620fbd2645f7b50cbca5ad6ec47f9913b440b9e6852b",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.2/invminer-v2.2.0.2-linux-x86_64-cuda12.tar.gz.sig",
+      "size": 6444953,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.2/invminer-v2.2.0.2-linux-x86_64-cuda12.tar.gz"
+    },
+    "invminer-v2.2.0.2-linux-x86_64-cuda13.tar.gz": {
+      "sha256": "a463f9439b021c8b1f607379d1dfbd5d4bbaf81e0b611b96e5fdbcfedce3a75b",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.2/invminer-v2.2.0.2-linux-x86_64-cuda13.tar.gz.sig",
+      "size": 6444911,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.2/invminer-v2.2.0.2-linux-x86_64-cuda13.tar.gz"
+    }
+  },
+  "binary_sha256": {
+    "cuda12": "5d0679305be81b416cbcd2349e780309ddda978dabacdf0890274fbf6555ead3",
+    "cuda13": "5f6b040cc4ef89fc07fc5ef8e119faee05b52c8f753eedea7c2b57d6f93bd59d"
+  },
+  "coins": [
+    "proxima"
+  ],
+  "fee_ppm": {
+    "proxima": 0
+  },
+  "qualification": {
+    "binaries_reproducible": true,
+    "builds_per_flavor": 2,
+    "cloud_flight_sheet_ui_operated": false,
+    "direct_build_guard_cases": 11,
+    "durable_accepted_by_group": {
+      "4090-final-faults": 38,
+      "4090-final-steady": 125,
+      "4090-reference": 86,
+      "hive-six-final": 63,
+      "mixed-final": 113,
+      "mixed-reference": 66
+    },
+    "durable_accepted_total_including_reference": 491,
+    "gpu_tasks_restored": true,
+    "maximum_glibc": "2.31",
+    "native_modules": {
+      "sm120.cubin": "02628f1687ec70f9b931bb0ae3c827edbdec4e3fdffd73080faa8d9962af4ee2",
+      "sm61.cubin": "02d8dfd2d81b839cc85b376ff4fd95d7cb0093d5a4e6c151e868603f7e9fb64d",
+      "sm70.cubin": "ed1d448b99ebb5516b330a9673d7ead7275822919dc7de7f1d74fa89fe2ec532",
+      "sm75.cubin": "98e137010f78be41463cab65a65d9c6bc1c685210da111538dc26df4da28111b",
+      "sm80.cubin": "1a5b7d0d1584a1cf27dec5501b45e6870f613f308f07d2d718079c371feb2bfd",
+      "sm86.cubin": "383e14804195be69f55ca9c7b64fd46e0fea0d20bdaa85e4c7ee8e90dc3bfa52",
+      "sm89.cubin": "1175e958e0f5a155adbe2d8055f3673a989c17d05b1b7b7e6d32f31c5cf0d57b",
+      "sm90.cubin": "29b850f3fe896d159e7ace573de9c3a231c9e697f5d629d45475bb6dfa45d9c4"
+    },
+    "ordered_endpoints_primary_rotate_reconnect_and_return_accepted": true,
+    "packages_reproducible": true,
+    "physically_tested": [
+      {
+        "count": 2,
+        "driver": "580.173.02",
+        "model": "CMP 40HX",
+        "power_limit_w": 125
+      },
+      {
+        "count": 1,
+        "driver": "580.173.02",
+        "model": "CMP 50HX",
+        "power_limit_w": 225
+      },
+      {
+        "count": 1,
+        "driver": "580.173.02",
+        "model": "RTX 5060 Ti",
+        "power_limit_w": 180
+      },
+      {
+        "count": 6,
+        "driver": "535.171.04",
+        "model": "RTX 4070 SUPER",
+        "power_limit_w": 220
+      },
+      {
+        "count": 1,
+        "driver": "580.178.04",
+        "model": "RTX 4090",
+        "power_limit_w": 400
+      }
+    ],
+    "production_fleet_upgraded": false,
+    "public_metadata_regression_tests": 14,
+    "real_hiveos_installer_upgrade_restart_per_gpu_accepted_stats": true,
+    "self_signed_wrong_hostname_mining_tls": true,
+    "short_tests_not_long_term_stability": true,
+    "stale_outcomes_retained": true,
+    "status": "passed"
+  },
+  "release_channel": "public",
+  "release_note_sha256": "2352b994ef046c8817aa6e5d6afaa5d6839bc0a0efca9d675c77f89dd4a1688a",
+  "restrict_pool_endpoints": false,
+  "signing": {
+    "algorithm": "RSA-3072 PKCS1v1.5 SHA256",
+    "public_key_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.2/proxima-release-2026.pem",
+    "scope": "Proxima releases; independent of the existing NOID/QUAN signing key",
+    "spki_sha256": "ddfef178854a1445fa6d79eabb7872d23d247391fc44e6f765c34b7092ab7235"
+  },
+  "source_commit": "dae0e43bd277cdf103d05c629cc53c44b90c29ac",
+  "version": "2.2.0.2"
+}
