@@ -30,3 +30,5 @@ Flight sheets and pool comparison on [rigeos.ai](https://rigeos.ai/?src=invminer
 
 - NOID: [flight sheet generator](https://rigeos.ai/setup?coin=noid&miner=invminer&src=invminer-readme) (RigeOS / HiveOS / Linux) · [pools, fees and calculator](https://rigeos.ai/coins/noid?src=invminer-readme)
 - QUAN: [flight sheet generator](https://rigeos.ai/setup?coin=quan&miner=invminer&src=invminer-readme) (RigeOS / HiveOS / Linux) · [pools, fees and calculator](https://rigeos.ai/coins/quan?src=invminer-readme)
+
+- Proxima: use the [dedicated release and flight-sheet instructions](https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.1); its separate package is not yet indexed by the directory.
