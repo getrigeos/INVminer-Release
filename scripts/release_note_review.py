@@ -25,7 +25,7 @@ def require(condition, message):
 
 
 def check_note(note_path, review_path, version, channel, live_note=None):
-    require(re.fullmatch(r"\d+\.\d+\.\d+", version), "invalid version")
+    require(re.fullmatch(r"\d+\.\d+\.\d+(?:\.\d+)?", version), "invalid version")
     require(channel in ("public", "internal"), "invalid channel")
     raw = Path(note_path).read_bytes()
     note = raw.decode("utf-8")

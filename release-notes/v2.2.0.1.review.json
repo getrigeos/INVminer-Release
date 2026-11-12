@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "version": "2.2.0.1",
+  "channel": "public",
+  "note_sha256": "476009c394f39776efd762758d10b2dbb2372cf2a42c5a62fc09fdcaa23e46e7",
+  "reviewed_by": "release maintainer (Codex)",
+  "reference_release": "https://github.com/getrigeos/INVminer-Release/releases/tag/v0.2.22",
+  "changes": [
+    {
+      "text": "Add Proxima upgrade-6 BLAKE2b-256 GPU mining as a separate Linux and HiveOS package.",
+      "evidence": [
+        "releases/2.2.0.1/RELEASE-MANIFEST.json",
+        "Final public-package physical qualification and SHA-256-bound benchmark records"
+      ]
+    }
+  ],
+  "checks": {
+    "current_user_visible_changes_only": true,
+    "previous_release_format_reviewed": true,
+    "commands_downloads_fees_and_compatibility_checked": true,
+    "performance_claims_supported": true,
+    "internal_process_details_kept_in_validation_records": true
+  }
+}

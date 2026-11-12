@@ -25,8 +25,8 @@ def sha(path):
 
 
 def verify(archive):
-    native = re.fullmatch(r'invminer-v(\d+\.\d+\.\d+)-linux-x86_64-(cuda12|cuda13)\.tar\.gz', archive.name)
-    hive = re.fullmatch(r'invminer-(\d+\.\d+\.\d+)\.tar\.gz', archive.name)
+    native = re.fullmatch(r'invminer-v(\d+\.\d+\.\d+(?:\.\d+)?)-linux-x86_64-(cuda12|cuda13)\.tar\.gz', archive.name)
+    hive = re.fullmatch(r'invminer-(\d+\.\d+\.\d+(?:\.\d+)?)\.tar\.gz', archive.name)
     require(native or hive, 'invalid archive filename')
     with tempfile.TemporaryDirectory() as temp:
         root = Path(temp)
@@ -55,6 +55,9 @@ def verify(archive):
             require(names == {'invminer/' + n for n in expected}, 'unexpected HiveOS member set')
             package = root/'invminer'
             bundle = json.loads((package/'HIVEOS-BUNDLE.json').read_text())
+            manifest = (package/'h-manifest.conf').read_text()
+            require('CUSTOM_NAME=invminer\n' in manifest, 'HiveOS miner identity mismatch')
+            require('CUSTOM_VERSION=' + hive[1] + '\n' in manifest, 'HiveOS manifest version mismatch')
             infos = []
             for flavor, relative in [('cuda12', 'invminer'), ('cuda13', 'cuda13/invminer')]:
                 info = coin.check(package/relative)
@@ -67,17 +70,20 @@ def verify(archive):
             for name, digest in bundle['files'].items():
                 require(name in expected and sha(package/name) == digest, 'adapter checksum mismatch')
         else:
+            info = coin.check(root/'invminer')
             expected = {'invminer', 'README.txt', 'EULA.txt', 'THIRD-PARTY-NOTICES.txt',
                         'SBOM.cargo-metadata.json', 'BUILD-MANIFEST.json', 'invminer-config.example.json',
                         'RELEASE-KEY-METADATA.json', 'RELEASE-REVOKED-KEYS.txt', 'ERROR-CATALOG.json',
                         'ERROR-CATALOG-SCHEMA.json', 'h-manifest.conf', 'h-run.sh', 'h-stats.sh',
                         'h-config.sh', 'h-readme.md'}
+            if [c['id'] for c in info['coins']] == ['proxima']:
+                expected = {'invminer', 'README.txt', 'EULA.txt', 'THIRD-PARTY-NOTICES.txt', 'BUILD-MANIFEST.json'}
             require(names == expected, 'unexpected Linux member set')
-            info = coin.check(root/'invminer')
             require(info == json.loads((root/'BUILD-MANIFEST.json').read_text()), 'binary/manifest mismatch')
             require(info['version'] == native[1] and info['cuda_flavor'] == native[2], 'archive identity mismatch')
-            for filename, field in [('ERROR-CATALOG.json', 'sha256'), ('ERROR-CATALOG-SCHEMA.json', 'schema_sha256')]:
-                require(sha(root/filename) == info['error_catalog'][field], 'error catalog mismatch')
+            if [c['id'] for c in info['coins']] != ['proxima']:
+                for filename, field in [('ERROR-CATALOG.json', 'sha256'), ('ERROR-CATALOG-SCHEMA.json', 'schema_sha256')]:
+                    require(sha(root/filename) == info['error_catalog'][field], 'error catalog mismatch')
         for name in names:
             p = root/name
             if p.name == 'invminer':
