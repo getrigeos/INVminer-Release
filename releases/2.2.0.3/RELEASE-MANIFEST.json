@@ -1,0 +1,73 @@
+{
+  "algorithm": "Proxima upgrade-6 BLAKE2b-256 txid search",
+  "assets": {
+    "invminer-2.2.0.3.tar.gz": {
+      "sha256": "3932097c48943118946c5db3116095d0d48caadbef4c6be6fbc2050248ad4b2a",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.3/invminer-2.2.0.3.tar.gz.sig",
+      "size": 12797860,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.3/invminer-2.2.0.3.tar.gz"
+    },
+    "invminer-v2.2.0.3-linux-x86_64-cuda12.tar.gz": {
+      "sha256": "0c23fb826d85b73cd058c3e1d0e46216851c995deac015a502f27d3537d83ec7",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.3/invminer-v2.2.0.3-linux-x86_64-cuda12.tar.gz.sig",
+      "size": 6444994,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.3/invminer-v2.2.0.3-linux-x86_64-cuda12.tar.gz"
+    },
+    "invminer-v2.2.0.3-linux-x86_64-cuda13.tar.gz": {
+      "sha256": "0aa9c65a02554429b3b6abd8961930999989fe6b72b82c325e6a232c53a10939",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.3/invminer-v2.2.0.3-linux-x86_64-cuda13.tar.gz.sig",
+      "size": 6445117,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.3/invminer-v2.2.0.3-linux-x86_64-cuda13.tar.gz"
+    }
+  },
+  "binary_sha256": {
+    "cuda12": "08f6f2197bcb660492ae9fe5bc5fa31a9a21dc32cdfb4bd5481edf92a7722969",
+    "cuda13": "771ed0909b2d6add7e6ccf3141658b3c452954c69492dd3dcf6d9282a03d7297"
+  },
+  "coins": [
+    "proxima"
+  ],
+  "fee_ppm": {
+    "proxima": 0
+  },
+  "qualification": {
+    "accepted_reconciliation": {
+      "all_matched": true,
+      "client_accepted": 233,
+      "unresolved_durable_matched": 3
+    },
+    "binaries_reproducible": true,
+    "builds_per_flavor": 2,
+    "cloud_flight_sheet_ui_operated": false,
+    "cpu_abba_comparison": {
+      "cpu_reduction_percent": 95.02827182010203,
+      "hashrate_change_percent": 0.9236670480499587,
+      "new_cpu_percent_one_core": 9.672367019748815,
+      "new_ghs": 7.929871605310412,
+      "old_cpu_percent_one_core": 194.54738211265806,
+      "old_ghs": 7.8572963480756055
+    },
+    "maximum_glibc": "2.31",
+    "one_clean_build_per_flavor": true,
+    "packages_reproducible": true,
+    "physical_gpu_count_this_record": 10,
+    "physical_gpu_models_this_record": [
+      "CMP 40HX",
+      "RTX 4070 SUPER"
+    ],
+    "qualification_jobs_restored": true,
+    "real_hiveos_installer_upgrade_restart_per_gpu_accepted_stats": true,
+    "short_tests_not_long_term_stability": true,
+    "stale_outcomes_retained": true
+  },
+  "release_channel": "public",
+  "release_note_sha256": "c62bc03dda9b8d466417f37ff78132efe4291e9ed43c4da1877c444e98e26b34",
+  "restrict_pool_endpoints": false,
+  "signing": {
+    "algorithm": "RSA-3072 PKCS1v1.5 SHA256",
+    "public_key_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.3/proxima-release-2026.pem",
+    "spki_sha256": "ddfef178854a1445fa6d79eabb7872d23d247391fc44e6f765c34b7092ab7235"
+  },
+  "source_commit": "e9095238466369ae104e6ffba3edc02f14bd8c72",
+  "version": "2.2.0.3"
+}

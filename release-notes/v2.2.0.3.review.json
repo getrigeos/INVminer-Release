@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "version": "2.2.0.3",
+  "channel": "public",
+  "note_sha256": "c62bc03dda9b8d466417f37ff78132efe4291e9ed43c4da1877c444e98e26b34",
+  "reviewed_by": "release agent; exact source and final-byte evidence checked",
+  "reference_release": "https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.2",
+  "changes": [
+    {
+      "text": "Reduce Proxima CPU usage while waiting for GPU work; enabled by default, with no new configuration argument.",
+      "evidence": [
+        "source e9095238466369ae104e6ffba3edc02f14bd8c72: crates/coins/proxima/src/gpu.rs",
+        "CPU-2203.md: final-byte ABBA and HiveOS measurements"
+      ]
+    }
+  ],
+  "checks": {
+    "current_user_visible_changes_only": true,
+    "previous_release_format_reviewed": true,
+    "commands_downloads_fees_and_compatibility_checked": true,
+    "performance_claims_supported": true,
+    "internal_process_details_kept_in_validation_records": true
+  }
+}
