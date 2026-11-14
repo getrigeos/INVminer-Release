@@ -1,0 +1,226 @@
+{
+  "algorithm": "Proxima upgrade-6 BLAKE2b-256 txid search",
+  "assets": {
+    "invminer-2.2.0.4.tar.gz": {
+      "sha256": "045f6e6aa0e6b76c9cfd18e5a10f6642a298e30300b482d4f275656b855377c9",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.4/invminer-2.2.0.4.tar.gz.sig",
+      "size": 13095450,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.4/invminer-2.2.0.4.tar.gz"
+    },
+    "invminer-v2.2.0.4-linux-x86_64-cuda12.tar.gz": {
+      "sha256": "bffd2750c20a5dc516b3fe16352766749b191a30cee8da313de2571031ef8a45",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.4/invminer-v2.2.0.4-linux-x86_64-cuda12.tar.gz.sig",
+      "size": 6593632,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.4/invminer-v2.2.0.4-linux-x86_64-cuda12.tar.gz"
+    },
+    "invminer-v2.2.0.4-linux-x86_64-cuda13.tar.gz": {
+      "sha256": "e80a8defd66ab262c2758d1b6f0c74f99b809e776607d09baf2f221a3c520d58",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.4/invminer-v2.2.0.4-linux-x86_64-cuda13.tar.gz.sig",
+      "size": 6593537,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.4/invminer-v2.2.0.4-linux-x86_64-cuda13.tar.gz"
+    }
+  },
+  "binary_sha256": {
+    "cuda12": "e87c5801d81bddf1a353c8532e69c631e9b686ba1660b7f51d5728433acbde6a",
+    "cuda13": "0f5df015555cdc658781354af826b723701b02e7c5bcb93a24aa5d743c519afa"
+  },
+  "coins": [
+    "proxima"
+  ],
+  "fee_ppm": {
+    "proxima": 0
+  },
+  "qualification": {
+    "accepted_reconciliation": {
+      "all_matched": true,
+      "client_accepted": 294,
+      "unresolved_durable_matched": 1
+    },
+    "binaries_reproducible": true,
+    "builds_per_flavor": 2,
+    "cloud_flight_sheet_ui_operated": false,
+    "fault_cases": [
+      {
+        "case": "refused",
+        "flavor": "cuda12",
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 3,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44465",
+            "phase": "initial",
+            "seconds": 18.585585955996066
+          }
+        ]
+      },
+      {
+        "case": "silent",
+        "flavor": "cuda12",
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 4,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44465",
+            "phase": "initial",
+            "seconds": 36.257036671973765
+          }
+        ]
+      },
+      {
+        "case": "auth",
+        "flavor": "cuda12",
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 3,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44465",
+            "phase": "initial",
+            "seconds": 24.71923666493967
+          }
+        ]
+      },
+      {
+        "case": "primary",
+        "flavor": "cuda12",
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 3,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44464",
+            "phase": "initial",
+            "seconds": 16.194526222068816
+          },
+          {
+            "accepted_after": 6,
+            "accepted_baseline": 3,
+            "endpoint": "stratum+ssl://127.0.0.1:44465",
+            "phase": "backup-after-disconnect",
+            "seconds": 28.40816793194972
+          },
+          {
+            "accepted_after": 12,
+            "accepted_baseline": 9,
+            "endpoint": "stratum+ssl://127.0.0.1:44464",
+            "phase": "returned-primary",
+            "seconds": 24.295978805981576
+          }
+        ]
+      },
+      {
+        "case": "rotate",
+        "flavor": "cuda12",
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 4,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44464",
+            "phase": "initial",
+            "seconds": 13.581357860006392
+          },
+          {
+            "accepted_after": 8,
+            "accepted_baseline": 4,
+            "endpoint": "stratum+ssl://127.0.0.1:44465",
+            "phase": "backup-after-disconnect",
+            "seconds": 20.784929051995277
+          },
+          {
+            "phase": "rotate-did-not-auto-return",
+            "seconds": 15
+          },
+          {
+            "accepted_after": 16,
+            "accepted_baseline": 13,
+            "endpoint": "stratum+ssl://127.0.0.1:44464",
+            "phase": "rotate-wrap-primary",
+            "seconds": 6.33417557599023
+          }
+        ]
+      },
+      {
+        "case": "cuda13",
+        "flavor": "cuda13",
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 4,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44464",
+            "phase": "initial",
+            "seconds": 29.887825598940253
+          }
+        ]
+      }
+    ],
+    "maximum_glibc": "2.31",
+    "older_architecture_modules_byte_identical": true,
+    "one_clean_build_per_flavor": true,
+    "packages_reproducible": true,
+    "performance": {
+      "gain_percent": 13.258273236851359,
+      "hive": [
+        {
+          "ghs": 32.896120263012826,
+          "per_gpu_ghs": [
+            5.4971924105982,
+            5.415773319736429,
+            5.488769746026293,
+            5.438233758594849,
+            5.572996391745366,
+            5.4831546363116885
+          ],
+          "seconds": 95.61182938306592
+        },
+        {
+          "ghs": 33.066590523545514,
+          "per_gpu_ghs": [
+            5.529645693910767,
+            5.441386255354246,
+            5.5219709601232445,
+            5.460573089823055,
+            5.587206197317195,
+            5.525808327017006
+          ],
+          "seconds": 69.95303379418328
+        }
+      ],
+      "new_5060ti_ghs": 3.92629855504874,
+      "old_5060ti_ghs": 3.4666770407472733
+    },
+    "physical_gpu_count": 11,
+    "physical_gpu_models": [
+      "CMP 40HX",
+      "CMP 50HX",
+      "RTX 5060 Ti",
+      "RTX 4070 SUPER",
+      "RTX 4090"
+    ],
+    "qualification_jobs_restored": true,
+    "real_hiveos_installer_upgrade_restart_per_gpu_accepted_stats": true,
+    "restored_fresh_work_verified": true,
+    "restored_prl_accepted_wait_waived_by_owner": true,
+    "self_signed_wrong_sni_tested": true,
+    "short_tests_not_long_term_stability": true,
+    "sm120_correctness": {
+      "all_hits_compared_to_cpu": true,
+      "cases": 192,
+      "nonces": 494592
+    },
+    "stale_outcomes_retained": true
+  },
+  "release_channel": "public",
+  "release_note_sha256": "cb358718e6a5eb4e51ea8115231b9a264505c939219db9b8d81e8c930dcf44e5",
+  "restrict_pool_endpoints": false,
+  "signing": {
+    "algorithm": "RSA-3072 PKCS1v1.5 SHA256",
+    "public_key_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.4/proxima-release-2026.pem",
+    "spki_sha256": "ddfef178854a1445fa6d79eabb7872d23d247391fc44e6f765c34b7092ab7235"
+  },
+  "source_commit": "6d4ff938af27f97a25a04e2eaae3c91207793497",
+  "version": "2.2.0.4"
+}

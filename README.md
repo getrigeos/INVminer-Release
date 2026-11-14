@@ -12,10 +12,10 @@ HiveOS Installation URL: `https://github.com/getrigeos/INVminer-Release/releases
 
 ## Proxima upgrade-6
 
-Proxima release: [v2.2.0.3](https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.3). This separate package supports Proxima only; keep the NOID/QUAN package for those flight sheets.
+Proxima release: [v2.2.0.4](https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.4). This separate package supports Proxima only; keep the NOID/QUAN package for those flight sheets.
 
 HiveOS Installation URL:
-https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.3/invminer-2.2.0.3.tar.gz
+https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.4/invminer-2.2.0.4.tar.gz
 
 Use `--coin proxima` with your registered 64-hex holder/account ID. Ordered pool URLs:
 

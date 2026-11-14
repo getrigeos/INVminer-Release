@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "version": "2.2.0.4",
+  "channel": "public",
+  "note_sha256": "cb358718e6a5eb4e51ea8115231b9a264505c939219db9b8d81e8c930dcf44e5",
+  "reviewed_by": "Codex release agent; source and current physical qualification reviewed",
+  "reference_release": "https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.3",
+  "changes": [
+    {
+      "text": "Improve Proxima BLAKE2b-256 search throughput on Blackwell GPUs, verified on RTX 5060 Ti.",
+      "evidence": [
+        "source commit 6d4ff938af27f97a25a04e2eaae3c91207793497: SM120-only b2s_core.h and module change",
+        "mixed-evidence/live-evidence/RESULT.json: same-rig old/new/old completed-work windows",
+        "PERFORMANCE.json"
+      ]
+    }
+  ],
+  "checks": {
+    "current_user_visible_changes_only": true,
+    "previous_release_format_reviewed": true,
+    "commands_downloads_fees_and_compatibility_checked": true,
+    "performance_claims_supported": true,
+    "internal_process_details_kept_in_validation_records": true
+  }
+}

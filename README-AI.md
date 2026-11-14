@@ -20,6 +20,6 @@ For releases of the existing NOID/QUAN product, update the site in rigeos-ai-cc 
 
 ## Proxima public release product
 
-v2.2.0.3 is a separate Proxima upgrade-6 binary product, not an update to NOID/QUAN flight sheets. Public source code stays private. Four-component numeric versions and Proxima-only zero-fee build metadata are supported by the public verifiers. Preserve the existing NOID/QUAN assets, signing key and default latest release; use explicit Proxima release/download URLs.
+v2.2.0.4 is a separate Proxima upgrade-6 binary product, not an update to NOID/QUAN flight sheets. Public source code stays private. Four-component numeric versions and Proxima-only zero-fee build metadata are supported by the public verifiers. Preserve the existing NOID/QUAN assets, signing key and default latest release; use explicit Proxima release/download URLs.
 
 The owner expressly requested tested-GPU performance in this exact Release Note. Bind every measurement to its final public executable, model, device count, power cap and window. Do not copy previous internal artifact rates or infer untested models from compiled SM support. The adjacent review JSON binds the final note.
