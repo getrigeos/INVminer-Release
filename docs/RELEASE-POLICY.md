@@ -13,3 +13,5 @@ executable, operator README, EULA, dependency notices and exact build manifest;
 its HiveOS archive uses the existing dual-CUDA member set. For v2.2.0.1 the owner
 explicitly requested tested-GPU hashrates in the Release Note: disclose only final
 public-byte measurements with card counts, power limits and measurement windows.
+
+Native Windows releases may be Windows-only when explicitly requested by the owner. Use a versioned x64 ZIP with native executable, launchers, exact build identity, EULA, dependency notices and release note; preserve the current Linux/HiveOS package and clearly distinguish its installation URL. Native Windows runtime, pool failure/recovery, launcher and package integrity require current physical validation. General integrity, immutability, signatures and note-review requirements still apply.

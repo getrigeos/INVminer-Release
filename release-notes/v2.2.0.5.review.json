@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "version": "2.2.0.5",
+  "channel": "public",
+  "note_sha256": "af8fc70a6094ca8a8aa38387356d6cef4d03076118294c1399d773a2f5b0d9a9",
+  "reviewed_by": "Codex release agent; native Windows source and physical qualification checked",
+  "reference_release": "https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.4",
+  "changes": [
+    {
+      "text": "Add native Windows x64 support for Proxima upgrade-6, with an interactive account/worker launcher.",
+      "evidence": [
+        "source 94a1ed057198b97b0bd0b2aa216bca0765664bcc",
+        "Windows 11 RTX 3070 Ti native public executable and pool qualification",
+        "PERFORMANCE.json; windows-faults-r2/RESULT.json",
+        "BAT packaging source fbbc7acc58aebf1803cf5b0f9d03bd49320ead14"
+      ]
+    }
+  ],
+  "checks": {
+    "current_user_visible_changes_only": true,
+    "previous_release_format_reviewed": true,
+    "commands_downloads_fees_and_compatibility_checked": true,
+    "performance_claims_supported": true,
+    "internal_process_details_kept_in_validation_records": true
+  }
+}

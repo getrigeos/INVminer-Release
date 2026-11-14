@@ -34,3 +34,9 @@ Flight sheets and pool comparison on [rigeos.ai](https://rigeos.ai/?src=invminer
 - Proxima: [flight sheet generator](https://rigeos.ai/setup?coin=prox&miner=invminer-proxima&src=invminer-readme) (RigeOS / HiveOS / Linux) · [project risks, pools and software](https://rigeos.ai/coins/prox?src=invminer-readme). The directory uses the separate Proxima package.
 
 For connection or share problems, open the [configuration diagnostics](https://rigeos.ai/diagnose?src=invminer-readme). Before moving a farm, use the [RigeOS migration checklist](https://rigeos.ai/guides/migrate?src=invminer-readme).
+
+## Proxima for Windows
+
+Windows x64: [v2.2.0.5](https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.5). Download: https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.5/invminer-v2.2.0.5-windows-x86_64.zip
+
+Extract the ZIP and run `start-proxima.bat`; enter a registered 64-hex holder/account ID. Proxima only, 0% fee. Tested Windows GPU and low-power hashrate are listed in the release note. Linux/HiveOS remain on v2.2.0.4.

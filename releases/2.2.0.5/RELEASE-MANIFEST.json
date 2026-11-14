@@ -1,0 +1,372 @@
+{
+  "assets": {
+    "invminer-v2.2.0.5-windows-x86_64.zip": {
+      "sha256": "58438ac30008897dc78c577c2247157cd8baf510f6462b29d19fad05d243d918",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.5/invminer-v2.2.0.5-windows-x86_64.zip.sig",
+      "size": 6546675,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.5/invminer-v2.2.0.5-windows-x86_64.zip"
+    }
+  },
+  "binary_sha256": "ba7ab75876fb34fbe13faf1c617164620703cf2e5547f7f58770f983ddd639fc",
+  "coins": [
+    "proxima"
+  ],
+  "fee_ppm": {
+    "proxima": 0
+  },
+  "mining_tls_default": "compatible",
+  "packaging_commit": "fbbc7acc58aebf1803cf5b0f9d03bd49320ead14",
+  "platform": "windows-x86_64",
+  "qualification": {
+    "build_target_tests_passed": 5,
+    "delayed_fragmented_api_requests": {
+      "delayed_fragmented_requests": 8,
+      "passed": true,
+      "statuses": [
+        "HTTP/1.1 200 OK",
+        "HTTP/1.1 200 OK",
+        "HTTP/1.1 200 OK",
+        "HTTP/1.1 200 OK",
+        "HTTP/1.1 200 OK",
+        "HTTP/1.1 200 OK",
+        "HTTP/1.1 200 OK",
+        "HTTP/1.1 200 OK"
+      ]
+    },
+    "desktop_idle_restored": true,
+    "fault_cases": [
+      {
+        "case": "refused",
+        "outcome": {
+          "exit_code": 0,
+          "forced": false,
+          "natural_exit": false,
+          "seconds": 10.2786254,
+          "signal_error": "",
+          "wait_error": ""
+        },
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 4,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44475",
+            "phase": "initial",
+            "seconds": 8.5891925
+          }
+        ]
+      },
+      {
+        "case": "silent",
+        "outcome": {
+          "exit_code": 0,
+          "forced": false,
+          "natural_exit": false,
+          "seconds": 32.2589015,
+          "signal_error": "",
+          "wait_error": ""
+        },
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 5,
+            "accepted_baseline": 1,
+            "endpoint": "stratum+ssl://127.0.0.1:44475",
+            "phase": "initial",
+            "seconds": 31.778402959
+          }
+        ]
+      },
+      {
+        "case": "auth",
+        "outcome": {
+          "exit_code": 0,
+          "forced": false,
+          "natural_exit": false,
+          "seconds": 12.3718247,
+          "signal_error": "",
+          "wait_error": ""
+        },
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 4,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44475",
+            "phase": "initial",
+            "seconds": 11.880711375000004
+          }
+        ]
+      },
+      {
+        "case": "primary",
+        "outcome": {
+          "exit_code": 0,
+          "forced": false,
+          "natural_exit": false,
+          "seconds": 50.5284593,
+          "signal_error": "",
+          "wait_error": ""
+        },
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 3,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44474",
+            "phase": "initial",
+            "seconds": 9.694024083000002
+          },
+          {
+            "accepted_after": 6,
+            "accepted_baseline": 3,
+            "endpoint": "stratum+ssl://127.0.0.1:44475",
+            "phase": "backup-after-disconnect",
+            "seconds": 24.241321791000004
+          },
+          {
+            "accepted_after": 14,
+            "accepted_baseline": 11,
+            "endpoint": "stratum+ssl://127.0.0.1:44474",
+            "phase": "returned-primary",
+            "seconds": 15.512544082999995
+          }
+        ]
+      },
+      {
+        "case": "rotate",
+        "outcome": {
+          "exit_code": 0,
+          "forced": false,
+          "natural_exit": false,
+          "seconds": 70.2839896,
+          "signal_error": "",
+          "wait_error": ""
+        },
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 4,
+            "accepted_baseline": 1,
+            "endpoint": "stratum+ssl://127.0.0.1:44474",
+            "phase": "initial",
+            "seconds": 16.289340207999985
+          },
+          {
+            "accepted_after": 8,
+            "accepted_baseline": 4,
+            "endpoint": "stratum+ssl://127.0.0.1:44475",
+            "phase": "backup-after-disconnect",
+            "seconds": 28.70129691599999
+          },
+          {
+            "phase": "rotate-did-not-auto-return",
+            "seconds": 15
+          },
+          {
+            "accepted_after": 20,
+            "accepted_baseline": 17,
+            "endpoint": "stratum+ssl://127.0.0.1:44474",
+            "phase": "rotate-wrap-primary",
+            "seconds": 7.803624042000024
+          }
+        ]
+      }
+    ],
+    "gpu_cpu_correctness_self_test_passed": true,
+    "native_windows_unit_tests_passed": 6,
+    "new_linux_hiveos_release": false,
+    "other_windows_gpu_models_tested": false,
+    "package_byte_reproducible": true,
+    "packaged_launcher": {
+      "all_runs": [
+        {
+          "accepted": 7,
+          "case": "package-launch2",
+          "exit": {
+            "exit_code": 0,
+            "forced": false,
+            "natural_exit": false,
+            "seconds": 45.4333785,
+            "signal_error": "",
+            "wait_error": ""
+          },
+          "gpu_identity_verified": true
+        },
+        {
+          "accepted": 7,
+          "case": "package-launch3",
+          "exit": {
+            "exit_code": 0,
+            "forced": false,
+            "natural_exit": false,
+            "seconds": 45.3949132,
+            "signal_error": "",
+            "wait_error": ""
+          },
+          "gpu_identity_verified": true
+        },
+        {
+          "accepted": 13,
+          "case": "package-launch-bat",
+          "exit": {
+            "exit_code": 0,
+            "forced": false,
+            "natural_exit": false,
+            "seconds": 45.4094752,
+            "signal_error": "",
+            "wait_error": ""
+          },
+          "gpu_identity_verified": true
+        }
+      ],
+      "cmd_launch_restart_identical_executable_and_launchers": true,
+      "desktop_double_click_ui_operated": false,
+      "final_bat_extraction_and_launch": true,
+      "final_zip_sha256": "58438ac30008897dc78c577c2247157cd8baf510f6462b29d19fad05d243d918",
+      "member_hashes_verified": true,
+      "native_build_info_verified": true,
+      "passed": true
+    },
+    "performance": {
+      "accepted": 49,
+      "completed_attempts": 168980119552,
+      "configured_power_cap_w": 100,
+      "driver": "536.40",
+      "exit": {
+        "exit_code": 0,
+        "forced": false,
+        "natural_exit": false,
+        "seconds": 180.2901577,
+        "signal_error": "",
+        "wait_error": ""
+      },
+      "ghs": 1.1572712546191894,
+      "low_power_not_maximum_hashrate": true,
+      "max_temp_c": 53,
+      "model": "NVIDIA GeForce RTX 3070 Ti",
+      "rejected": 0,
+      "run_seconds": 180.2901577,
+      "seconds": 146.01600003242493,
+      "stale": 1,
+      "wall_clock_not_pool_estimate": true
+    },
+    "physical_gpu_count": 1,
+    "physical_gpu_models": [
+      "RTX 3070 Ti"
+    ],
+    "pool_durable_receipts_all_matched": true,
+    "prior_linux_hiveos_version": "2.2.0.4",
+    "qualified_receipts": {
+      "fault-r2-auth": {
+        "client_accepted": 4,
+        "durable_matched": 4,
+        "stale": 0,
+        "unresolved": 0,
+        "unresolved_durable_matched": 0
+      },
+      "fault-r2-primary": {
+        "client_accepted": 15,
+        "durable_matched": 15,
+        "stale": 5,
+        "unresolved": 1,
+        "unresolved_durable_matched": 1
+      },
+      "fault-r2-refused": {
+        "client_accepted": 4,
+        "durable_matched": 4,
+        "stale": 0,
+        "unresolved": 0,
+        "unresolved_durable_matched": 0
+      },
+      "fault-r2-rotate": {
+        "client_accepted": 22,
+        "durable_matched": 22,
+        "stale": 1,
+        "unresolved": 2,
+        "unresolved_durable_matched": 1
+      },
+      "fault-r2-silent": {
+        "client_accepted": 6,
+        "durable_matched": 6,
+        "stale": 1,
+        "unresolved": 0,
+        "unresolved_durable_matched": 0
+      },
+      "package-launch-bat": {
+        "client_accepted": 13,
+        "durable_matched": 13,
+        "stale": 0,
+        "unresolved": 1,
+        "unresolved_durable_matched": 1
+      },
+      "package-launch1": {
+        "client_accepted": 21,
+        "durable_matched": 21,
+        "stale": 0,
+        "unresolved": 0,
+        "unresolved_durable_matched": 0
+      },
+      "package-launch2": {
+        "client_accepted": 7,
+        "durable_matched": 7,
+        "stale": 0,
+        "unresolved": 0,
+        "unresolved_durable_matched": 0
+      },
+      "package-launch3": {
+        "client_accepted": 7,
+        "durable_matched": 7,
+        "stale": 0,
+        "unresolved": 0,
+        "unresolved_durable_matched": 0
+      },
+      "public-final-live180": {
+        "client_accepted": 49,
+        "durable_matched": 49,
+        "stale": 1,
+        "unresolved": 0,
+        "unresolved_durable_matched": 0
+      },
+      "public-thermal90": {
+        "client_accepted": 11,
+        "durable_matched": 11,
+        "stale": 1,
+        "unresolved": 0,
+        "unresolved_durable_matched": 0
+      }
+    },
+    "self_signed_wrong_sni_tested": true,
+    "separate_target_builds_byte_identical": true,
+    "short_tests_not_long_term_stability": true,
+    "thermal_pause_and_resume": {
+      "accepted_after_resume": 11,
+      "accepted_at_first_resume": 3,
+      "exit": {
+        "exit_code": 0,
+        "forced": false,
+        "natural_exit": false,
+        "seconds": 90.6640062,
+        "signal_error": "",
+        "wait_error": ""
+      },
+      "passed": true,
+      "pause_threshold_c": 42,
+      "resume_threshold_c": 37,
+      "saw_paused": true,
+      "saw_resumed": true
+    },
+    "windows_multigpu_tested": false
+  },
+  "release_channel": "public",
+  "release_note_sha256": "af8fc70a6094ca8a8aa38387356d6cef4d03076118294c1399d773a2f5b0d9a9",
+  "restrict_pool_endpoints": false,
+  "signing": {
+    "algorithm": "RSA-3072 PKCS1v1.5 SHA256",
+    "public_key_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.5/proxima-release-2026.pem",
+    "spki_sha256": "ddfef178854a1445fa6d79eabb7872d23d247391fc44e6f765c34b7092ab7235",
+    "windows_authenticode": false
+  },
+  "source_commit": "94a1ed057198b97b0bd0b2aa216bca0765664bcc",
+  "version": "2.2.0.5"
+}
