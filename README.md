@@ -12,10 +12,10 @@ HiveOS Installation URL: `https://github.com/getrigeos/INVminer-Release/releases
 
 ## Proxima upgrade-6
 
-Proxima release: [v2.2.0.4](https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.4). This separate package supports Proxima only; keep the NOID/QUAN package for those flight sheets.
+Proxima release: [v2.2.0.8](https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.8). This separate package supports Proxima only; keep the NOID/QUAN package for those flight sheets.
 
 HiveOS Installation URL:
-https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.4/invminer-2.2.0.4.tar.gz
+https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.8/invminer-2.2.0.8.tar.gz
 
 Use `--coin proxima` with your registered 64-hex holder/account ID. Ordered pool URLs:
 
@@ -37,6 +37,6 @@ For connection or share problems, open the [configuration diagnostics](https://r
 
 ## Proxima for Windows
 
-Windows x64: [v2.2.0.5](https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.5). Download: https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.5/invminer-v2.2.0.5-windows-x86_64.zip
+Windows x64: [v2.2.0.8](https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.8). Download: https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.8/invminer-v2.2.0.8-windows-x86_64.zip
 
-Extract the ZIP and run `start-proxima.bat`; enter a registered 64-hex holder/account ID. Proxima only, 0% fee. Tested Windows GPU and low-power hashrate are listed in the release note. Linux/HiveOS remain on v2.2.0.4.
+Extract the ZIP and run `start-proxima.bat`; enter a registered 64-hex holder/account ID. Proxima only, 0% fee. Tested Windows GPU and low-power hashrate are listed in the release note. Linux/HiveOS and Windows use v2.2.0.8.

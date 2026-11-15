@@ -1,0 +1,479 @@
+{
+  "algorithm": "Proxima upgrade-6 BLAKE2b-256 txid search",
+  "assets": {
+    "invminer-2.2.0.8.tar.gz": {
+      "sha256": "bd2407c2b42a6e237a44f7b08bb4868261e831e7afbaee4348faf8aec1189ac8",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.8/invminer-2.2.0.8.tar.gz.sig",
+      "size": 13280172,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.8/invminer-2.2.0.8.tar.gz"
+    },
+    "invminer-v2.2.0.8-linux-x86_64-cuda12.tar.gz": {
+      "sha256": "84b9169d61cda555bac6538eb3de779f7cd4fcb41910b11503086c87c548fc2b",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.8/invminer-v2.2.0.8-linux-x86_64-cuda12.tar.gz.sig",
+      "size": 6685558,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.8/invminer-v2.2.0.8-linux-x86_64-cuda12.tar.gz"
+    },
+    "invminer-v2.2.0.8-linux-x86_64-cuda13.tar.gz": {
+      "sha256": "0c175e3e1706671d3f1542c7aaba9d01f7eca1e507446dac4adc9d4844d920f0",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.8/invminer-v2.2.0.8-linux-x86_64-cuda13.tar.gz.sig",
+      "size": 6685569,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.8/invminer-v2.2.0.8-linux-x86_64-cuda13.tar.gz"
+    },
+    "invminer-v2.2.0.8-windows-x86_64.zip": {
+      "sha256": "ebbc0d5295b4a036d74b0e3757fc8d6cb1cc18cd2eaf6b7164f3e84f2e74ac76",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.8/invminer-v2.2.0.8-windows-x86_64.zip.sig",
+      "size": 6636911,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.8/invminer-v2.2.0.8-windows-x86_64.zip"
+    }
+  },
+  "binary_sha256": {
+    "cuda12": "1f6a6f76d272d91a5835b3345b87cb20dec8979e3753ed22cbbf904440b5f4af",
+    "cuda13": "572e87c3a0ec127376365e568c5a827a4776a2b84b6038501c8e4ee1b8737a62",
+    "windows_cuda12": "5fd47106efe14893c9d597f95a3da546ff766eff7b82c5a90f3f7c4366479905"
+  },
+  "coins": [
+    "proxima"
+  ],
+  "fee_ppm": {
+    "proxima": 0
+  },
+  "qualification": {
+    "accepted_reconciliation": {
+      "all_matched": true,
+      "unique_client_accepted": 240,
+      "unique_durable_matched": 240,
+      "unresolved_durable_matched": 3
+    },
+    "binaries_reproducible": true,
+    "builds_per_platform_flavor": 2,
+    "cloud_flight_sheet_ui_operated": false,
+    "linux_fault_cases": [
+      {
+        "case": "refused",
+        "flavor": "cuda12",
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 3,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44465",
+            "phase": "initial",
+            "seconds": 30.479910939990077
+          }
+        ]
+      },
+      {
+        "case": "silent",
+        "flavor": "cuda12",
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 3,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44465",
+            "phase": "initial",
+            "seconds": 35.773046246002195
+          }
+        ]
+      },
+      {
+        "case": "auth",
+        "flavor": "cuda12",
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 4,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44465",
+            "phase": "initial",
+            "seconds": 15.738577490003081
+          }
+        ]
+      },
+      {
+        "case": "primary",
+        "flavor": "cuda12",
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 4,
+            "accepted_baseline": 1,
+            "endpoint": "stratum+ssl://127.0.0.1:44464",
+            "phase": "initial",
+            "seconds": 29.481252580997534
+          },
+          {
+            "accepted_after": 7,
+            "accepted_baseline": 4,
+            "endpoint": "stratum+ssl://127.0.0.1:44465",
+            "phase": "backup-after-disconnect",
+            "seconds": 20.059120981997694
+          },
+          {
+            "accepted_after": 13,
+            "accepted_baseline": 10,
+            "endpoint": "stratum+ssl://127.0.0.1:44464",
+            "phase": "returned-primary",
+            "seconds": 15.84515218900924
+          }
+        ]
+      },
+      {
+        "case": "rotate",
+        "flavor": "cuda12",
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 3,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44464",
+            "phase": "initial",
+            "seconds": 10.515981596996426
+          },
+          {
+            "accepted_after": 6,
+            "accepted_baseline": 3,
+            "endpoint": "stratum+ssl://127.0.0.1:44465",
+            "phase": "backup-after-disconnect",
+            "seconds": 13.739640642990707
+          },
+          {
+            "phase": "rotate-did-not-auto-return",
+            "seconds": 15
+          },
+          {
+            "accepted_after": 14,
+            "accepted_baseline": 11,
+            "endpoint": "stratum+ssl://127.0.0.1:44464",
+            "phase": "rotate-wrap-primary",
+            "seconds": 14.798371426993981
+          }
+        ]
+      },
+      {
+        "case": "cuda13",
+        "flavor": "cuda13",
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 3,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44464",
+            "phase": "initial",
+            "seconds": 12.617698952002684
+          }
+        ]
+      }
+    ],
+    "maximum_linux_glibc": "2.31",
+    "original_tasks_restored_fresh_work_verified": true,
+    "packages_reproducible": true,
+    "performance": {
+      "competitor_lead_claimed": false,
+      "current330_pool_speedup_claimed": false,
+      "hive": [
+        {
+          "rates": [
+            5.481966888026806,
+            5.4090609345287515,
+            5.45112206154686,
+            5.437101685874157,
+            5.560480991793941,
+            5.456730211815941
+          ],
+          "seconds": 95.73047907790169,
+          "total": 32.796462773586455
+        },
+        {
+          "rates": [
+            5.494257680591889,
+            5.42791192746776,
+            5.465231413600082,
+            5.44864497531905,
+            5.556456824145759,
+            5.465231413600082
+          ],
+          "seconds": 64.73612995189615,
+          "total": 32.857734234724624
+        }
+      ],
+      "live_mixed": [
+        {
+          "completed_work_quantum_by_device": {
+            "0": 134217728,
+            "1": 2147483648,
+            "2": 268435456,
+            "3": 268435456
+          },
+          "ghs_by_device": {
+            "0": 2.1500331046597867,
+            "1": 2.1322642360262347,
+            "2": 3.5182359894432875,
+            "3": 3.926919968014982
+          },
+          "name": "mixed-cuda12",
+          "seconds": 15.10706514499907,
+          "shares": {
+            "accepted": 8,
+            "rejected": 0,
+            "stale": 1
+          },
+          "total_ghs": 11.72745329814429
+        },
+        {
+          "completed_work_quantum_by_device": {
+            "0": 134217728,
+            "1": 134217728,
+            "2": 134217728,
+            "3": 268435456
+          },
+          "ghs_by_device": {
+            "0": 2.097853352796033,
+            "1": 2.0662803090248554,
+            "2": 2.9433093026686814,
+            "3": 3.9010249637277403
+          },
+          "name": "mixed-cuda13",
+          "seconds": 38.25920493299782,
+          "shares": {
+            "accepted": 11,
+            "rejected": 0,
+            "stale": 0
+          },
+          "total_ghs": 11.00846792821731
+        },
+        {
+          "completed_work_quantum_by_device": {
+            "1": 134217728,
+            "3": 268435456
+          },
+          "ghs_by_device": {
+            "1": 2.1075821278486195,
+            "3": 3.9128107014911078
+          },
+          "name": "mixed-select",
+          "seconds": 15.092935699009104,
+          "shares": {
+            "accepted": 6,
+            "rejected": 0,
+            "stale": 1
+          },
+          "total_ghs": 6.020392829339727
+        }
+      ],
+      "same_504_sparse_layout_only": true,
+      "scope": "matched504 byte completed-nonce offline ABBA, unchanged hardware, not a pool revenue measurement",
+      "short_cooled_abba": {
+        "0": {
+          "gain_percent": 7.946930881658321,
+          "rates_ghs": {
+            "baseline": 2.1305023503816396,
+            "candidate": 2.2998118995985743
+          }
+        },
+        "1": {
+          "gain_percent": 8.012970936062768,
+          "rates_ghs": {
+            "baseline": 2.1166222056670096,
+            "candidate": 2.286226527833358
+          }
+        },
+        "2": {
+          "gain_percent": 8.306823722352895,
+          "rates_ghs": {
+            "baseline": 3.4602216782495843,
+            "candidate": 3.747656193464418
+          }
+        },
+        "3": {
+          "gain_percent": 10.685397051883072,
+          "rates_ghs": {
+            "baseline": 3.7961163178216255,
+            "candidate": 4.201746418932189
+          }
+        }
+      },
+      "windows": {
+        "max_temp": 52,
+        "rate_ghs": 1.1427905880221365,
+        "seconds": 92.01999998092651,
+        "shares": {
+          "accepted": 41,
+          "rejected": 0,
+          "stale": 1
+        }
+      }
+    },
+    "physical_gpu_count": 11,
+    "physical_gpu_models": [
+      "CMP40HX",
+      "CMP50HX",
+      "RTX5060Ti",
+      "RTX4070SUPER",
+      "RTX3070Ti"
+    ],
+    "real_hiveos_installer_upgrade_restart_per_gpu_accepted_stats": true,
+    "restored_prl_accepted_wait_waived_by_owner": true,
+    "self_signed_wrong_sni_tested": true,
+    "short_tests_not_long_term_stability": true,
+    "stale_outcomes_retained": true,
+    "windows_bat_start_stop_restart": true,
+    "windows_existing_power_cap_w": 100,
+    "windows_failed_rounds_preserved": {
+      "guard_r1": "guard exited; fault attempt refused to start; helper logging hardened; all subsequent live tests had active independent guard",
+      "rotate_r3": "3s initial handshake timed out; miner correctly mined backup; initial-primary test precondition failed; rerun10s completed all rotate phases"
+    },
+    "windows_fault_cases": [
+      {
+        "case": "refused",
+        "outcome": {
+          "exit_code": 0,
+          "forced": false,
+          "natural_exit": false,
+          "seconds": 16.4245607,
+          "signal_error": "",
+          "wait_error": ""
+        },
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 3,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44475",
+            "phase": "initial",
+            "seconds": 16.167561582999998
+          }
+        ]
+      },
+      {
+        "case": "silent",
+        "outcome": {
+          "exit_code": 0,
+          "forced": false,
+          "natural_exit": false,
+          "seconds": 18.4659449,
+          "signal_error": "",
+          "wait_error": ""
+        },
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 3,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44475",
+            "phase": "initial",
+            "seconds": 17.215315999999998
+          }
+        ]
+      },
+      {
+        "case": "auth",
+        "outcome": {
+          "exit_code": 0,
+          "forced": false,
+          "natural_exit": false,
+          "seconds": 16.4259173,
+          "signal_error": "",
+          "wait_error": ""
+        },
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 3,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44475",
+            "phase": "initial",
+            "seconds": 15.073045790999998
+          }
+        ]
+      },
+      {
+        "case": "primary",
+        "outcome": {
+          "exit_code": 0,
+          "forced": false,
+          "natural_exit": false,
+          "seconds": 32.2834734,
+          "signal_error": "",
+          "wait_error": ""
+        },
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 4,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44474",
+            "phase": "initial",
+            "seconds": 8.321411583
+          },
+          {
+            "accepted_after": 7,
+            "accepted_baseline": 4,
+            "endpoint": "stratum+ssl://127.0.0.1:44475",
+            "phase": "backup-after-disconnect",
+            "seconds": 5.671641832999995
+          },
+          {
+            "accepted_after": 10,
+            "accepted_baseline": 7,
+            "endpoint": "stratum+ssl://127.0.0.1:44474",
+            "phase": "returned-primary",
+            "seconds": 17.96533779100001
+          }
+        ]
+      },
+      {
+        "case": "rotate",
+        "outcome": {
+          "exit_code": 0,
+          "forced": false,
+          "natural_exit": false,
+          "seconds": 52.5157512,
+          "signal_error": "",
+          "wait_error": ""
+        },
+        "passed": true,
+        "phases": [
+          {
+            "accepted_after": 3,
+            "accepted_baseline": 0,
+            "endpoint": "stratum+ssl://127.0.0.1:44474",
+            "phase": "initial",
+            "seconds": 12.823384292
+          },
+          {
+            "accepted_after": 6,
+            "accepted_baseline": 3,
+            "endpoint": "stratum+ssl://127.0.0.1:44475",
+            "phase": "backup-after-disconnect",
+            "seconds": 14.682653042000002
+          },
+          {
+            "phase": "rotate-did-not-auto-return",
+            "seconds": 15
+          },
+          {
+            "accepted_after": 13,
+            "accepted_baseline": 10,
+            "endpoint": "stratum+ssl://127.0.0.1:44474",
+            "phase": "rotate-wrap-primary",
+            "seconds": 7.961379833000002
+          }
+        ]
+      }
+    ],
+    "windows_native_go_race_and_vet": true,
+    "windows_native_rust_tests": 7,
+    "windows_system_thermal_guard_c": 65
+  },
+  "release_channel": "public",
+  "release_note_sha256": "ced31b4324d9c4e56539b24d52bf35f0419a7f83b7895b3547d3134bb98d57b6",
+  "restrict_pool_endpoints": false,
+  "signing": {
+    "algorithm": "RSA-3072 PKCS1v1.5 SHA256",
+    "public_key_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.8/proxima-release-2026.pem",
+    "spki_sha256": "ddfef178854a1445fa6d79eabb7872d23d247391fc44e6f765c34b7092ab7235"
+  },
+  "source_commit": "40bc8580e519b6a9b1dd33c16dacd891f89f9556",
+  "version": "2.2.0.8"
+}
