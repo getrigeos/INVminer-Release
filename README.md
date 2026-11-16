@@ -12,19 +12,19 @@ HiveOS Installation URL: `https://github.com/getrigeos/INVminer-Release/releases
 
 ## Proxima upgrade-6
 
-**v2.2.0.8 has been withdrawn pending end-to-end performance qualification on the current pool.** Use the previous Linux/HiveOS and Windows releases below. The withdrawal does not establish a confirmed performance regression.
-
-Proxima release: [v2.2.0.4](https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.4). This separate package supports Proxima only; keep the NOID/QUAN package for those flight sheets.
+Proxima release: [v2.2.0.10](https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.10). This package supports Proxima only; keep the NOID/QUAN package for those flight sheets. Version 2.2.0.8 remains withdrawn.
 
 HiveOS Installation URL:
-https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.4/invminer-2.2.0.4.tar.gz
+https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.10/invminer-2.2.0.10.tar.gz
 
-Use `--coin proxima` with your registered 64-hex holder/account ID. Ordered pool URLs:
+Use `--coin proxima` with your registered 64-hex holder/account ID. Recommended ordered pools:
 
-- `stratum+ssl://global.innovlab.cc:19701`
-- `stratum+ssl://eu3.innovlab.cc:19701`
+| Region | Primary | Backup 1 | Backup 2 |
+|---|---|---|---|
+| Asia | `stratum+ssl://fast-hk1.innovlab.cc:19701` | `stratum+ssl://fast-hk2.innovlab.cc:19701` | `stratum+ssl://hk.innovlab.cc:19701` |
+| Europe | `stratum+ssl://fast1-ru.innovlab.cc:19701` | `stratum+ssl://fast2-ru.innovlab.cc:19701` | `stratum+ssl://eu3.innovlab.cc:19701` |
 
-HiveOS wallet template: `%WAL%.%WORKER_NAME%`; extra arguments: `--coin proxima`. Password is optional (default `x`). Default `primary` failover returns to the first recovered endpoint; `--pool-failover-mode rotate` stays on a healthy backup.
+HiveOS wallet template: `%WAL%.%WORKER_NAME%`; extra arguments: `--coin proxima`. Enter the ordered pool URLs on separate lines. Password: `x`. The default `primary` mode returns after successful primary probes; `--pool-failover-mode rotate` stays on a healthy backup. The release note includes explicit default thresholds and Linux/Windows examples.
 
 [Proxima signing key](trust/PROXIMA.md). Tested GPU models, measured rates and conditions are recorded in the Release Note.
 
@@ -39,6 +39,8 @@ For connection or share problems, open the [configuration diagnostics](https://r
 
 ## Proxima for Windows
 
-Windows x64: [v2.2.0.5](https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.5). Download: https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.5/invminer-v2.2.0.5-windows-x86_64.zip
+Windows x64: [v2.2.0.10](https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.10).
 
-Extract the ZIP and run `start-proxima.bat`; enter a registered 64-hex holder/account ID. Proxima only, 0% fee. Tested Windows GPU and low-power hashrate are listed in the release note. Linux/HiveOS remain on v2.2.0.4.
+https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.10/invminer-v2.2.0.10-windows-x86_64.zip
+
+Extract the ZIP and run `start-proxima.bat`; enter a registered 64-hex holder/account ID. Asia is the default; add `-Region europe` for Europe. Proxima only, 0% developer fee. Physical GPU, OS, driver and power conditions are listed in the release note; Linux gains are not Windows guarantees.

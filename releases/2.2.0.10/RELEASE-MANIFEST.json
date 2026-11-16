@@ -1,0 +1,82 @@
+{
+  "assets": {
+    "invminer-2.2.0.10.tar.gz": {
+      "sha256": "f1f32ffd17cee9c53e077b4504e830ed580a676e353b50a50ecdb078829d3c9e",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.10/invminer-2.2.0.10.tar.gz.sig",
+      "size": 13574266,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.10/invminer-2.2.0.10.tar.gz"
+    },
+    "invminer-v2.2.0.10-linux-x86_64-cuda12.tar.gz": {
+      "sha256": "305b211e754bcf2de223082833ce5f8a95f9f455d667fa9b987da25919978aab",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.10/invminer-v2.2.0.10-linux-x86_64-cuda12.tar.gz.sig",
+      "size": 6830790,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.10/invminer-v2.2.0.10-linux-x86_64-cuda12.tar.gz"
+    },
+    "invminer-v2.2.0.10-linux-x86_64-cuda13.tar.gz": {
+      "sha256": "0aee1e537210c9f8b505443d9b777eaf6f6c3ceed178ba70a84a774d187579c2",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.10/invminer-v2.2.0.10-linux-x86_64-cuda13.tar.gz.sig",
+      "size": 6830891,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.10/invminer-v2.2.0.10-linux-x86_64-cuda13.tar.gz"
+    },
+    "invminer-v2.2.0.10-windows-x86_64.zip": {
+      "sha256": "195ab3714f06a126400a58464ce23a6845dd73192d44103aad1ba817a65cc39c",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.10/invminer-v2.2.0.10-windows-x86_64.zip.sig",
+      "size": 6786204,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.10/invminer-v2.2.0.10-windows-x86_64.zip"
+    }
+  },
+  "binary_sha256": {
+    "linux-cuda12": "be0d77025673518a20ed7c46d8d1daae7550699cf90b2895c3f6a40d142e78a8",
+    "linux-cuda13": "5cb286ce7b23295113857360683beb33bd757f9cfc4e2135cc57f15907091275",
+    "windows": "90ea1ca87dc4cacbbbf71906ef07abe8613755db67b4d3778c938232787aabd7"
+  },
+  "coins": [
+    "proxima"
+  ],
+  "fee_ppm": {
+    "proxima": 0
+  },
+  "mining_tls_default": "compatible",
+  "packaging_commit": "1b3a9f27f80e153c9772e25a4dbff79e040e9387",
+  "platforms": [
+    "linux-x86_64-cuda12",
+    "linux-x86_64-cuda13",
+    "hiveos",
+    "windows-x86_64"
+  ],
+  "qualification": {
+    "all_acknowledged_shares_reconciled": true,
+    "all_card_five_percent_goal_met": false,
+    "cmp40_speedup_qualified": false,
+    "current_pool_final_binary_tests": true,
+    "detailed_record_sha256": "de652d4981382758f44b00a341e7be2e0af4706dfae8b7179aa62a87349d130f",
+    "hiveos_cloud_ui_operated": false,
+    "hiveos_installer_upgrade_restart": true,
+    "mixed_performance_comparison_interrupted": true,
+    "original_tasks_and_settings_restored": true,
+    "scope": "Short current-pool samples with retained failures, negative/unstable baselines and per-GPU limits in the release note; not a long-term stability or earnings guarantee.",
+    "self_signed_wrong_name_tls": true,
+    "windows_bat_start_restart": true,
+    "windows_fault_cases": [
+      "refused",
+      "silent",
+      "auth",
+      "primary_recovery",
+      "rotate_retention_and_wrap"
+    ],
+    "windows_multigpu_tested": false,
+    "windows_speedup_qualified": false
+  },
+  "release_channel": "public",
+  "release_note_sha256": "19821f86f6568b833bf33f10b653a4c078d5690039ec15e17d865f5f112ad2a0",
+  "restrict_pool_endpoints": false,
+  "signing": {
+    "algorithm": "RSA-3072 PKCS1v1.5 SHA256",
+    "public_key_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.10/proxima-release-2026.pem",
+    "spki_sha256": "ddfef178854a1445fa6d79eabb7872d23d247391fc44e6f765c34b7092ab7235",
+    "windows_authenticode": false
+  },
+  "source_branch": "perf/proxima-allgpu-20261116",
+  "source_commit": "8ff3d64a77374e26f1685c3c85cd1c2b5a5171c5",
+  "version": "2.2.0.10"
+}

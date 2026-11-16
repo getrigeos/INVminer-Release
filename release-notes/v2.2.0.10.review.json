@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "version": "2.2.0.10",
+  "channel": "public",
+  "note_sha256": "19821f86f6568b833bf33f10b653a4c078d5690039ec15e17d865f5f112ad2a0",
+  "reviewed_by": "Codex /root; final source, artifacts and real-pool qualification reviewed",
+  "reference_release": "https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.9",
+  "checks": {
+    "current_user_visible_changes_only": true,
+    "previous_release_format_reviewed": true,
+    "commands_downloads_fees_and_compatibility_checked": true,
+    "performance_claims_supported": true,
+    "internal_process_details_kept_in_validation_records": true
+  },
+  "changes": [
+    {
+      "text": "Faster GPU search and result handling on supported NVIDIA GPUs; measured gains over 2.2.0.9 are listed below. No pool update or new tuning flag is required.",
+      "evidence": [
+        "innovlab-miner perf/proxima-allgpu-20261116 executable source8ff3d64a; projects/proxima/release-2210/qualification.json",
+        "source commits eafe43e4 / 4ad400a1 / b621df96; final current-pool measurements recorded with negative and incomplete results"
+      ]
+    },
+    {
+      "text": "Correct GPU active-time accounting when two batches are queued. This fixes an auxiliary rate calculation; it does not multiply completed work or pool shares.",
+      "evidence": [
+        "innovlab-miner perf/proxima-allgpu-20261116 executable source8ff3d64a; projects/proxima/release-2210/qualification.json",
+        "source commits eafe43e4 / 4ad400a1 / b621df96; final current-pool measurements recorded with negative and incomplete results"
+      ]
+    }
+  ]
+}
