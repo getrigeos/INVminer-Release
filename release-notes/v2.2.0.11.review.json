@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "version": "2.2.0.11",
+  "channel": "public",
+  "note_sha256": "a569747cdae7ed55bd3ab21c15e7e22860b8ff4c806e530c188316058f5fda1f",
+  "reviewed_by": "Codex /root; source, final binaries, real-pool comparisons, CPU modes and package fault recovery checked",
+  "reference_release": "https://github.com/getrigeos/INVminer-Release/releases/tag/v2.2.0.10",
+  "checks": {
+    "current_user_visible_changes_only": true,
+    "previous_release_format_reviewed": true,
+    "commands_downloads_fees_and_compatibility_checked": true,
+    "performance_claims_supported": true,
+    "internal_process_details_kept_in_validation_records": true
+  },
+  "changes": [
+    {
+      "text": "Lower default CPU use by reducing GPU dispatch overhead and unused monitoring queries, while retaining temperature protection. Default performance and measurement limits are listed below. No pool upgrade is required.",
+      "evidence": [
+        "innovlab-miner perf/proxima-allgpu-20261116 executable299c07a4034b9d31b6800708c387334b480e2bae",
+        "projects/proxima/release-2211/qualification.json; default/low measurements and Windows baseline uncertainty retained"
+      ]
+    },
+    {
+      "text": "Optional `--proxima-cpu-mode low` (`-CpuMode low` in the Windows BAT launcher) allows longer batches to reduce CPU wakeups and may trade a little hashrate during job changes. The default remains performance-first; low mode is never selected automatically.",
+      "evidence": [
+        "innovlab-miner perf/proxima-allgpu-20261116 executable299c07a4034b9d31b6800708c387334b480e2bae",
+        "projects/proxima/release-2211/qualification.json; default/low measurements and Windows baseline uncertainty retained"
+      ]
+    }
+  ]
+}

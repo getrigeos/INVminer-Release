@@ -1,0 +1,88 @@
+{
+  "assets": {
+    "invminer-2.2.0.11.tar.gz": {
+      "sha256": "8503371b99c5a5a87c1341360d5a80663473000dfd2a8300517ccb27f794ef7e",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.11/invminer-2.2.0.11.tar.gz.sig",
+      "size": 13572154,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.11/invminer-2.2.0.11.tar.gz"
+    },
+    "invminer-v2.2.0.11-linux-x86_64-cuda12.tar.gz": {
+      "sha256": "aad84dc5be58d6e685cbd25eda646fbf35bb9127b9a30f58031659ffc0f7c673",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.11/invminer-v2.2.0.11-linux-x86_64-cuda12.tar.gz.sig",
+      "size": 6830060,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.11/invminer-v2.2.0.11-linux-x86_64-cuda12.tar.gz"
+    },
+    "invminer-v2.2.0.11-linux-x86_64-cuda13.tar.gz": {
+      "sha256": "d73ed195c5fc6a512182923805d00a1f8d3a405e6841ddb511ff0eded78d7f3b",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.11/invminer-v2.2.0.11-linux-x86_64-cuda13.tar.gz.sig",
+      "size": 6829993,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.11/invminer-v2.2.0.11-linux-x86_64-cuda13.tar.gz"
+    },
+    "invminer-v2.2.0.11-windows-x86_64.zip": {
+      "sha256": "9025e137341f5628135d21a0e21fdee0b1712d88e9644e11e287378590fa97e8",
+      "signature_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.11/invminer-v2.2.0.11-windows-x86_64.zip.sig",
+      "size": 6785224,
+      "url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.11/invminer-v2.2.0.11-windows-x86_64.zip"
+    }
+  },
+  "binary_sha256": {
+    "linux-cuda12": "e1759fe0d76a4396f2ca30943baa0e9bb63e6817f28e31bc6f5bc249e391ff5b",
+    "linux-cuda13": "2a7943442ce2152737866ae83f65a6011b042b12918c8bcbdcc4ea9d7a53875f",
+    "windows": "4b082b0a1ddf2c1b75cfc7cc251bdbd3caa1ad017092e43c2b6862fb90e0ee38"
+  },
+  "coins": [
+    "proxima"
+  ],
+  "cpu_mode_note": "Default prioritizes throughput; low explicitly permits longer batches. Neither is an OS CPU percentage cap.",
+  "default_cpu_mode": "balanced",
+  "fee_ppm": {
+    "proxima": 0
+  },
+  "mining_tls_default": "compatible",
+  "optional_cpu_modes": [
+    "low"
+  ],
+  "packaging_commit": "cbe006718650f90b88e14d11840d5eb5178390aa",
+  "platforms": [
+    "linux-x86_64-cuda12",
+    "linux-x86_64-cuda13",
+    "hiveos",
+    "windows-x86_64"
+  ],
+  "qualification": {
+    "all_acknowledged_shares_reconciled": true,
+    "config_and_cli_precedence_verified": true,
+    "current_pool_final_binary_tests": true,
+    "default_and_low_modes_verified": true,
+    "detailed_record_sha256": "0be6c5df600fbefb693273488b724d6120b7727696fc6dbce8a4ead5ef9c8972",
+    "hiveos_cloud_ui_operated": false,
+    "hiveos_installer_upgrade_restart": true,
+    "original_tasks_and_settings_restored": true,
+    "scope": "Short current-pool work+processCPU samples, retained stale shares, baseline drift and test failures. Not a universal performance, long-term stability or earnings guarantee.",
+    "self_signed_wrong_name_tls": true,
+    "thermal_stop_verified": true,
+    "windows_baseline_drift_percent": 2.6530608609670936,
+    "windows_bat_start_restart": true,
+    "windows_fault_cases": [
+      "refused",
+      "silent",
+      "auth",
+      "primary_recovery",
+      "rotate_retention_and_wrap"
+    ],
+    "windows_multigpu_tested": false,
+    "windows_speedup_qualified": false
+  },
+  "release_channel": "public",
+  "release_note_sha256": "a569747cdae7ed55bd3ab21c15e7e22860b8ff4c806e530c188316058f5fda1f",
+  "restrict_pool_endpoints": false,
+  "signing": {
+    "algorithm": "RSA-3072 PKCS1v1.5 SHA256",
+    "public_key_url": "https://github.com/getrigeos/INVminer-Release/releases/download/v2.2.0.11/proxima-release-2026.pem",
+    "spki_sha256": "ddfef178854a1445fa6d79eabb7872d23d247391fc44e6f765c34b7092ab7235",
+    "windows_authenticode": false
+  },
+  "source_branch": "perf/proxima-allgpu-20261116",
+  "source_commit": "299c07a4034b9d31b6800708c387334b480e2bae",
+  "version": "2.2.0.11"
+}
